@@ -229,6 +229,9 @@ style input:
 #             textbutton i.caption action i.action
 # Definir os estilos
 
+
+# Alteração: barra de rolagem
+
 screen choice(items):
     window:
         style_prefix "choice"
@@ -253,14 +256,6 @@ style choice_button_text is button_text
 style choice_window:
     background None # Define um background de cor sólida (rosa claro neste caso)
 
-# style choice_viewport:
-#     background None
-
-
-# style choice_window:
-#     background None
-#     ypos 50
-
 style choice_vbox:
     yalign 0.
     xalign 1.
@@ -274,10 +269,13 @@ style choice_button is default:
 
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
+
 ## Tela do menu rápido #########################################################
 ##
 ## O menu rápido é exibido no jogo para fornecer acesso fácil aos menus fora do
 ## jogo.
+
+# Alteração 2: background do quick menu
 
 screen quick_menu():
 

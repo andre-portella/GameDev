@@ -1,11 +1,12 @@
-﻿init python:
+﻿# Remover e inserir em 'screens.rpy'
+init python:
     style.my_custom_window = Style(style.window)
     style.my_custom_window.ysize = 350  # Altura da caixa de texto
     style.my_custom_window.background = Frame("gui/textbox.png", 12, 12)
 
 
-define fade_out = Fade(0.5, 0, 0.5)  # Escurece a tela em 0.5 segundo
-define fade_in = Fade(0.5, 0, 1.5, color="#000000")  # Clareia a tela em 0.5 segundo
+define fade_out = Fade(0.5, 0, 0.5)
+define fade_in = Fade(0.5, 0, 1.5, color="#000000")
 # Definindo a transição dissolve
 
 define jogador = Character("Jogador", window_style="my_custom_window")
