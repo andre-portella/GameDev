@@ -102,7 +102,7 @@ define gui.game_menu_background = "gui/game_menu.png"
 ## vez.
 
 ## A altura da caixa de texto que contém o diálogo.
-define gui.textbox_height = 278
+define gui.textbox_height = 360
 
 ## O posicionamento da caixa de texto verticalmente na tela. 0,0 é a parte
 ## superior, 0,5 é o centro e 1,0 é a parte inferior.
@@ -215,14 +215,15 @@ define gui.quick_button_text_selected_color = gui.accent_color
 define gui.choice_button_width = 500
 define gui.choice_button_height = None
 define gui.choice_button_tile = False
-define gui.choice_button_borders = Borders(70, 10, 70, 10)
+define gui.choice_button_borders = Borders(20, 10, 20, 10)
+define gui.choice_button_yalign = 0.5
 define gui.choice_button_text_font = gui.text_font
-define gui.choice_button_text_size = 22
+define gui.choice_button_text_size = 25
 define gui.choice_button_text_xalign = 0
-define gui.choice_button_text_idle_color = '#888888'
+define gui.choice_button_text_idle_color = '#ffffff'
 define gui.choice_button_text_hover_color = "#ffffff"
 define gui.choice_button_text_insensitive_color = '#8888887f'
-define gui.choice_button_idle_background = None 
+define gui.choice_button_idle_background = "ffffff" 
 
 
 

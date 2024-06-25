@@ -235,7 +235,8 @@ style input:
 screen choice(items):
     window:
         style_prefix "choice"
-        area (1420, 10, 500, 250)
+        area (1420, 0, 500, 200)
+
         viewport:
             if len(items) >= 3:
                 scrollbars "vertical"
@@ -247,28 +248,22 @@ screen choice(items):
                     textbutton i.caption action i.action
 
 style choice_vbox is vbox
-# style choice_window is window
-# style choice_viewport is viewport
 style choice_button is button
 style choice_button_text is button_text
 
-
 style choice_window:
-    background None # Define um background de cor sólida (rosa claro neste caso)
+    background None
 
-style choice_vbox:
-    yalign 0.
-    xalign 1.
-    ypos 50
-
-    spacing -3
-    #spacing gui.choice_spacing
+# style choice_vbox:
+#     yalign 0.5
+#     xalign 1.0
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
 
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
+
 
 ## Tela do menu rápido #########################################################
 ##
