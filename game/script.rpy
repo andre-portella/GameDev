@@ -1,4 +1,217 @@
-﻿# Remover e inserir em 'screens.rpy'
+﻿
+
+default flash = Fade(.25, 0, .75, color="#fff") # usa isso aq pra dar um flash branco na imagem
+
+transform screenshake:
+    linear 0.15 xoffset -5 yoffset -5
+    linear 0.1 xoffset 10 yoffset 7
+    linear 0.13 xoffset 2 yoffset -2
+    linear 0.05 xoffset -1 yoffset 1
+    linear 0.13 xoffset -8 yoffset -1
+    linear 0.09 xoffset 3 yoffset 1
+    linear 0.07 xoffset -2 yoffset -10
+    linear 0.1 xoffset 6 yoffset 3
+    linear 0.11 xoffset -5 yoffset 2
+    linear 0.08 xoffset 5 yoffset -4
+    linear 0.05 xoffset -6 yoffset -5
+    linear 0.14 xoffset 5 yoffset 3
+    linear 0.06 xoffset 1 yoffset -9
+    linear 0.1 xoffset 10 yoffset 7
+    repeat
+
+transform shaketiny:
+    linear 0.05 xoffset -1 yoffset 1
+    linear 0.13 xoffset -8 yoffset -1
+    linear 0.09 xoffset 3 yoffset 1
+    linear 0.07 xoffset -2 yoffset -10
+    linear 0.1 xoffset 6 yoffset 3
+
+
+transform shakeshort:
+    linear 0.15 xoffset -5 yoffset -5
+    linear 0.1 xoffset 10 yoffset 7
+    linear 0.13 xoffset 2 yoffset -2
+    linear 0.05 xoffset -1 yoffset 1
+    linear 0.13 xoffset -8 yoffset -1
+    linear 0.09 xoffset 3 yoffset 1
+    linear 0.07 xoffset -2 yoffset -10
+    linear 0.1 xoffset 6 yoffset 3
+    linear 0.11 xoffset -5 yoffset 2
+    linear 0.08 xoffset 5 yoffset -4
+    linear 0.05 xoffset -6 yoffset -5
+    linear 0.14 xoffset 5 yoffset 3
+    linear 0.06 xoffset 1 yoffset -9
+    linear 0.1 xoffset 10 yoffset 7
+    linear 0.1 xoffset 0 yoffset 0
+
+transform sway:
+    linear 2.0 xoffset -10
+    linear 2.5 xoffset 15
+    repeat
+
+transform swayblur:
+    linear 1.0 blur 16 xoffset -10
+    linear 2.5 blur 5 xoffset 15
+    repeat
+
+transform collapse:
+    easein .15 yoffset -110
+    easein 0.05 yoffset -100
+
+transform rise:
+    easein .15 yoffset 10
+    easein 0.05 yoffset 0
+
+transform chin:
+    easein .15 yoffset -5
+
+transform bigchin:
+    easein .15 yoffset -20
+
+transform up:
+    easein .15 yoffset 60
+    easein 0.05 yoffset 50
+
+transform distortion:
+    shader "distortion_perlin"
+    u_frame(4.)
+    u_speed(0.15)
+    u_distortion(0.0002)
+    u_distortion2(0.0005)
+    u_scale(1.5)
+    u_scale2(200.0)
+    u_interlacing(0.00010)
+    u_interlacing_y(512.0)
+    u_vignette(0.5)
+    u_static(0.075)
+    # u_debug(1.0 if shader_debug_mode else 0.0)
+    u_debug(0.0)
+
+transform distortion_personagem:
+    shader "distortion_perlin"
+    u_frame(4.)
+    u_speed(0.15)
+    u_distortion(0.0002)
+    u_distortion2(0.0005)
+    u_scale(1.5)
+    u_scale2(200.0)
+    u_interlacing(0.00010)
+    u_interlacing_y(128.0)
+    u_vignette(0.5)
+    u_static(0.075)
+    u_debug(0.0)
+    # u_debug(1.0 if shader_debug_mode else 0.0)
+
+transform distortion_back:
+    shader "distortion_perlin"
+    u_frame(4.)
+    u_speed(0.15)
+    u_distortion(0.0002)
+    u_distortion2(0.0005)
+    u_scale(1.5)
+    u_scale2(200.0)
+    u_interlacing(0.00010)
+    u_interlacing_y(512.0)
+    u_vignette(0.5)
+    u_static(0.075)
+    # u_debug(1.0 if shader_debug_mode else 0.0)
+    u_debug(0.0)
+
+transform distortion_fore:
+    shader "distortion_perlin"
+    u_frame(4.)
+    u_speed(1.15)
+    u_distortion(0.0006)
+    u_distortion2(0.0010)
+    u_scale(5.0)
+    u_scale2(100.0)
+    u_interlacing(0.00065)
+    u_interlacing_y(64.0)
+    u_vignette(0.5)
+    u_static(0.075)
+    #u_debug(1.0 if shader_debug_mode else 0.0)
+    u_debug(0.0)
+
+transform strongwarp:
+    shader "distortion_perlin"
+    u_frame(4.)
+    u_speed(1.15)
+    u_distortion(0.0006)
+    u_distortion2(0.0010)
+    u_scale(5.0)
+    u_scale2(100.0)
+    u_interlacing(0.00065)
+    u_interlacing_y(64.0)
+    u_vignette(0.5)
+    u_static(0.075)
+    #u_debug(1.0 if shader_debug_mode else 0.0)
+    u_debug(0.0)
+
+transform midwarp:
+    shader "distortion_perlin"
+    u_frame(4.)
+    u_speed(1.15)
+    u_distortion(0.0005)
+    u_distortion2(0.0008)
+    u_scale(4.0)
+    u_scale2(100.0)
+    u_interlacing(0.00065)
+    u_interlacing_y(64.0)
+    u_vignette(0.5)
+    u_static(0.075)
+    #u_debug(1.0 if shader_debug_mode else 0.0)
+    u_debug(0.0)
+
+transform spectre_small_zoom:
+    ease 0.5 zoom 1.05 yoffset 50
+
+transform spectre_small_zoom_instant:
+    ease 0.5 zoom 1.05 yoffset 50
+
+transform apoth_zoom_in:
+    ease 0.5 zoom 1.1 yoffset 100 xoffset -50
+
+transform apoth_zoom_out:
+    ease 0.5 zoom 1.0 yoffset -100 xoffset -200
+
+transform xflip:
+    yzoom -1
+
+transform zoom_in:
+    ease 0.5 zoom 1.1
+
+transform zoom_instant:
+    zoom 1.1
+
+transform big_zoom:
+    ease 1.0 zoom 1.2 yoffset 200
+
+transform big_zoom_instant:
+    zoom 1.2 yoffset 200
+
+transform small_zoom:
+    ease 1.0 zoom 1.1 yoffset 100
+
+transform zoom_pracima1:
+    ease 0.5 zoom 1.06 yoffset 10
+    ease 0.15 zoom 1.05
+
+transform zoom_pracima2:
+    ease 0.5 zoom 1.11 yoffset 20
+    ease 0.15 zoom 1.1
+
+transform zoom_pracima3:
+    ease 0.5 zoom 1.16
+    ease 0.15 zoom 1.15
+
+transform zoom_out:
+        ease 0.5 zoom 1.0
+
+transform zoom_out_far:
+    ease 0.5 zoom 0.95
+
+
+# Remover e inserir em 'screens.rpy'
 init python:
     style.my_custom_window = Style(style.window)
     style.my_custom_window.background = Frame("gui/textbox.png", 12, 12)
@@ -21,12 +234,17 @@ define jogador = Character("Jogador", window_style="my_custom_window")
 define ship = Character("Shipman Harold",  color="#FF0000", window_style="my_custom_window")
 define ed = Character("Ed Newgate", color="#0000FF", window_style="my_custom_window")
 
-image bg room = "room.png"
+image bg porta = "porta.png"
 image bg janela = "janela.png"
 image bg conves = "conves.png"
-    
+
+image bg_porta = At("bg porta", distortion)
+
+image bg porta_desfoque = im.Blur("porta.png", 10)
+
+# transição entre planos de fundo
 image backgrounds:
-    "room.png"
+    "conves.png"
     function blink
     "conves.png"
     function blink
@@ -120,8 +338,6 @@ label op_exp3:
 ############################################################
 ############################################################
 
-
-
 label voltar_dormir:
 
     ship "Você fez a melhor escolha!" with dissolve
@@ -145,7 +361,7 @@ label voltar_dormir:
     # Muda a cena para 'bg room' enquanto a tela está escura
     scene bg janela with fade_out and fade_in
 
-    #continuação
+    # Continuação
     ship "O interior do quarto está quase vazio. O ar é pesado e tanto o chão quanto as paredes estão manchados de sangue. A única\
         peça de mobília é uma cama simples, manchada de vermelho e coberta por lençóis ensanguentados. Ao lado da cama, uma faca\
         repousa com sua lâmina reluzindo." with dissolve
@@ -184,6 +400,8 @@ label voltar_dormir:
 
         ship "Você empunha a faca e aponta para o pescoço..." with dissolve
 
+
+        # Reinício do jogo
         jump start
 
 
@@ -203,10 +421,59 @@ label voltar_dormir:
         
 ############################################################
 ############################################################
+
+#FELIPE
+
 label descobrir_barulho:
 
     $ op_exp3_unlocked = True
 
-    jump explorar
+    ship 'Parte do Felipe.'
+
+    jump desistir_conserto
+
+
+
+label desistir_conserto:
+
+    ed "Como pode desistir? Não vai ao menos tentar? Você pode consertar o vazamento. Tem uma resina bem ali" with dissolve
+
+    jogador "Não vale a pena. Vocês já me falaram que estamos adiando o inevitável. Por que lutar?" with dissolve
+
+    ship "Um pouco de sensatez, finalmente." with dissolve
+
+    ed "Essa decisão é trágica. Mas não se engane, cada escolha tem seu preço. O perdão não é garantido." with dissolve
+
+    ship "Ele já tomou sua decisão! Seus discursos são inúteis, apenas lamentações indistinguíveis. Deixe-o agir com um propósito maior do que si mesmo. Somente assim, depois de tantos anos, ele poderá ter a paz que tanto buscou." with dissolve
+
+    ship "As névoas tomam conta do seu destino, nada mais parece manter a forma. O ar é denso, como se cada respiração fosse um mergulho em águas turvas. Você tateia o espaço ao seu redor, mas os contornos se desvanecem, com tudo escapando entre seus dedos." with dissolve
+
+    scene bg_porta 
+    menu:
+        "{b}O que está acontecendo? \[Opção Exploratória\]{b}":
+            jump op_exp5
+
+        "{b}Eu não posso deixar esse vazamento continuar.{b}":
+            jump voltar_corredor
+
+
+    label voltar_corredor:
+        jogador "Preciso vedar logo essa rachadura." with dissolve
+
+        jump descobrir_barulho
+
+
+    label op_exp5:
+
+        scene bg porta
+
+        jogador "Por que está tudo tão distorcido? Não estou entendendo nada… são alucinações?" with dissolve
+        
+        ship "O que você vê não são meras alucinações, mas o seu próprio passado, distorcido pelos entorpecentes que outrora foram seu refúgio. Cada contorno borrado, cada sensação incompreendida, ecoando em sua mente são vestígios de uma vida marcada pela dependência." with dissolve
+
+
+    
+
+
 
 return

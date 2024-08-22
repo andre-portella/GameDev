@@ -2,9 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 48: python block expects a non-empty block.
-    init python:
-                ^
+File "game/script.rpy", line 3: Unexpected indentation at start of file.
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Mon Jun 24 21:54:23 2024
+Thu Aug 22 09:45:56 2024

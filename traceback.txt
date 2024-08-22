@@ -1,77 +1,42 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-Executing ATL code at game/script.rpy:30
-  File "game/script.rpy", line 48, in script
-    scene back with fade_in
-  File "game/script.rpy", line 10, in blink
-    if st >= image_timer:
-NameError: name 'image_timer' is not defined
+While running game code:
+  File "game/script.rpy", line 449, in script
+    menu:
+Exception: Shader ('distortion_perlin', 'renpy.geometry', 'renpy.texture') has not been given uniform u_debug.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 48, in script
-    scene back with fade_in
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/ast.py", line 1363, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/exports.py", line 1781, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/core.py", line 1548, in do_with
-    return self.interact(trans_pause=True,
+  File "game/script.rpy", line 449, in script
+    menu:
+  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/ast.py", line 1618, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/exports.py", line 1109, in menu
+    rv = renpy.store.menu(new_items)
+  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/exports.py", line 1364, in display_menu
+    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
+  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/ui.py", line 301, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/core.py", line 2165, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
   File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/core.py", line 2818, in interact_core
     self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/core.py", line 1352, in draw_screen
-    surftree = renpy.display.render.render_screen(
-  File "render.pyx", line 486, in renpy.display.render.render_screen
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/layout.py", line 900, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/transition.py", line 194, in render
-    renpy.display.render.render(self.transitions[-1], width, height, 0, 0)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/transition.py", line 384, in render
-    top = render(self.new_widget, width, height, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/layout.py", line 900, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/layout.py", line 900, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/transform.py", line 957, in render
-    return RenderTransform(self).render(width, height, st, at)
-  File "accelerator.pyx", line 978, in renpy.display.accelerator.RenderTransform.render
-  File "accelerator.pyx", line 413, in renpy.display.accelerator.RenderTransform.render_child
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/image.py", line 513, in render
-    return wrap_render(self.target, width, height, st, at)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/image.py", line 316, in wrap_render
-    rend = render(child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/transform.py", line 955, in render
-    self.update_state()
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/transform.py", line 1134, in update_state
-    fr = self.execute(self, self.st, self.at)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/atl.py", line 746, in execute
-    action, arg, pause = block.execute(trans, timebase, self.atl_state, events)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/atl.py", line 991, in execute
-    action, arg, pause = stmt.execute(trans, target - start, child_state, events)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/atl.py", line 2048, in execute
-    fr = self.function(trans, st if block else 0, trans.at)
-  File "game/script.rpy", line 10, in blink
-    if st >= image_timer:
-NameError: name 'image_timer' is not defined
+  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/core.py", line 1359, in draw_screen
+    renpy.display.draw.draw_screen(surftree)
+  File "gl2draw.pyx", line 1008, in renpy.gl2.gl2draw.GL2Draw.draw_screen
+  File "gl2draw.pyx", line 1508, in renpy.gl2.gl2draw.GL2DrawingContext.draw
+  File "gl2draw.pyx", line 1489, in renpy.gl2.gl2draw.GL2DrawingContext.draw_one
+  File "gl2draw.pyx", line 1489, in renpy.gl2.gl2draw.GL2DrawingContext.draw_one
+  File "gl2draw.pyx", line 1489, in renpy.gl2.gl2draw.GL2DrawingContext.draw_one
+  [Previous line repeated 5 more times]
+  File "gl2draw.pyx", line 1400, in renpy.gl2.gl2draw.GL2DrawingContext.draw_one
+  File "gl2draw.pyx", line 1367, in renpy.gl2.gl2draw.GL2DrawingContext.draw_model
+  File "gl2shader.pyx", line 313, in renpy.gl2.gl2shader.Program.draw
+  File "gl2shader.pyx", line 264, in renpy.gl2.gl2shader.Program.missing
+Exception: Shader ('distortion_perlin', 'renpy.geometry', 'renpy.texture') has not been given uniform u_debug.
 
-macOS-14.5-arm64-arm-64bit arm64
+macOS-14.6.1-arm64-arm-64bit arm64
 Ren'Py 8.2.1.24030407
 projetoX 1.0
-Mon Jun 24 21:55:22 2024
+Thu Aug 22 09:57:11 2024
