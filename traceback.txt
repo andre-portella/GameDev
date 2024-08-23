@@ -1,42 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 449, in script
-    menu:
-Exception: Shader ('distortion_perlin', 'renpy.geometry', 'renpy.texture') has not been given uniform u_debug.
+  File "game/script.rpy", line 524, in script
+    Jogador "Consequências piores do que deixar o barco afundar? Vamos descobrir."
+Exception: Sayer 'Jogador' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 449, in script
-    menu:
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/ast.py", line 1618, in execute
-    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/exports.py", line 1109, in menu
-    rv = renpy.store.menu(new_items)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/exports.py", line 1364, in display_menu
-    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/ui.py", line 301, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/core.py", line 2165, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/core.py", line 2818, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/display/core.py", line 1359, in draw_screen
-    renpy.display.draw.draw_screen(surftree)
-  File "gl2draw.pyx", line 1008, in renpy.gl2.gl2draw.GL2Draw.draw_screen
-  File "gl2draw.pyx", line 1508, in renpy.gl2.gl2draw.GL2DrawingContext.draw
-  File "gl2draw.pyx", line 1489, in renpy.gl2.gl2draw.GL2DrawingContext.draw_one
-  File "gl2draw.pyx", line 1489, in renpy.gl2.gl2draw.GL2DrawingContext.draw_one
-  File "gl2draw.pyx", line 1489, in renpy.gl2.gl2draw.GL2DrawingContext.draw_one
-  [Previous line repeated 5 more times]
-  File "gl2draw.pyx", line 1400, in renpy.gl2.gl2draw.GL2DrawingContext.draw_one
-  File "gl2draw.pyx", line 1367, in renpy.gl2.gl2draw.GL2DrawingContext.draw_model
-  File "gl2shader.pyx", line 313, in renpy.gl2.gl2shader.Program.draw
-  File "gl2shader.pyx", line 264, in renpy.gl2.gl2shader.Program.missing
-Exception: Shader ('distortion_perlin', 'renpy.geometry', 'renpy.texture') has not been given uniform u_debug.
+  File "game/script.rpy", line 524, in script
+    Jogador "Consequências piores do que deixar o barco afundar? Vamos descobrir."
+  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 2560, in execute
+    Say.execute(self)
+  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 575, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 464, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who)
+Exception: Sayer 'Jogador' is not defined.
 
-macOS-14.6.1-arm64-arm-64bit arm64
-Ren'Py 8.2.1.24030407
+Windows-10-10.0.22621 AMD64
+Ren'Py 8.2.2.24061201
 projetoX 1.0
-Thu Aug 22 09:57:11 2024
+Thu Aug 22 21:33:04 2024

@@ -2,7 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 3: Unexpected indentation at start of file.
+File "game/script.rpy", line 649: end of line expected.
+    ship "Seu braço direito está um pouco dolorido, impedindo de carregá-los para muito atrás das costas. Você gira o tronco, sentindo uma leve dor na região das costelas. Ao colocar o pé esquerdo para frente, garantindo um melhor arremesso, você percebe que seu corpo está muito pesado e, de repente, você está realmente cansado e notou isso melhor agora. Ao se girar o tronco novamente e carregar o braço para frente com todo o resto de força que tem, escuta-se um barulho estridente "VUFF", a resina quebra o vento tão rápido que é difícil não escutar o barulho, em menos de 2 segundo o composto branco se perde na escuridão para muito, muito  longe, enquanto está no ar. Você fica surpreso com o próprio desempenho físico."
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
 
-Ren'Py Version: Ren'Py 8.2.1.24030407
-Thu Aug 22 09:45:56 2024
+Ren'Py Version: Ren'Py 8.2.2.24061201
+Fri Aug 23 09:07:44 2024

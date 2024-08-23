@@ -213,6 +213,11 @@ transform zoom_out_far:
 
 # Remover e inserir em 'screens.rpy'
 init python:
+    item_desperdicado = False #variavel para o trigger de quando o item eh desperdicado
+    item_pego = False
+    #Não entrar no quarto proibido ate o jogador decidir se abre a porta ou não
+    porta_trancada = True #//%Variavel que define quando a porta esta trancada ou nao. Ela fica trancada ate o jogador desperdicar o item, isso eh feito para corrigir um erro
+    # do roteiro, faltava uma possibilidade de evento e fazer isso corrige o probelma
     style.my_custom_window = Style(style.window)
     style.my_custom_window.background = Frame("gui/textbox.png", 12, 12)
 
@@ -237,10 +242,24 @@ define ed = Character("Ed Newgate", color="#0000FF", window_style="my_custom_win
 image bg porta = "porta.png"
 image bg janela = "janela.png"
 image bg conves = "conves.png"
+image black = "black.png"
+image quarto_probido_entrada = "quarto.png"
+image corpo_mulher_morta = "corpo.png"
+image vista_mar = "imagem_provisoria_barco_mar.png"
+
+#------- IMAGENS NÃO FEITAS AINDA --------------
+# image bg corredor = "corredor.png"
+#-----------------------------------------------
 
 image bg_porta = At("bg porta", distortion)
 
 image bg porta_desfoque = im.Blur("porta.png", 10)
+
+# ---------- Variaveis Auxiliares ----------------#
+# Variaveis que definem coisas auxiliares como qual trigger para a rota foi acionado ou desacionado, variaveis para dar efeito de alguma coisa etc.
+define auxiliar = Character(" ", color="#FFFFFF", window_style="my_custom_window")
+
+#--------------------------
 
 # transição entre planos de fundo
 image backgrounds:
@@ -436,44 +455,242 @@ label descobrir_barulho:
 
 label desistir_conserto:
 
-    ed "Como pode desistir? Não vai ao menos tentar? Você pode consertar o vazamento. Tem uma resina bem ali" with dissolve
+    jump Quarto_proibido_jogador_chega_proximo_da_porta_e_narradores_tentam_impedir_isso_de_alguma_forma
 
-    jogador "Não vale a pena. Vocês já me falaram que estamos adiando o inevitável. Por que lutar?" with dissolve
+# Wilker
 
-    ship "Um pouco de sensatez, finalmente." with dissolve
+#Neste momento o jogador está no corredor, ele vê a porta e decide ir em direção a ela.
+label Quarto_proibido_jogador_chega_proximo_da_porta_e_narradores_tentam_impedir_isso_de_alguma_forma:
+    #scene corredor
+    jogador "Olhando em volta, noto uma porta que os narradores não mencionaram. Ela está meio escondida na penumbra, diferente das outras. Algo sobre ela parece... importante. Dou um passo em direção a ela."
 
-    ed "Essa decisão é trágica. Mas não se engane, cada escolha tem seu preço. O perdão não é garantido." with dissolve
+    ed "Com urgência na voz - Espere! Há outras prioridades agora. A rachadura precisa ser vedada antes que o barco se encha de água. Concentre-se no  vazamento!" 
 
-    ship "Ele já tomou sua decisão! Seus discursos são inúteis, apenas lamentações indistinguíveis. Deixe-o agir com um propósito maior do que si mesmo. Somente assim, depois de tantos anos, ele poderá ter a paz que tanto buscou." with dissolve
+    jogador "Ignorando a advertência, aproximo-me mais da porta. - Por que vocês não mencionaram essa porta antes? Parece que estão tentando me esconder algo. (avanço para frente da  porta?)"
 
-    ship "As névoas tomam conta do seu destino, nada mais parece manter a forma. O ar é denso, como se cada respiração fosse um mergulho em águas turvas. Você tateia o espaço ao seu redor, mas os contornos se desvanecem, com tudo escapando entre seus dedos." with dissolve
+    scene bg_porta
 
-    scene bg_porta 
-    menu:
-        "{b}O que está acontecendo? \[Opção Exploratória\]{b}":
-            jump op_exp5
+    ed "Calmo, mas firme - Essa porta não é relevante para o que está acontecendo agora. Seu foco deve ser resolver o problema do vazamento. Você não quer que o barco afunde,  certo?" 
 
-        "{b}Eu não posso deixar esse vazamento continuar.{b}":
-            jump voltar_corredor
+    jogador "Desconfiado - Se não é relevante, por que tanta insistência em me afastar dela? Algo não está certo. Vou abrir essa  porta."
 
+    ed "Mais desesperado - Não! Você está cometendo um erro! O tempo está contra você, e a água continua a entrar. Se você insistir, pode ser tarde demais para salvar o  barco."
 
-    label voltar_corredor:
-        jogador "Preciso vedar logo essa rachadura." with dissolve
+    ed "Tentando soar persuasivo - A resina está ali, pronta para uso. Faça o que é necessário para se salvar. Esqueça essa  porta."
 
-        jump descobrir_barulho
+    ed "Num último esforço - Você não entende o que está em jogo! Abrir essa porta pode trazer consequências que você não está preparado para  enfrentar!" 
 
+    ship "Ou talvez  devesse...?" 
 
-    label op_exp5:
+    jogador "Quê?!"
 
-        scene bg porta
+    ed "Quê?! Não, com certeza não, essa é uma péssima idéia, por que o Harold continua aqui na verdade, não é mesmo? Você deveria desaparecer e deixar a mente dele em paz, acho que seria a melhor coisa para todos  nós." 
 
-        jogador "Por que está tudo tão distorcido? Não estou entendendo nada… são alucinações?" with dissolve
-        
-        ship "O que você vê não são meras alucinações, mas o seu próprio passado, distorcido pelos entorpecentes que outrora foram seu refúgio. Cada contorno borrado, cada sensação incompreendida, ecoando em sua mente são vestígios de uma vida marcada pela dependência." with dissolve
+    ship "Na verdade, do outro lado dessa porta se esconde  toda..."
 
+    ed "Quieto! Agora! Não tem nada atrás dessa porta, não escute ele! Você lembra dessa angústia! Por que fazer algo tão estúpido agora? Hã ?! " 
 
+    ship "Ok, de fato, você está certo. Talvez seja uma ideia  ruim." 
+
+    jogador "Você iria dizer o que sobre a porta? O que ela esconde? Eu quero  saber."
+
+    ed "Nada, não tem nada aí. A porta com certeza está emperrada. Não vale a pena o esforço de tentar entrar aí, acredite, vamos para outro  lugar…"
     
+    menu menu_escolhas_Quarto_proibido_jogador_chega_proximo_da_porta_e_narradores_tentam_impedir_isso_de_alguma_forma:
+        # [Opção exploratória 1] Ideia ⇒ tem um corpo morto dentro do quarto, então provavelmente tem um cheiro pútrido saindo e sons de moscas
+        "{b}Colocar o ouvido na porta \[Opção Exploratória\]{b}":
+            jump op_exp_ouvir_porta
+        # [Opção voltar corredor]: 
+        "{b}Não entrar.{b}":
+            jump voltar_corredor_b
+        "{b}Entrar no quarto{b}":
+            jump Entrar_quarto_proibido
+    
+    ed "test"
 
+label op_exp_ouvir_porta:
+    jogador "Espera, que barulho é esse? Está vindo de dentro do quarto..."
+
+    ship "Hmm, são..."
+
+    ed "Bom, tal ceticismo e audição são louváveis, contudo, creio que há coisas mais importantes para fazer no barco..."
+
+    jogador "Estranho... está fazendo um... bzzz..."
+
+    jump menu_escolhas_Quarto_proibido_jogador_chega_proximo_da_porta_e_narradores_tentam_impedir_isso_de_alguma_forma
+
+#não acontece nada os narradores ficam aliviados
+label voltar_corredor_b:
+    jogador "Certo. Por agora, não vou entrar então... "
+
+    ed "Excelente decisão, de fato a correta."
+
+    ship "Talvez... você.... Nada, esquece. Talvez seja uma boa decisão."
+
+    jump corredor
+
+label corredor:
+    ed "falta implementar: corredor"
+
+
+
+label Entrar_quarto_proibido:
+    jogador "Consequências piores do que deixar o barco afundar? Vamos descobrir."
+
+    ship "Determinado, você nos ignora e estende a mão para a maçaneta da porta. Com a mão na maçaneta, você levemente abre a porta, preparado para o que vier."
+
+    ed "Não! De novo isso, outra decisão terrível, Caronte?!"
+
+    ship " Quer saber, o Caronte está certo. Ela esconde a verdade, ela esconde toda a verdade. Ela esconde o fato de você ser uma aberração que deveria morrer! (ficou mt do nada essa ofensa/agressividade)"
+
+    ship "Lentamente a porta se abre, rangendo enquanto cede ao impulso de sua mão até se abrir completamente."
+
+    # (mostra uma tela preta ou alguma coisa que crie um suspense, talvez até a imagem da porta semi aberta tampando a visão de dentro)
+    scene black
+
+    #fazer a frase aparecer mais devagar
+    jogador "{cps=2}Qu-{/cps} {cps=13}QuE POrrA É EsSa?!!{/cps}" 
+
+    #(mostra a cena do quarto cheio de sangue)
+    scene quarto_probido_entrada
+
+    ship "Contemple a sua obra, aberração! Veja esse sangue, as paredes, a cama, o chão, cada centímetro desse inferno coberto com sangue."
+
+    ed "Não! Não! Eu não quero lembrar. Por favor, feche essa porta, ainda dá tempo!"
+
+    ship "Não fecha! Olha o que você fez! Lembra do que fez? Esse maldito cheiro de carne apodrecendo (podre) ainda me enoja. Esse cheiro de ferro, do sangue, me enoja. Você me enoja."
+
+    jogador "Que porra é essa! Que porra aconteceu aqui?!"
+
+    ed "Não! Não! Por favor, não! me tira daqui!"
+
+    ship "Sim! Sim! Eu tenho que saber, a gente quer saber, a gente quer lembrar, né? Então, olha no canto do quarto, o que a gente vê?!"
+
+    scene corpo_mulher_morta
+
+    jogador "Que porra é essa? Quem é aquela pessoa? Que porra tá acontecendo aqui? Eu não vou mais ficar aqui!"
+
+    ship "Consternado, você nada pode fazer perante essa situação. Mesmo desejando, o reconhecimento do que fez lhe mantém paralisado. Você olha meticulosamente para o corpo, e percebe quem (ele sabe que é a mãe dele?) você matou, seu psicótico desgraçado."
+
+    jogador "Quê? Por que...? Por que... parece comigo? Eu... matei uma pessoa? O que eu fiz?"
+
+    ship "Não! Não! Você ainda não lembra? Daria para reconhecer melhor se desse para ver o rosto, mas você ficou tão nervoso, tão irritado. Você não se contentou em bater uma, duas, nem dez vezes, você queria mais, queria que pagasse pelo que fez."
+
+    jogador "Eu fiz o quê?! Do que você está falando? Eu não quero ficar mais aqui."
+
+    ed "Você não suporta mais permanecer nesse quarto. Afetado e confuso pelas lembranças, você recua subitamente, saindo do quarto e voltando ao corredor."
+
+    menu menu_escolhas_entrar_quarto_proibido:
+        "{b}Sair desse maldito lugar!{b}":
+            jump voltar_corredor_c
+
+label voltar_corredor_c:
+    ed "teste voltar ao corredor c"
+    jump corredor
+
+#Diálogo exploratório:
+label opção_de_zoom_in_do_item:
+    ed "Veja, é isso que usaremos para consertar a rachadura no vidro, pegue-o, passe a pasta na rachadura e problema resolvido, poderemos pensar em como sair daqui finalmente."
+
+    ship "Não teria tanta certeza, como uma pasta iria segurar um vazamento? Esta coisa provavelmente é inútil. Seria melhor continuar procurando algo que faça sentido, não temos tempo para desperdiçar com soluções inválidas."
+
+    jogador "É isso? Não dá para ler a embalagem, está tudo apagado."
+
+    menu menu_escolhas_zoom_in_item:
+        "{b}Quanto tempo falta?\[Opção Exploratória\]{b}":
+            jump op_exp_quanto_tempo_falta
+        # [Opção pegar item correto]:
+        "{b}Pegar item{b}" if item_desperdicado == False and item_pego == False:
+            jump pegar_item_correto 
+        "{b}Desperdiçar item{b}" if item_desperdicado == False:
+            jump desperdicar_item 
+        
+label op_exp_quanto_tempo_falta:
+    jogador "Espera, tenho tempo de procurar outra coisa ou não?"
+
+    ed "Não, essa pasta vai funcionar, ela é feita para isso."
+
+    ship "Escuta, Caronte, a resina vai dissolver quando entrar em contato com a água, joga isso fora, não tem utilidade."
+
+    ed "Não, não vai. Se a embalagem não estivesse tão danificada daria para ler que ela é feita para isso. Caronte, me escute, eu lembro de quando compramos isso, confie em mim."
+
+    jump menu_escolhas_zoom_in_item
+    
+label pegar_item_correto:
+    ed "Excelente escolha, vamos usar isso para fechar essa rachadura e descobrir como sair desse lugar."
+
+    ship "Bem, se quiser tentar não sou contra, mas acho que isso vai ser um desperdício precioso do nosso tempo."
+
+    $ item_pego = True
+
+    jump menu_escolhas_zoom_in_item
+
+label desperdicar_item:
+    jogador "Eu não ligo, vou ver o quão longe consigo arremessar essa resina no mar."
+
+    ed "Quê?!"
+
+    ship "Quê?!"
+
+    jogador "Estou indo para o convés vou ter uma visão melhor de lá."
+
+    ed "Não. Caronte? O que...?"
+
+    ship "Desafio você fazer essa resina sumir de vista enquanto ela estiver no ar."
+
+    ed "Não, Caronte, não faz isso. Essa é a única solução, não tem como arrumar o vidro sem isso, vamos todos morrer!"
+
+    ship "Não acredito que seja a única. Nem olhamos o barco todo ainda e temos bastante tempo ainda. A água está entrando bem devagar."
+
+    scene conves
+
+    jogador "Aqui estamos e aqui vamos."
+
+    ed "Caronte, não!"
+
+    #colocar uma cena que mostra o Caronte olhando para o mar.
+    scene vista_mar
+
+    ship "Vemos claramente que não conseguimos ver nada daqui de cima, o céu, a água, está tudo bem escuro. O cheiro salgado do mar, as ondas se batendo... Excelente clima para um arremesso."
+
+    jogador "Você me desafiou, então aqui vai."
+
+    ship "Seu braço direito está um pouco dolorido, impedindo de carregá-los para muito atrás das costas. Você gira o tronco, sentindo uma leve dor na região
+    das costelas."
+    ship "Ao colocar o pé esquerdo para frente, garantindo um melhor arremesso, você percebe que seu corpo está muito pesado e, de repente, você está
+    realmente cansado e notou isso melhor agora."
+    ship "Ao se girar o tronco novamente e carregar o braço para frente com todo o resto de força que tem, escuta-se um
+    barulho estridente 'VUFF', a resina quebra o vento tão rápido que é difícil não escutar o barulho, em menos de 2 segundo o composto branco se perde na escuridão 
+    para muito, muito  longe, enquanto está no ar."
+    ship "Você fica surpreso com o próprio desempenho físico."
+
+    #colocar efeito sonoro de um objeto voando e rasgando o ar
+    #play sound effect
+
+    jogador "WOW! Não esperava por isso. Eu sou bem forte."
+
+    ship "Oh, Caronte, você não faz ideia. Forte como um urso, o suficiente para levantar um motor de um avião ou até destruir o crânio de um adulto bem desenvolvido."
+
+    jogador "Hm? Não acho que eu consiga fazer qualquer um dessas coisas."
+
+    ship "Eu meio que estava exagerando, não se preocupe."
+
+    # obs. "talvez colocar mais indignação nessa fala do Ed."
+    ed "É... lá se vai nossa solução... Ok, talvez tenha alguma outra solução em algum lugar."
+
+    jogador "Ok, vamos voltar lá para baixo."
+
+    #linhas auxiliares para resolver aquele problema do roteiro
+
+    auxiliar "Trec..."
+
+    jogador "Hm? Eu ouvi algo? Tipo uma trava...?"
+
+    $ item_desperdicado = True
+    $ porta_trancada = False
+
+    #volta para o corredor sem dizerem nada.
+    jump voltar_corredor_c
 
 
 return
