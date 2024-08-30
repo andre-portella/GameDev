@@ -242,6 +242,7 @@ define ed = Character("Ed Newgate", color="#0000FF", window_style="my_custom_win
 image bg porta = "porta.png"
 image bg janela = "janela.png"
 image bg conves = "conves.png"
+
 image black = "black.png"
 image quarto_probido_entrada = "quarto.png"
 image corpo_mulher_morta = "corpo.png"
@@ -251,9 +252,14 @@ image vista_mar = "imagem_provisoria_barco_mar.png"
 # image bg corredor = "corredor.png"
 #-----------------------------------------------
 
-image bg_porta = At("bg porta", distortion)
+image quarto_distorcido = im.Blur('quarto.png', 3)
+image porta_blur = im.Blur('porta.png', 5)
 
-image bg porta_desfoque = im.Blur("porta.png", 10)
+
+image porta_midwarp = At("porta.png", midwarp)
+image conves_distortion = At("conves.png", distortion)
+
+image porta_strongwarp = At("porta.png", strongwarp)
 
 # ---------- Variaveis Auxiliares ----------------#
 # Variaveis que definem coisas auxiliares como qual trigger para a rota foi acionado ou desacionado, variaveis para dar efeito de alguma coisa etc.
@@ -262,17 +268,17 @@ define auxiliar = Character(" ", color="#FFFFFF", window_style="my_custom_window
 #--------------------------
 
 # transição entre planos de fundo
-image backgrounds:
-    "conves.png"
-    function blink
-    "conves.png"
-    function blink
-    repeat
+# image backgrounds:
+#     "conves.png"
+#     function blink
+#     "conves.png"
+#     function blink
+#     repeat
 
 # The game starts here.
 label start:
 
-    scene backgrounds with fade_in
+    scene conves_distortion with fade_in
 
     ed "Você se encontra deitado em um pequeno barco, balançando suavemente nas águas escuras em um mar desconhecido.\
         Você pisca, tentando orientar seus olhos na claridade repentina. As suas mãos se contorcem de dor, os músculos \
@@ -377,8 +383,7 @@ label voltar_dormir:
 
     # Continuação após o escurecimento
 
-    # Muda a cena para 'bg room' enquanto a tela está escura
-    scene bg janela with fade_out and fade_in
+    scene quarto_distorcido with fade_out and fade_in
 
     # Continuação
     ship "O interior do quarto está quase vazio. O ar é pesado e tanto o chão quanto as paredes estão manchados de sangue. A única\
@@ -421,7 +426,7 @@ label voltar_dormir:
 
 
         # Reinício do jogo
-        jump start
+        jump start 
 
 
     label op_exp4:
@@ -449,26 +454,95 @@ label descobrir_barulho:
 
     ship 'Parte do Felipe.'
 
-    jump desistir_conserto
 
+    menu menu_descobrir_barulho:
+        "{b}Zoom-in do item\[Opção Exploratória\]{b}":
+            jump zoom_in_item
+
+        "{b}Zoom-in da rachadura\[Opção Exploratória\]{b}":
+            jump zoom_in_rachadura
+
+        "{b}Ir em direção à porta?{b}":
+            jump aproximar_porta
+
+        "{b}Desistir de consertar vazamento.{b}":
+            jump desistir_conserto
+
+    jump zoom_in_rachadura
+
+
+label zoom_in_rachadura:
+
+    jogador "Por que a rachadura tem esse formato? O que aconteceu aqui?" with dissolve
+
+    ship "Já lhe contamos que a rachadura tem um formato de punho. Me parece um tanto óbvio o que se passou aqui. Mas, vejo que está um pouco confuso. Nesse caso, acho melhor o Ed relembrar a história."
+
+    ed "Não podemos afirmar nada, na verdade. É uma rachadura com um formato bastante irregular. Não há muito o que se discutir."
+
+    ship "O quê? Está querendo enganar quem? Deixe que eu mesmo conto: em mais um de seus momentos de loucura, você desceu as escadas, foi até o fim do corredor e quebrou essa janela com as próprias mãos. A rachadura, que agora sela o destino desse barco, tem as suas impressões."
+
+    ship "Como bem conheço, você não se lembra de nada. Parece que todos os seus erros e traumas são apagados da sua mente. Que coisa fantástica, não?"
+
+    ship "Não há o que se lamentar. Sempre foram suas escolhas, tomadas em momentos conscientes ou não, conduzindo seu futuro."
+
+    jump menu_descobrir_barulho
 
 
 label desistir_conserto:
 
-    jump Quarto_proibido_jogador_chega_proximo_da_porta_e_narradores_tentam_impedir_isso_de_alguma_forma
+    ed "Como pode desistir? Não vai ao menos tentar? Você pode consertar o vazamento. Tem uma resina bem ali" with dissolve
+
+    jogador "Não vale a pena. Vocês já me falaram que estamos adiando o inevitável. Por que lutar?" with dissolve
+
+    ship "Um pouco de sensatez, finalmente." with dissolve
+
+    ed "Essa decisão é trágica. Mas não se engane, cada escolha tem seu preço. O perdão não é garantido." with dissolve
+
+    ship "Ele já tomou sua decisão! Seus discursos são inúteis, apenas lamentações indistinguíveis. Deixe-o agir com um propósito maior do que si mesmo. Somente assim, depois de tantos anos, ele poderá ter a paz que tanto buscou." with dissolve
+
+    ship "As névoas tomam conta do seu destino, nada mais parece manter a forma. O ar é denso, como se cada respiração fosse um mergulho em águas turvas. Você tateia o espaço ao seu redor, mas os contornos se desvanecem, com tudo escapando entre seus dedos." with dissolve
+
+    scene porta_strongwarp
+    menu menu_desistir_conserto:
+        "{b}O que está acontecendo? \[Opção Exploratória\]{b}":
+            jump op_exp5
+
+        "{b}Eu não posso deixar esse vazamento continuar.{b}":
+            jump voltar_corredor
+
+        "{b}Desistir.{b}":
+            jump rota_tristeza
+
+    label voltar_corredor:
+        jogador "Preciso vedar logo essa rachadura." with dissolve
+
+        jump descobrir_barulho
+
+
+    label op_exp5:
+
+        jogador "Por que está tudo tão distorcido? Não estou entendendo nada… são alucinações?" with dissolve
+        
+        ship "O que você vê não são meras alucinações, mas o seu próprio passado, distorcido pelos entorpecentes que outrora foram seu refúgio. Cada contorno borrado, cada sensação incompreendida, ecoando em sua mente são vestígios de uma vida marcada pela dependência." with dissolve
+
+        jump menu_desistir_conserto
+
+
+# label desistir_conserto:
+
+#     jump Quarto_proibido_jogador_chega_proximo_da_porta_e_narradores_tentam_impedir_isso_de_alguma_forma
 
 # Wilker
 
 #Neste momento o jogador está no corredor, ele vê a porta e decide ir em direção a ela.
-label Quarto_proibido_jogador_chega_proximo_da_porta_e_narradores_tentam_impedir_isso_de_alguma_forma:
-    #scene corredor
+label aproximar_porta:
     jogador "Olhando em volta, noto uma porta que os narradores não mencionaram. Ela está meio escondida na penumbra, diferente das outras. Algo sobre ela parece... importante. Dou um passo em direção a ela."
 
     ed "Com urgência na voz - Espere! Há outras prioridades agora. A rachadura precisa ser vedada antes que o barco se encha de água. Concentre-se no  vazamento!" 
 
     jogador "Ignorando a advertência, aproximo-me mais da porta. - Por que vocês não mencionaram essa porta antes? Parece que estão tentando me esconder algo. (avanço para frente da  porta?)"
 
-    scene bg_porta
+    scene porta_midwarp
 
     ed "Calmo, mas firme - Essa porta não é relevante para o que está acontecendo agora. Seu foco deve ser resolver o problema do vazamento. Você não quer que o barco afunde,  certo?" 
 
@@ -496,7 +570,7 @@ label Quarto_proibido_jogador_chega_proximo_da_porta_e_narradores_tentam_impedir
 
     ed "Nada, não tem nada aí. A porta com certeza está emperrada. Não vale a pena o esforço de tentar entrar aí, acredite, vamos para outro  lugar…"
     
-    menu menu_escolhas_Quarto_proibido_jogador_chega_proximo_da_porta_e_narradores_tentam_impedir_isso_de_alguma_forma:
+    menu menu_aproximar_porta:
         # [Opção exploratória 1] Ideia ⇒ tem um corpo morto dentro do quarto, então provavelmente tem um cheiro pútrido saindo e sons de moscas
         "{b}Colocar o ouvido na porta \[Opção Exploratória\]{b}":
             jump op_exp_ouvir_porta
@@ -517,7 +591,7 @@ label op_exp_ouvir_porta:
 
     jogador "Estranho... está fazendo um... bzzz..."
 
-    jump menu_escolhas_Quarto_proibido_jogador_chega_proximo_da_porta_e_narradores_tentam_impedir_isso_de_alguma_forma
+    jump menu_aproximar_porta
 
 #não acontece nada os narradores ficam aliviados
 label voltar_corredor_b:
@@ -552,19 +626,19 @@ label Entrar_quarto_proibido:
     jogador "{cps=2}Qu-{/cps} {cps=13}QuE POrrA É EsSa?!!{/cps}" 
 
     #(mostra a cena do quarto cheio de sangue)
-    scene quarto_probido_entrada
+    scene quarto_probido_entrada with fade_in
 
-    ship "Contemple a sua obra, aberração! Veja esse sangue, as paredes, a cama, o chão, cada centímetro desse inferno coberto com sangue."
+    ship "Contemple a sua obra, aberração! Veja esse sangue, as paredes, a cama, o chão, cada centímetro desse inferno coberto com sangue." with dissolve
 
-    ed "Não! Não! Eu não quero lembrar. Por favor, feche essa porta, ainda dá tempo!"
+    ed "Não! Não! Eu não quero lembrar. Por favor, feche essa porta, ainda dá tempo!" with dissolve
 
-    ship "Não fecha! Olha o que você fez! Lembra do que fez? Esse maldito cheiro de carne apodrecendo (podre) ainda me enoja. Esse cheiro de ferro, do sangue, me enoja. Você me enoja."
+    ship "Não fecha! Olha o que você fez! Lembra do que fez? Esse maldito cheiro de carne apodrecendo (podre) ainda me enoja. Esse cheiro de ferro, do sangue, me enoja. Você me enoja." with dissolve
 
-    jogador "Que porra é essa! Que porra aconteceu aqui?!"
+    jogador "Que porra é essa! Que porra aconteceu aqui?!" with dissolve
 
-    ed "Não! Não! Por favor, não! me tira daqui!"
+    ed "Não! Não! Por favor, não! me tira daqui!" with dissolve
 
-    ship "Sim! Sim! Eu tenho que saber, a gente quer saber, a gente quer lembrar, né? Então, olha no canto do quarto, o que a gente vê?!"
+    ship "Sim! Sim! Eu tenho que saber, a gente quer saber, a gente quer lembrar, né? Então, olha no canto do quarto, o que a gente vê?!" with dissolve
 
     scene corpo_mulher_morta
 
@@ -586,10 +660,10 @@ label Entrar_quarto_proibido:
 
 label voltar_corredor_c:
     ed "teste voltar ao corredor c"
-    jump corredor
+    jump rota_raiva
 
 #Diálogo exploratório:
-label opção_de_zoom_in_do_item:
+label zoom_in_item:
     ed "Veja, é isso que usaremos para consertar a rachadura no vidro, pegue-o, passe a pasta na rachadura e problema resolvido, poderemos pensar em como sair daqui finalmente."
 
     ship "Não teria tanta certeza, como uma pasta iria segurar um vazamento? Esta coisa provavelmente é inútil. Seria melhor continuar procurando algo que faça sentido, não temos tempo para desperdiçar com soluções inválidas."
@@ -655,13 +729,9 @@ label desperdicar_item:
 
     jogador "Você me desafiou, então aqui vai."
 
-    ship "Seu braço direito está um pouco dolorido, impedindo de carregá-los para muito atrás das costas. Você gira o tronco, sentindo uma leve dor na região
-    das costelas."
-    ship "Ao colocar o pé esquerdo para frente, garantindo um melhor arremesso, você percebe que seu corpo está muito pesado e, de repente, você está
-    realmente cansado e notou isso melhor agora."
-    ship "Ao se girar o tronco novamente e carregar o braço para frente com todo o resto de força que tem, escuta-se um
-    barulho estridente 'VUFF', a resina quebra o vento tão rápido que é difícil não escutar o barulho, em menos de 2 segundo o composto branco se perde na escuridão 
-    para muito, muito  longe, enquanto está no ar."
+    ship "Seu braço direito está um pouco dolorido, impedindo de carregá-los para muito atrás das costas. Você gira o tronco, sentindo uma leve dor na região das costelas."
+    ship "Ao colocar o pé esquerdo para frente, garantindo um melhor arremesso, você percebe que seu corpo está muito pesado e, de repente, você está realmente cansado e notou isso melhor agora."
+    ship "Ao se girar o tronco novamente e carregar o braço para frente com todo o resto de força que tem, escuta-se um barulho estridente 'VUFF', a resina quebra o vento tão rápido que é difícil não escutar o barulho, em menos de 2 segundo o composto branco se perde na escuridão  para muito, muito  longe, enquanto está no ar."
     ship "Você fica surpreso com o próprio desempenho físico."
 
     #colocar efeito sonoro de um objeto voando e rasgando o ar
@@ -691,6 +761,13 @@ label desperdicar_item:
 
     #volta para o corredor sem dizerem nada.
     jump voltar_corredor_c
+
+
+
+
+label rota_tristeza:
+
+    jump start
 
 
 return

@@ -1,24 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 524, in script
-    Jogador "Consequências piores do que deixar o barco afundar? Vamos descobrir."
-Exception: Sayer 'Jogador' is not defined.
+  File "game/script.rpy", line 255, in script
+    image quarto_distorcido = Im.Blur('quarto.png', 3)
+  File "game/script.rpy", line 255, in <module>
+    image quarto_distorcido = Im.Blur('quarto.png', 3)
+NameError: name 'Im' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 524, in script
-    Jogador "Consequências piores do que deixar o barco afundar? Vamos descobrir."
-  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 2560, in execute
-    Say.execute(self)
-  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 575, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 464, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'Jogador' is not defined.
+  File "game/script.rpy", line 255, in script
+    image quarto_distorcido = Im.Blur('quarto.png', 3)
+  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/ast.py", line 922, in execute
+    img = renpy.python.py_eval_bytecode(self.code.bytecode)
+  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/python.py", line 1202, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 255, in <module>
+    image quarto_distorcido = Im.Blur('quarto.png', 3)
+NameError: name 'Im' is not defined
 
-Windows-10-10.0.22621 AMD64
-Ren'Py 8.2.2.24061201
+macOS-14.6.1-arm64-arm-64bit arm64
+Ren'Py 8.2.1.24030407
 projetoX 1.0
-Thu Aug 22 21:33:04 2024
+Mon Aug 26 14:57:54 2024
