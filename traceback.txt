@@ -1,26 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 255, in script
-    image quarto_distorcido = Im.Blur('quarto.png', 3)
-  File "game/script.rpy", line 255, in <module>
-    image quarto_distorcido = Im.Blur('quarto.png', 3)
-NameError: name 'Im' is not defined
+  File "game/script.rpy", line 513, in script
+    scene corredor at blur_image with dissolve
+  File "game/script.rpy", line 513, in <module>
+    scene corredor at blur_image with dissolve
+NameError: name 'disso' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 255, in script
-    image quarto_distorcido = Im.Blur('quarto.png', 3)
-  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/ast.py", line 922, in execute
-    img = renpy.python.py_eval_bytecode(self.code.bytecode)
+  File "game/script.rpy", line 513, in script
+    scene corredor at blur_image with dissolve
+  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/ast.py", line 1356, in execute
+    trans = renpy.python.py_eval(self.expr)
+  File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/python.py", line 1209, in py_eval
+    return py_eval_bytecode(code, globals, locals)
   File "/Volumes/renpy-8.2.1-sdk/renpy-8.2.1-sdk/renpy/python.py", line 1202, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 255, in <module>
-    image quarto_distorcido = Im.Blur('quarto.png', 3)
-NameError: name 'Im' is not defined
+  File "game/script.rpy", line 513, in <module>
+    scene corredor at blur_image with dissolve
+NameError: name 'disso' is not defined
 
 macOS-14.6.1-arm64-arm-64bit arm64
 Ren'Py 8.2.1.24030407
 projetoX 1.0
-Mon Aug 26 14:57:54 2024
+Sat Aug 31 17:57:16 2024
