@@ -598,7 +598,7 @@ label aproximar_porta:
             jump op_exp_ouvir_porta
         # [Opção voltar corredor]: 
         "{b}Não entrar.{b}":
-            jump voltar_corredor_b
+            jump corredor
         "{b}Entrar no quarto{b}":
             jump Entrar_quarto_proibido
     
@@ -626,7 +626,9 @@ label voltar_corredor_b:
     jump corredor
 
 label corredor:
-    ed "falta implementar: corredor"
+    scene corredor with fade_out and fade_in
+    jump menu_descobrir_barulho
+    
 
 
 
@@ -678,10 +680,10 @@ label Entrar_quarto_proibido:
 
     menu menu_escolhas_entrar_quarto_proibido:
         "{b}Sair desse maldito lugar!{b}":
-            jump voltar_corredor_c
+            jump corredor
 
 label voltar_corredor_c:
-    ed "teste voltar ao corredor c"
+    ed "Entra Rota da Raiva"
     jump rota_raiva
 
 #Diálogo exploratório:
@@ -785,9 +787,13 @@ label desperdicar_item:
     $ porta_trancada = False
 
     #volta para o corredor sem dizerem nada.
-    jump voltar_corredor_c
+    jump corredor
 
 
+
+label rota_raiva:
+    
+    jump start
 
 
 label rota_tristeza:
