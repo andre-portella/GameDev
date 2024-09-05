@@ -2,9 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 471: expected statement.
-    s
-     ^
+The label consertar_rachadura is defined twice, at File "game/script.rpy", line 514:
+            menu consertar_rachadura:
+and File "game/script.rpy", line 529:
+            menu consertar_rachadura:
 
-Ren'Py Version: Ren'Py 8.2.1.24030407
-Sat Aug 31 18:09:12 2024
+
+Ren'Py Version: Ren'Py 8.2.2.24061201
+Thu Sep  5 14:39:16 2024

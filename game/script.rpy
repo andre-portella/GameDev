@@ -215,6 +215,8 @@ transform zoom_out_far:
 init python:
     item_desperdicado = False #variavel para o trigger de quando o item eh desperdicado
     item_pego = False
+    janela_consertada = False
+
     #Não entrar no quarto proibido ate o jogador decidir se abre a porta ou não
     porta_trancada = True #//%Variavel que define quando a porta esta trancada ou nao. Ela fica trancada ate o jogador desperdicar o item, isso eh feito para corrigir um erro
     # do roteiro, faltava uma possibilidade de evento e fazer isso corrige o probelma
@@ -236,7 +238,9 @@ define ed = Character("Ed Newgate", color="#0000FF", window_style="my_custom_win
 
 image porta = "porta.png"
 image rachadura = "rachadura.png"
+image rachadura_consertada = "janela_consertada.png"
 image conves = "conves.png"
+image barco_mar = "barco_mar.png"
 image corredor = 'corredor.png'
 
 image black = "black.png"
@@ -254,7 +258,6 @@ image corredor = 'corredor.png'
 
 image quarto_distorcido = im.Blur('quarto.png', 3)
 image porta_blur = im.Blur('porta.png', 5)
-
 
 image porta_midwarp = At("porta.png", midwarp)
 image conves_distortion = At("conves.png", distortion)
@@ -451,7 +454,7 @@ label voltar_dormir:
 label descobrir_barulho:
 
     $ op_exp3_unlocked = True
-    scene corredor with fade_out and fade_in
+    scene corredor with fade_out and fade_in #essa parte esta correta?
 
 
 
@@ -480,7 +483,10 @@ label descobrir_barulho:
             jump zoom_in_rachadura
 
         "{b}Ir em direção à porta?{b}":
-            jump aproximar_porta
+            if porta_trancada:
+                jump aproximar_porta
+            else:
+                jump aproximar_porta_item_desperdicado
 
         "{b}Desistir de consertar vazamento.{b}":
             jump desistir_conserto
@@ -490,23 +496,46 @@ label descobrir_barulho:
 
 label zoom_in_rachadura:
 
-    scene rachadura with fade_in
+    if janela_consertada == False:
+        scene rachadura with fade_in
+        jogador "Por que a rachadura tem esse formato? O que aconteceu aqui?" with dissolve
 
-    jogador "Por que a rachadura tem esse formato? O que aconteceu aqui?" with dissolve
+        ship "Já lhe contamos que a rachadura tem um formato de punho. Me parece um tanto óbvio o que se passou aqui. Mas, vejo que está um pouco confuso. Nesse caso, acho melhor o Ed relembrar a história." with dissolve
 
-    ship "Já lhe contamos que a rachadura tem um formato de punho. Me parece um tanto óbvio o que se passou aqui. Mas, vejo que está um pouco confuso. Nesse caso, acho melhor o Ed relembrar a história." with dissolve
+        ed "Não podemos afirmar nada, na verdade. É uma rachadura com um formato bastante irregular. Não há muito o que se discutir." with dissolve
 
-    ed "Não podemos afirmar nada, na verdade. É uma rachadura com um formato bastante irregular. Não há muito o que se discutir." with dissolve
+        ship "O quê? Está querendo enganar quem? Deixe que eu mesmo conto: em mais um de seus momentos de loucura, você desceu as escadas, foi até o fim do corredor e quebrou essa janela com as próprias mãos. A rachadura, que agora sela o destino desse barco, tem as suas impressões." with dissolve
 
-    ship "O quê? Está querendo enganar quem? Deixe que eu mesmo conto: em mais um de seus momentos de loucura, você desceu as escadas, foi até o fim do corredor e quebrou essa janela com as próprias mãos. A rachadura, que agora sela o destino desse barco, tem as suas impressões." with dissolve
+        ship "Como bem conheço, você não se lembra de nada. Parece que todos os seus erros e traumas são apagados da sua mente. Que coisa fantástica, não?" with dissolve
 
-    ship "Como bem conheço, você não se lembra de nada. Parece que todos os seus erros e traumas são apagados da sua mente. Que coisa fantástica, não?" with dissolve
+        ship "Não há o que se lamentar. Sempre foram suas escolhas, tomadas em momentos conscientes ou não, conduzindo seu futuro." with dissolve
+    
+        if item_pego == True:
+            menu consertar_rachadura_1:
+                "{b}Consertar rachadura{b}" if janela_consertada == False:
+                    $ janela_consertada = True
+                    scene rachadura_consertada with fade_in
+                    jump corredor
+                "{b}Sair{b}":
+                    scene corredor with fade_out and fade_in
+                    jump menu_descobrir_barulho
 
-    ship "Não há o que se lamentar. Sempre foram suas escolhas, tomadas em momentos conscientes ou não, conduzindo seu futuro." with dissolve
+        scene corredor with fade_out and fade_in
 
-    scene corredor with fade_out and fade_in
+        jump menu_descobrir_barulho
+    else:
+        scene rachadura_consertada with fade_in
+        if item_pego == True:
+            menu consertar_rachadura:
+                "{b}Consertar rachadura{b}" if janela_consertada == False:
+                    $ janela_consertada = True
+                    scene rachadura_consertada with fade_in
+                    jump corredor
+                "{b}Sair{b}":
+                    scene corredor with fade_out and fade_in
+                    jump menu_descobrir_barulho
+                
 
-    jump menu_descobrir_barulho
 
 
 label desistir_conserto:
@@ -554,6 +583,53 @@ label desistir_conserto:
 #     jump Quarto_proibido_jogador_chega_proximo_da_porta_e_narradores_tentam_impedir_isso_de_alguma_forma
 
 # Wilker
+label aproximar_porta_item_desperdicado:
+    scene porta_midwarp with fade_in
+
+    jogador "Olhando em volta, noto uma porta que os narradores não mencionaram. Ela está meio escondida na penumbra, diferente das outras. Algo sobre ela parece... importante. Dou um passo em direção a ela." with dissolve
+
+    ed "Espere! Há outras prioridades agora. A gente precisa sair daqui antes que o barco se encha de água. Concentre-se no  vazamento!" with dissolve
+
+    jogador "Ignorando a advertência, aproximo-me mais da porta. - Por que vocês não mencionaram essa porta antes? Parece que estão tentando me esconder algo." with dissolve
+
+    ed "Essa porta não é relevante para o que está acontecendo agora. Seu foco deve ser resolver o problema do vazamento. Você não quer que o barco afunde, certo?" with dissolve
+
+    jogador "Se não é relevante, por que tanta insistência em me afastar dela? Algo não está certo. Vou abrir essa  porta." with dissolve
+
+    ed "Não! Você está cometendo um erro! O tempo está contra você, e a água continua a entrar. Se você insistir, pode ser tarde demais para salvar o barco." with dissolve
+
+    ed "Faça o que é necessário para se salvar. Esqueça essa  porta." with dissolve
+
+    ed "Você não entende o que está em jogo! Abrir essa porta pode trazer consequências que você não está preparado para enfrentar!" with dissolve
+
+    ship "Ou talvez devesse...?" with dissolve
+
+    jogador "Quê?!" with dissolve
+
+    ed "Quê?! Não, com certeza não, essa é uma péssima idéia, por que o Harold continua aqui na verdade, não é mesmo? Você deveria desaparecer e deixar a mente dele em paz, acho que seria a melhor coisa para todos  nós." with dissolve
+
+    ship "Na verdade, do outro lado dessa porta se esconde  toda..." with dissolve
+
+    ed "Quieto! Agora! Não tem nada atrás dessa porta, não escute ele! Você lembra dessa angústia! Por que fazer algo tão estúpido agora? Hã ?!" with dissolve 
+
+    ship "Ok, de fato, você está certo. Talvez seja uma ideia ruim." with dissolve
+
+    jogador "Você iria dizer o que sobre a porta? O que ela esconde? Eu quero  saber." with dissolve
+
+    ed "Nada, não tem nada aí. A porta com certeza está emperrada. Não vale a pena o esforço de tentar entrar aí, acredite, vamos para outro lugar…" with dissolve
+    
+    jump menu_aproximar_porta
+
+    # menu menu_aproximar_porta:
+    #     # [Opção exploratória 1] Ideia ⇒ tem um corpo morto dentro do quarto, então provavelmente tem um cheiro pútrido saindo e sons de moscas
+    #     "{b}Colocar o ouvido na porta \[Opção Exploratória\]{b}":
+    #         jump op_exp_ouvir_porta
+    #     # [Opção voltar corredor]: 
+    #     "{b}Não entrar.{b}":
+    #         jump corredor
+    #     "{b}Entrar no quarto{b}":
+    #         jump Entrar_quarto_proibido
+
 
 #Neste momento o jogador está no corredor, ele vê a porta e decide ir em direção a ela.
 label aproximar_porta:
@@ -570,7 +646,7 @@ label aproximar_porta:
 
     jogador "Se não é relevante, por que tanta insistência em me afastar dela? Algo não está certo. Vou abrir essa  porta." with dissolve
 
-    ed "Mais desesperado - Não! Você está cometendo um erro! O tempo está contra você, e a água continua a entrar. Se você insistir, pode ser tarde demais para salvar o  barco." with dissolve
+    ed "Não! Você está cometendo um erro! O tempo está contra você, e a água continua a entrar. Se você insistir, pode ser tarde demais para salvar o  barco." with dissolve
 
     ed "A resina está ali, pronta para uso. Faça o que é necessário para se salvar. Esqueça essa  porta." with dissolve
 
@@ -629,58 +705,76 @@ label corredor:
     scene corredor with fade_out and fade_in
     jump menu_descobrir_barulho
     
-
-
-
 label Entrar_quarto_proibido:
     jogador "Consequências piores do que deixar o barco afundar? Vamos descobrir." with dissolve
+    if porta_trancada == False:
+        ship "Determinado, você nos ignora e estende a mão para a maçaneta da porta. Com a mão na maçaneta, você levemente abre a porta, preparado para o que vier." with dissolve
 
-    ship "Determinado, você nos ignora e estende a mão para a maçaneta da porta. Com a mão na maçaneta, você levemente abre a porta, preparado para o que vier." with dissolve
+        ed "Não! De novo isso, outra decisão terrível, Caronte?!" with dissolve
 
-    ed "Não! De novo isso, outra decisão terrível, Caronte?!" with dissolve
+        ship " Quer saber, o Caronte está certo. Ela esconde a verdade, ela esconde toda a verdade. Ela esconde o fato de você ser uma aberração que deveria morrer!" with dissolve
 
-    ship " Quer saber, o Caronte está certo. Ela esconde a verdade, ela esconde toda a verdade. Ela esconde o fato de você ser uma aberração que deveria morrer!" with dissolve
+        ship "Lentamente a porta se abre, rangendo enquanto cede ao impulso de sua mão até se abrir completamente." with dissolve
 
-    ship "Lentamente a porta se abre, rangendo enquanto cede ao impulso de sua mão até se abrir completamente." with dissolve
+        # (mostra uma tela preta ou alguma coisa que crie um suspense, talvez até a imagem da porta semi aberta tampando a visão de dentro)
+        scene black
 
-    # (mostra uma tela preta ou alguma coisa que crie um suspense, talvez até a imagem da porta semi aberta tampando a visão de dentro)
-    scene black
+        #fazer a frase aparecer mais devagar
+        jogador "{cps=2}Qu-{/cps} {cps=13}QuE POrrA É EsSa?!!{/cps}"
 
-    #fazer a frase aparecer mais devagar
-    jogador "{cps=2}Qu-{/cps} {cps=13}QuE POrrA É EsSa?!!{/cps}"
+        #(mostra a cena do quarto cheio de sangue)
+        scene quarto_probido_entrada with fade_in
 
-    #(mostra a cena do quarto cheio de sangue)
-    scene quarto_probido_entrada with fade_in
+        ship "Contemple a sua obra, aberração! Veja esse sangue, as paredes, a cama, o chão, cada centímetro desse inferno coberto com sangue." with dissolve
 
-    ship "Contemple a sua obra, aberração! Veja esse sangue, as paredes, a cama, o chão, cada centímetro desse inferno coberto com sangue." with dissolve
+        ed "Não! Não! Eu não quero lembrar. Por favor, feche essa porta, ainda dá tempo!" with dissolve
 
-    ed "Não! Não! Eu não quero lembrar. Por favor, feche essa porta, ainda dá tempo!" with dissolve
+        ship "Não fecha! Olha o que você fez! Lembra do que fez? Esse maldito cheiro de carne apodrecendo (podre) ainda me enoja. Esse cheiro de ferro, do sangue, me enoja. Você me enoja." with dissolve
 
-    ship "Não fecha! Olha o que você fez! Lembra do que fez? Esse maldito cheiro de carne apodrecendo (podre) ainda me enoja. Esse cheiro de ferro, do sangue, me enoja. Você me enoja." with dissolve
+        jogador "Que porra é essa! Que porra aconteceu aqui?!" with dissolve
 
-    jogador "Que porra é essa! Que porra aconteceu aqui?!" with dissolve
+        ed "Não! Não! Por favor, não! me tira daqui!" with dissolve
 
-    ed "Não! Não! Por favor, não! me tira daqui!" with dissolve
+        ship "Sim! Sim! Eu tenho que saber, a gente quer saber, a gente quer lembrar, né? Então, olha no canto do quarto, o que a gente vê?!" with dissolve
 
-    ship "Sim! Sim! Eu tenho que saber, a gente quer saber, a gente quer lembrar, né? Então, olha no canto do quarto, o que a gente vê?!" with dissolve
+        scene corpo_mulher_morta
 
-    scene corpo_mulher_morta
+        jogador "Que porra é essa? Quem é aquela pessoa? Que porra tá acontecendo aqui? Eu não vou mais ficar aqui!" with dissolve
 
-    jogador "Que porra é essa? Quem é aquela pessoa? Que porra tá acontecendo aqui? Eu não vou mais ficar aqui!" with dissolve
+        ship "Consternado, você nada pode fazer perante essa situação. Mesmo desejando, o reconhecimento do que fez lhe mantém paralisado. Você olha meticulosamente para o corpo, e percebe quem você matou, seu psicótico desgraçado." with dissolve
 
-    ship "Consternado, você nada pode fazer perante essa situação. Mesmo desejando, o reconhecimento do que fez lhe mantém paralisado. Você olha meticulosamente para o corpo, e percebe quem você matou, seu psicótico desgraçado." with dissolve
+        jogador "Quê? Por que...? Por que... parece comigo? Eu... matei uma pessoa? O que eu fiz?" with dissolve
 
-    jogador "Quê? Por que...? Por que... parece comigo? Eu... matei uma pessoa? O que eu fiz?" with dissolve
+        ship "Não! Não! Você ainda não lembra? Daria para reconhecer melhor se desse para ver o rosto, mas você ficou tão nervoso, tão irritado. Você não se contentou em bater uma, duas, nem dez vezes, você queria mais, queria que pagasse pelo que fez." with dissolve
 
-    ship "Não! Não! Você ainda não lembra? Daria para reconhecer melhor se desse para ver o rosto, mas você ficou tão nervoso, tão irritado. Você não se contentou em bater uma, duas, nem dez vezes, você queria mais, queria que pagasse pelo que fez." with dissolve
+        jogador "Eu fiz o quê?! Do que você está falando? Eu não quero ficar mais aqui." with dissolve
 
-    jogador "Eu fiz o quê?! Do que você está falando? Eu não quero ficar mais aqui." with dissolve
+        ed "Você não suporta mais permanecer nesse quarto. Afetado e confuso pelas lembranças, você recua subitamente, saindo do quarto e voltando ao corredor." with dissolve
 
-    ed "Você não suporta mais permanecer nesse quarto. Afetado e confuso pelas lembranças, você recua subitamente, saindo do quarto e voltando ao corredor." with dissolve
+        menu menu_escolhas_entrar_quarto_proibido:
+            "{b}Sair desse maldito lugar!{b}":
+                jump corredor
 
-    menu menu_escolhas_entrar_quarto_proibido:
-        "{b}Sair desse maldito lugar!{b}":
-            jump corredor
+    else: #porta está trancada
+        auxiliar "tec tec tec"
+
+        jogador "Que? Está trancada?"
+
+        ed "ufff...."
+
+        ship "Hmm, claro... Está trancada...."
+
+        jogador "Espera, isso não é conveniente demais? Isso é algum truque ou coisa assim?"
+
+        ship "Olha, infe-"
+
+        ship "Não, não é um truque nosso..."
+
+        ed "Truque nosso? A gente não fez nenhum truque em nenhum momento..."
+
+        jogador "Hmm... Certo..."
+
+        jump corredor
 
 label voltar_corredor_c:
     ed "Entra Rota da Raiva"
@@ -702,6 +796,8 @@ label zoom_in_item:
             jump pegar_item_correto 
         "{b}Desperdiçar item{b}" if item_desperdicado == False:
             jump desperdicar_item 
+        "{b}Sair{b}":
+            jump corredor 
         
 label op_exp_quanto_tempo_falta:
     jogador "Espera, tenho tempo de procurar outra coisa ou não?" with dissolve
@@ -747,7 +843,7 @@ label desperdicar_item:
     ed "Caronte, não!" with dissolve
 
     #colocar uma cena que mostra o Caronte olhando para o mar.
-    scene vista_mar
+    scene barco_mar
 
     ship "Vemos claramente que não conseguimos ver nada daqui de cima, o céu, a água, está tudo bem escuro. O cheiro salgado do mar, as ondas se batendo... Excelente clima para um arremesso." with dissolve
 

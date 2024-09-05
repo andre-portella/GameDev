@@ -1,22 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 685, in script
-    jump rota_raiva
-ScriptError: could not find label 'rota_raiva'.
+  File "game/script.rpy", line 518, in script
+    if pegar_item_correto == True:
+  File "game/script.rpy", line 518, in <module>
+    if pegar_item_correto == True:
+NameError: name 'pegar_item_correto' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 685, in script
-    jump rota_raiva
-  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 1701, in execute
-    rv = renpy.game.script.lookup(target)
-  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\script.py", line 1103, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'rota_raiva'.
+  File "game/script.rpy", line 518, in script
+    if pegar_item_correto == True:
+  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 1845, in execute
+    if renpy.python.py_eval(condition):
+  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\python.py", line 1209, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\python.py", line 1202, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 518, in <module>
+    if pegar_item_correto == True:
+NameError: name 'pegar_item_correto' is not defined
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.2.2.24061201
 projetoX 1.0
-Sun Sep  1 15:58:15 2024
+Thu Sep  5 14:28:52 2024
