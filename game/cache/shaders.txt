@@ -1,14 +1,14 @@
-renpy.geometry renpy.texture
-renpy.alpha renpy.geometry renpy.texture
-renpy.geometry renpy.solid
-renpy.texture renpy.texture
-renpy.dissolve renpy.geometry
-renpy.dissolve renpy.dissolve
-distortion_perlin renpy.geometry renpy.texture
-renpy.alpha renpy.texture
-renpy.texture -renpy.texture renpy.blur renpy.texture -renpy.texture renpy.blur
-renpy.ftl
-renpy.texture
-renpy.solid
-renpy.blur renpy.geometry
-distortion_perlin renpy.texture
+renpy.texture renpy.texture
+renpy.geometry renpy.solid
+renpy.dissolve renpy.dissolve
+renpy.texture -renpy.texture renpy.blur renpy.texture -renpy.texture renpy.blur
+renpy.geometry renpy.texture
+distortion_perlin renpy.texture
+renpy.alpha renpy.texture
+renpy.solid
+renpy.ftl
+renpy.texture
+renpy.alpha renpy.geometry renpy.texture
+distortion_perlin renpy.geometry renpy.texture
+renpy.blur renpy.geometry
+renpy.dissolve renpy.geometry
