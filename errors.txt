@@ -2,11 +2,9 @@
 errors listed below, and try again.
 
 
-The label consertar_rachadura is defined twice, at File "game/script.rpy", line 514:
-            menu consertar_rachadura:
-and File "game/script.rpy", line 529:
-            menu consertar_rachadura:
-
+File "game/script.rpy", line 1349: choice menuitem expects a non-empty block.
+    "{b}Não vai não, escolha o intermediário se está em dúvida{b}":
+                                                                   ^
 
 Ren'Py Version: Ren'Py 8.2.2.24061201
-Thu Sep  5 14:39:16 2024
+Tue Oct 15 22:00:26 2024
