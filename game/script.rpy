@@ -237,6 +237,7 @@ define ship = Character("Shipman Harold",  color="#FF0000", window_style="my_cus
 define ed = Character("Ed Newgate", color="#0000FF", window_style="my_custom_window")
 
 define unk = Character("????", color="#FFFFFF", window_style="my_custom_window")
+define maria = Character("Maria", color="#FFC0CB", window_style="my_custom_window")
 
 image porta = "porta.png"
 image rachadura = "rachadura.png"
@@ -286,7 +287,7 @@ label start:
 
     scene conves_distortion with fade_in
 
-    jump sair_do_quarto_34567
+    jump rota_raiva
 
     # pause 0.5 #pausa a leitura dos códigos por 0.5 segundos
 
@@ -1319,7 +1320,8 @@ label sair_do_quarto_34567:
 
     ship "Você corre me direção ao banheiro, desesperadamente, querendo resolver essa merda logo"
 
-    # play sound "porta_banheiro-batendo.mp3"
+    #Colocar esse som?
+    play sound "door-slam-172171.mp3"
 
     ed "Você passa finalmente pela porta, mas isso não importa agora. Olha para o armário que está na sua frente e pegue os remédios"
 
@@ -1356,7 +1358,7 @@ label sair_do_quarto_34567:
             jump escolha_morte_ou_vida
         "{b}Não! Isso vai te matar, não seja burro!{b}":
             jump escolha_morte_ou_vida
-        "{b}Nãp! Tomar apenas duas pilulas COM CERTEZA vai te matar{b}":
+        "{b}Não! Tomar apenas duas pilulas COM CERTEZA vai te matar{b}":
             jump escolha_morte_ou_vida
 
     # ed "entramos no banheiro, pegamos remédios, tem anti-depressivos na banheiro, temos que tomá-lo para evitar que o bicho mate a gente"
@@ -1440,7 +1442,7 @@ label escolha_morte_ou_vida_vida:
 
     jogador "Hm, é... na verdade... Onde estou?"
 
-    maria "Wow! Hahaha, acho que alguém puxou mais do que deveria, não?"
+    maria "Wow! Hahaha, acho que alguém bebeu mais do que deveria, não?"
 
     ed "Estamos numa balada ou bar ou sei lá o que Caronte, não estraga as coisas"
 
@@ -1452,13 +1454,15 @@ label escolha_morte_ou_vida_vida:
 
     maria "Me chamo Maria, prazer te conhecer viajante"
 
-    jogador "Viajante? Ah, sim, haha, por causa da mitologia grega, né?"
+    jogador "Viajante? Ah, sim, haha, por causa da mitologia, né?"
 
-    maria "Seu nome não é por causa do Caronte o barqueiro? Ele fica vagando entre os mundos em um barco, levando as pessoas para o inferno.. meio que em um limbo, não?"
+    maria "Uai, seu nome não é por causa do Caronte o barqueiro? O cara que fica vagando entre os mundos em um barco, levando as pessoas para o inferno.. meio que em um limbo, não?"
 
     maria "Não sei, acho que é algo assim, não lembro da história direito"
 
     jogador "Sim, na verdade acho que é algo próximo disso, apesar de que não sei o motivo de eu ter esse nome na verdade... não lembro de nada o que aconteceu comigo"
+
+    jogador "Caronte...? Esse nome... é meu... né?"
 
     maria "Cara, você está muito mal, ahahha. Você precisa parar de beber urgente"
 
@@ -1466,7 +1470,7 @@ label escolha_morte_ou_vida_vida:
 
     maria "Ou então a gente pode continuar a beber em outro lugar, não acha?"
 
-    ed "Se você falar que não' eu te mato"
+    ed "Se você falar que não eu te mato"
     
     jogador "Hm, claro, por que não"
 
@@ -1482,11 +1486,21 @@ label escolha_morte_ou_vida_vida:
 
     unk "...não..."
 
+    #OBS.: Os efeitos estão muito estranhos, principalmente o da policia
+
+    #estilo blood do kloud
     # play music "morte_maria.mp3"
 
-    # play sound "respiração_pesada.mp3"
+    #respiração pesada do caronte.
+    play sound "respiracao_masculina_pesada1.mp3"
+    #Colocar efeitos de coração batendo e aquele zumbido
 
-    # play scene maria_morta
+    # play sound na outra faixa "coracao_batendo.mp3"
+    # play sound em outra faixa "zumbido.mp3"
+    #Com isso vai ficar os tres sons ao mesmo tempo
+
+
+    # scene maria_morta
 
     #colocar um som de zumbido, tipo, atordoado?
 
@@ -1494,10 +1508,10 @@ label escolha_morte_ou_vida_vida:
 
     ed "Não! Não! Não! Não! Não! Não!"
 
-    # play sound "sirene_policia.mp3"
+    play sound "sirene_policia.mp3"
 
-    #Trocar frase? "Você entende agora, né?"
-    ship "Você realmente achou que dava para fugir, Caronte?"
+    #Trocar frase? "Você entendeu agora, né?"
+    ship "Você realmente achou que era real?"
 
     scene black with fade_in
 
@@ -1525,7 +1539,7 @@ label escolha_morte_ou_vida_morte:
     ship "Ficamos deitados assim na grama do parque municipal uma vez... não muito longe de casa"
 
     #colocar som de passáros, vento, coisas felizes em um parque
-    # play sound "passaros.mp3"
+    play sound "passaros.mp3" loop
 
     #colocar cena parque municipal
     # scene parque_municipal
@@ -1536,7 +1550,9 @@ label escolha_morte_ou_vida_morte:
 
     ship "Ela estava lá ainda, Caronte...."
 
-    # play sound "suspiro.mp3"
+    #pausa som de passaros
+
+    play sound "suspiro_masculino.mp3"
 
     ship "*suspiro* ... Maldito seja a gente, Caronte.... Por que Deus odeia tanto a gente?"
 
@@ -1610,7 +1626,7 @@ label entrar_quarto_dnv:
 
     jogador "Dane-se vocês."
 
-    #tem que terminar
+    #tem que terminar. Colocar esse efeito?
     # play sound "porta_abrindo_macaneta.mp3"
 
     ship "Ele gira a maçaneta e puxa a porta com força...."
@@ -1639,7 +1655,7 @@ label entrar_quarto_dnv:
 
 
 #Caronte está calmo e estranhando o fato do mundo ter mudado, ele vai ter que decidir se sai do barco ou se irá morrer aqui
-label sair_quarto_12:
+label sair_do_quarto_12:
 
     # play sound "Porta_batendo.mp3"
 
@@ -1718,9 +1734,9 @@ label rota_raiva:
             jump Investigar_e_descobrir_a_verdade
         # [Opção pegar item correto]:
         "{b}Fugir do navio{b}":
-            jump fugir_do_navio_raiva
+            jump fugir_do_navio_raiva #feito, exceto imagens
         "{b}Encerrar sofrimento{b}":
-            jump encerrar_sofrimento
+            jump encerrar_sofrimento #feito, exceto imagens
 
 
 
@@ -1774,18 +1790,18 @@ label fugir_do_navio_raiva:
     ########## flashes e gritos ###########
     scene vermelho #imagem vermelha (sangue)
     #aumentar volume das coisas?
-    play sound "soco_sangue_1_edit.mp3"
+    play audio "soco_sangue_1_edit.mp3"
     pause 0.1
     scene corredor
     pause 0.1
-    play  sound "mulher_gritando_1_edit_2.mp3"
+    play  audio "mulher_gritando_1_edit_2.mp3"
     scene vermelho
     pause 0.1
     scene quarto_probido_entrada
     pause 0.1
     scene corpo_mulher_morta #trocar por foto mulher quadro
     pause 0.1
-    play  sound "choro_mulher_1_edit.mp3"
+    play  audio "choro_mulher_1_edit.mp3"
     scene vermelho
     pause 0.1
     #trocar scene corredor por escadaria longa
@@ -1844,9 +1860,9 @@ label encerrar_sofrimento:
 
     menu continuar_escolha_menu:
         "{b}Continuar com sua escolha{b}":
-            jump continuar_escolha
+            jump continuar_escolha #feito
         "{b}Fugir do navio{b}":
-            jump fugir_navio_encerrar_sofrimento
+            jump fugir_navio_encerrar_sofrimento #feito
 
 #Falta terminar
 label fugir_navio_encerrar_sofrimento:
@@ -1911,9 +1927,9 @@ label fugir_navio_encerrar_sofrimento:
     jogador "Do que você está falando? Como assim? Me internar? Tempo?"
 
     # ?
-    # play sound "barco_batendo_agua.mp3"
+    play sound "agua_splash.mp3"
 
-    play scene black
+    scene black
 
     ed "Eu sei que sempre te prometi que viveriamos uma vida feliz e alegre, mas tenho que deixar esse objetivo para forçar você a receber um tratamento logo."
 
@@ -1947,13 +1963,15 @@ label fugir_navio_encerrar_sofrimento:
 
     jogador "Ele nunca esteve na verdade"
 
-    scene manicomio
+    # scene manicomio
 
     pause 2.0
 
     scene black
 
     # jogador "Eu enxergo alguma coisa na realidade?"
+
+    stop sound
 
     jump start
 

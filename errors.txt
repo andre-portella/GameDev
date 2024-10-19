@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1349: choice menuitem expects a non-empty block.
-    "{b}Não vai não, escolha o intermediário se está em dúvida{b}":
-                                                                   ^
+File "game/script.rpy", line 1926: play requires a channel
+    play scene black
+        ^
 
 Ren'Py Version: Ren'Py 8.2.2.24061201
-Tue Oct 15 22:00:26 2024
+Sat Oct 19 11:34:40 2024
