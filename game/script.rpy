@@ -286,8 +286,6 @@ label start:
 
     scene conves_distortion with fade_in
 
-    jump sair_do_quarto_34567
-
     # pause 0.5 #pausa a leitura dos códigos por 0.5 segundos
 
     # play sound "door-slam-172171.mp3"
@@ -577,7 +575,7 @@ label desistir_conserto:
             jump voltar_corredor
 
         "{b}Desistir.{b}":
-            jump rota_tristeza
+            jump rota_tristeza_desistencia
 
     label voltar_corredor:
         jogador "Preciso vedar logo essa rachadura." with dissolve
@@ -899,12 +897,133 @@ label desperdicar_item:
     $ porta_trancada = False
 
     #volta para o corredor sem dizerem nada.
-    jump corredor
+    jump rota_tristeza_desperdicio
 
 
 label rota_esperanca:
 
     jump start
+
+#---------------------------------------------------------------------------------------------------------------------------------
+# ROTA TRISTEZA #
+
+
+label rota_tristeza_desistencia:
+
+    #Caminho: Desistência de vedar vazamento
+
+    ship "Agora, você deita no chão, com as costas viradas para o piso. Olhe para o teto do corredor e ouça o barulho da água tomando o barco."
+
+    #Mudança de cenário para o protagonista ficar flutuando no  fundo do mar.
+    ship "Eu sei o que se passa na sua mente. Sei de todas as falhas que tomam seus pensamentos nesse momento."
+
+    ship "Minha sugestão é permanecer parado. É só aguardar."
+
+    jump start
+
+label rota_tristeza_desperdicio:
+
+    jogador "O que podemos fazer agora? Algum outro item pelo barco?"
+
+    ed "Devo dizer que não há."
+
+    jogador "Ok… bem, o que faremos agora?"
+
+    ed "\Caronte, você não deveria ter feito isso, mas está tudo bem. Poderemos resolver isso. Acho que tem uma canoa em algum lugar por aqui. Podemos usar ela para fugir desse barco, apesar de ser arriscado."
+
+    ship "Fugir para quê? Sabemos que isso não é a solução dos seus problemas, Caronte, eu já te disse isso antes."
+
+    ed "Não escute ele, Caronte. Confie em mim, você tem uma vida maravilhosa pela frente! Na verdade, eu vou fazer melhor, vou te mostrar."
+
+    ed "Surge a imagem de uma linda moça na sua frente. Pele morena, cabelos escuros. O coração palpita forte."
+
+    ed "Você vê sua família, vocês estão... em uma igreja. Seus pais, tios e tias estão ali, todos te olhando, sorrindo, te amandoR tanto que você não consegue imaginar. A moça bonita está do seu lado, ela sorri timidamente."
+
+    ed "Você está feliz, você sorri imaginando esta cena junto de mim. Não é amável, Caronte? Não é um futuro perfeito? O que mais um homem poderia querer."
+
+    jogador "Sim! Hahah"
+
+    ship "Isso não existe! Uma vida feliz para você?"
+
+    ship "Estamos condenados nesse barco por um motivo. E pode ter certeza que não é por uma vida maravilhosa que você levava."
+    #(uma sombra preta toma a cena ou rabiscos pretos em toda parte)"
+
+    ship "A verdade é esta: você está jogado em uma sarjeta, enquanto vômito escorre pelas suas calças. Você é uma figura asquerosa que definha esperando a morte,  como um vira-lata que foi atropelado e esquecido para morrer. Esta é a verdade, isso é o que aconteceu com você antes."
+
+    jogador "Que?! Que merda é essa? Por que diabos você está falando isso?"
+
+    ed "Não, não escute ele, Caronte, ele está apenas distorcendo o que aconteceu. Tentando te manipular!"
+
+    ship "Eu? É ele quem está mentindo, ocultado a realidade para parecer algo belo. Você é um viciado, Caronte. Você tem problemas graves e não tem nada que possa te ajudar. É por isso que você deve morrer."
+
+    ship "Mais tarde, sua esposa, esta “morena bonita de cabelos escuros” te encontra e começa a chorar. Você fica se sentindo um lixo! E eu não quero passar por isso de novo! Eu não vou passar por isso de novo!"
+
+    ed "\Caronte, ele está mentindo, deixa eu te mostrar outra coisa."
+
+    ship "Não, eu ainda não terminei! Depois disso, ela tentou te levantar, te levar para casa e cuidar de você. Ela tentou enxergar em você uma pessoa digna. Mas não conseguia, ela não tinha força para te levantar e você mal se aguentava em pé."
+
+    ship "Ela chorava não só por ver o amor dela nessa situação lastimável, mas também por que você quebrou a promessa que vocês fizeram. Você prometeu, porra, a gente prometeu que não iria fazer mais essa merda e, no fim, a gente fez! E fizemos de novo, e de novo!.... Nenhum ser humano em sã consciência aguentaria essa tortura, Caronte… Confie em mim, eu não estou mentindo!"
+
+    ed "Esquece isso! Pense neste outro caso, esta outra possibilidade."
+
+    jogador "O quê? Eu… eu realmente fiz isso? Por…"
+
+    ed "Esqueça isso, Caronte. Me escute, pense nos seus filhos!"
+
+    ed "Você está sentado em uma cadeira, segurando a mão da moça bonita, na sua frente um menino e uma menina correm e brincam nas areias cristalinas da praia. O mar está no mais perfeito tom de azul, com o Sol aquecendo-o tão suavemente."
+
+    ed "A vida parece tão calma, com uma leve brisa passando pelas árvores e as fazendo ressoar. Mais distante, pássaros tomam o horizonte, colorindo o céu."
+
+    jogador "Sim, tudo isso parece tão bom! Por que minha vida não pode ser assim?"
+
+    ship "Por que você foi condenado por Deus a ser essa criatura repugnante!"
+
+    ship "Mentiras e mais mentiras! Isso nunca aconteceu, você tratava os seus filhos como se fossem lixo, Caronte!"
+
+    jogador "Espera, eu tenho filhos?"
+
+    ship "Você NUNCA deu um pingo de amor para eles! Não ouse tentar se convencer de que, em algum momento da sua vida, você foi bom ou deu qualquer tipo de alegria para aquelas crianças!"
+
+    jogador "Crianças? Mas co…"
+
+    ship "Tudo que você sabia fazer com aquelas crianças era gritar e xingar. Toda vez que elas te pediam alguma coisa, toda vez que elas te pediam qualquer forma de carinho ou amor, você as assustava. Isso quando não batia nelas!"
+
+    jogador "Meu Deus! Eu não fiz isso! Eu não lembro de nada."
+
+    ship "Até quando elas estavam tendo problemas nas escolas com os outros meninos, você nunca, nunca ajudou! Seu miserável!"
+
+    ship "Então, não ouse acreditar nas mentiras que o Ed te conta."
+
+    jogador "…"
+
+    ed "\Caronte, não acredite no que ele diz! É tudo mentira, você não é assim, você tem chance de mudar, chance de ser uma pessoa melhor. Acredite em mim, por favor. Acredite em nós dois."
+
+    jogador "Não… Eu acho que… eu entendo agora…"
+
+    jogador "Esse peso no meu corpo, essa desolação em minha cabeça, como se… algo muito ruim estivesse guardado aqui dentro… na verdade… eu acho que tudo faz sentido na realidade… Eu sou de fato uma criatura horrível, não sou?"
+
+    ed "Não, \Caronte. Você não é, você…"
+
+    ship "Sim! você é!"
+
+    jogador "Entendo… Realmente sou um maldito que apenas inferniza e destrói a vida das pessoas ao meu redor…."
+
+    ship "Você está ficando ainda mais cansado, Caronte. Você sente algo sumindo do seu corpo… você sente sua esperança se esvaindo."
+
+    #Ed Newgate desaparecendo
+    jogador "Ed, não resta muito para nós aqui."
+
+    ed "Espere!"
+
+    ship "Não interrompa! Sabemos que ele já se decidiu. Nós podemos sentir... "
+
+    jogador "Eu sinto muito, Ed…"
+
+    ship "O corpo dele já se encontra nas águas. E as preocupações que tanto nos assombraram foram esquecidas."
+
+
+    jump start
+
 
 #---------------------------------------------------------------------------------------------------------------------------------
 # ROTA RAIVA #

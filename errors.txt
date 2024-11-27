@@ -2,11 +2,9 @@
 errors listed below, and try again.
 
 
-The label consertar_rachadura is defined twice, at File "game/script.rpy", line 514:
-            menu consertar_rachadura:
-and File "game/script.rpy", line 529:
-            menu consertar_rachadura:
+File "game/script.rpy", line 1025: end of line expected.
+    jump label start
+               ^
 
-
-Ren'Py Version: Ren'Py 8.2.2.24061201
-Thu Sep  5 14:39:16 2024
+Ren'Py Version: Ren'Py 8.3.3.24111502
+Wed Nov 27 01:15:15 2024
