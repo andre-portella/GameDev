@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1926: play requires a channel
-    play scene black
-        ^
+File "game/script.rpy", line 1349: end of line expected.
+    ed "A gente te disse que você não bate muito bem da cabeça"~
+                                                               ^
 
 Ren'Py Version: Ren'Py 8.2.2.24061201
-Sat Oct 19 11:34:40 2024
+Sat Nov 30 02:33:33 2024

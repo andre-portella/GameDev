@@ -245,6 +245,9 @@ image rachadura_consertada = "janela_consertada.png"
 image conves = "conves.png"
 image barco_mar = "barco_mar.png"
 image corredor = 'corredor.png'
+image banheiro = 'banero.png'
+image banheiro_remedio = 'banerober.png'
+image tres_portas
 
 image black = "black.png"
 image quarto_probido_entrada = "quarto.png"
@@ -599,6 +602,7 @@ label desistir_conserto:
 
 #     jump Quarto_proibido_jogador_chega_proximo_da_porta_e_narradores_tentam_impedir_isso_de_alguma_forma
 
+###########################
 # Wilker
 label aproximar_porta_item_desperdicado:
     scene porta_midwarp with fade_in
@@ -1152,6 +1156,8 @@ label ficar_quarto_8:
 
     jogador "Algo molhado escorre de minhas orelhas... Isso é sangue... Ed está ficando mais fraco... eu sinto que estou... perdendo a esperança em mim."
 
+    jogador "..."
+
     jogador "Entendi... eles só querem me proteger... na verdade... eu quero me proteger. Eu criei esse mundo falso e obscuro, para que então eu me impeça de me fazer sofrer, me impeça
     de encarar aquilo que me pôs contra mim mesmo. Agora eu entendo."
 
@@ -1173,12 +1179,6 @@ label ficar_quarto_8:
     jogador "Estranho... por que elas me lembram de mim?..."
 
     menu escolhas_sair_ficar_9:
-        "{b}Fugir de Barco{b}":
-            jump fugir_barco_raiva
-        "{b}Encerrar a própria vida{b}":
-            jump encerrar_vida_raiva
-        "{b}Investigar o quarto{b}":
-            jump ficar_quarto_final  
         "{b}Tanto faz, certo?{b}":
             jump fim_raiva  
 
@@ -1277,6 +1277,120 @@ label ficar_quarto_3:
 
     ship "Nós somos você, uma parte de você. Estamos conectados, você sabe disso."
 
+    jogador "Hm, entendo. Assim, eventos estranhos não poderiam ser causado por vocês..."
+
+    ed "Bem... você sabe que nossa mente nos prega peças, Caronte, então..."
+
+    ship "Na verdade, coisas estranhas podem acontecer a qualquer momento"
+
+    jogador "Tipo isso?"
+
+    ed "Você continua no quarto, olhando para o nada...."
+
+    jogador "...."
+
+    ship "O tempo passa... nada acontece, você não se mexe e o quarto continua vazio..."
+
+    ed "Você então vai ficando mais lento, letargico... As coisas vão ficando mais lentas..."
+
+    scene black
+
+    pause 0.3
+
+    scene quarto_escuro
+
+    ed "Você começa a perceber seus olhos piscando, quando as coisas vão ficando pretas rápidamente"
+
+    scene black
+
+    pause 0.3
+
+    scene quarto_escuro
+
+    pause 1
+
+    scene black
+
+    pause 0.6
+
+    scene quarto_escuro
+
+    ship "Você continua no quarto, parado, percebendo as piscadas que você mesmo está dando"
+
+    scene black
+
+    pause 0.6
+
+    scene quarto_escuro
+
+    pause 2
+    
+    scene black
+
+    pause 0.6
+
+    scene quarto_escuro
+
+    pause 1
+
+    scene black
+
+    pause 1
+    
+    scene corredor
+
+    jogador "Espera! O que?!"
+
+    jogador "Ei! O que é isso, o que aconteceu aqui? Onde eu estou?"
+
+    ed "O que você está falando?"
+
+    ship "Loucuras que podem acontecer a qualquer momento, Caronte"
+
+    ed "A gente te disse que você não bate muito bem da cabeça"
+
+    jogador "Não, não isso está errado, eu estava no quarto agora mesmo. Agora estou no corredor, de novo?!"
+
+    ed "... Bem... sim... não pergunte para a gente, aconteceu a mesma coisa para nós"
+
+    ship "É meio complicado ser você, Caronte, ser a gente. Essas coisas acontecem com mais frequência do que você imagina"
+
+    jogador "E vocês não tem envolvimento nenhum com isso?"
+
+    ed "Como teríamos? Você acha que a gente consegue teletransportar pessoas?"
+
+    jogador "Ótimo, então eu vou voltar para o quarto! De novo"
+
+    ship "Você se vira para entrar no quarto, você sabe que a porta está atrás de você, não? Então, é só virar e entrar... simples assim"
+
+    ed "Então, você se vira"
+
+    scene tres_portas with fade_in
+
+    jogador "..."
+
+    jogador "Era obvio, né?"
+
+    ship "Por algum motivo, agora aparecem três portas ao invés de uma"
+
+    jogador "É só mais uma maluquice minha também?"
+
+    ed "Bem... talvez?"
+
+    jogador "Bom, dane-se, eu vou entrar"
+
+    jump cena_tres_portas
+
+#começa com todo mundo ficando confuso, se o jogador erra a porta, ele sai do quarto se ele acerta, eles mandam um bicho pegar ele
+# mas pq eles colocariam a porta correta? E se eles "teletransportassem" o jogador para fora do quarto e o jogador tentasse entrar de novo?
+
+# colocar as portas no inicio implica que o jogador não vai estranhar o que está acontecendo e quebra a lógica que aparece no futuro
+
+#colocar as portas no futuro é estranho, pq os narradores fariam isso
+# Resposta: para tirar o jogador de dentro do quarto muahahahaha
+
+##############
+
     ed "Nós estamos nos sentindo estranhos."
 
     ship "O que é isso? O que está acontecendo?"
@@ -1315,15 +1429,257 @@ label ficar_quarto_3:
             jump ficar_quarto_4
 
 
+label cena_tres_portas:
+    #primeiro, fazer o jogador entender o sistema de portas
+    ed "Você escolhe a segunda porta, gira a maçaneta e não tem nada ali, é um lugar escuro qualquer"
+
+    scene black
+
+    ed "Ao entrar nesse lugar escuro, nada acontece por alguns segundos...."
+
+    ship "A porta está atrás de você, a luz dela não entra no lugar, é meio estranho... Depois de alguns segundos, algo estranho acontece, você está de novo no corredor"
+
+    scene tres_portas
+
+    jogador "Espera, o que? Que droga que está acontecendo nesse lugar?"
+
+    ed "A gente não sabe, tenta de novo se quiser"
+
+    ship "Ou só desiste de uma vez e vamos embora daqui, não? Quanto mais a gente tenta entrar no quarto, mais estranho fica as coisas"
+
+    ed "É eu reparei nisso também, não estou gostando disso"
+
+    jogador "Não, eu já decidi que vou entrar, então eu vou entrar. E também é só umas portas, não tem nada de perigoso aqui"
+
+    jogador "Se eu não quiser mais é só eu sair pela porta que eu entrei, não? Isso se eu sair do corredor"
+
+    ed "Você faz a mesma coisa para a segunda porta e a mesma coisa acontece, estamos aqui de novo, no corredor"
+
+    jogador "... De novo?"
+
+    ship "É... parece que sempre que você entrar nessa dai a gente vai voltar para aqui?"
+
+    ed "E de novo, o Caronte faz isso com a segunda porta e obtém o mesmo resultado"
+
+    jogador "É, acho que é isso mesmo"
+
+    ship "Vai para a primeira se quiser... ou vamos embora"
+
+    ed "Você tenta a primeira porta, a mesma escuridão aparece, você abre a terceira porta para olhar também e é a mesma escuridão das outras duas"
+
+    ship "Entramos na terceira e o mesmo acontece, voltamos para o corredor"
+    
+    ship "Por que você não foi na primeira Caronte?"
+
+    jogador "Hm? Por que eu iria?"
+
+    ship "Porque é a primeira, é o que todo mundo escolheira, não?"
+
+    jogador "Do que você está falando? Inclusive..."
+
+    ed "Ele tem razão, é meio estranho você não ter ido na primeira porta"
+
+    ship "'Inclusive'?"
+
+    jogador "Tem algo estranho aqui, não? Eu senti meio estranho com aquela primeira porta"
+
+    jogador "Tem alguma coisa acontecendo no geral, mas não consigo entender direito... Algo me diz que eu não deveria passar dela"
+
+    ed "Hm? Por que você diz isso? Não faz muito sentido"
+
+    ship "Sim, realmente não faz muito, deve ser alguma estranheza sua rapaz"
+
+    jogador "Tá, talvez isso seja estranho, mas tenho a impressão de que eu estou sobrevivendo aqui"
+
+    ship "Caronte, a gente está aqui, no corredor, fora do quarto, se você quiser entrar no quarto tem que escolher a porta correta, não?"
+
+    ed "Sim, a porta do quarto não deve ter desaparecido do nada. Uma destas deve ser a correta, não?"
+
+    jogador "Hm... Só uma delas é a correta... mas a única que eu não quis entrar me levaria para o que eu quero?"
+
+    ship "É... é meio estranho, mas enfim, se você entrar nela você vai conseguir o que queria... o quarto escuro sem nada dentro"
+
+    jogador "É... sei"
+
+    jump minigame_porta1
+
+label minigame_porta1:
+    ed "Bem... então, Caronte, escolhe a primeira porta, não?"
+
+    menu escolher_porta_1:
+        "{b}Entrar porta 1{b}":
+            jump sair_minigame
+        "{b}Entrar porta 2{b}":
+            jump ficar_minigame1
+        "{b}Entrar porta 3{b}":
+            jump ficar_minigame1
+        # "{b}Ficar parado{b}": #Colocar isso daqui? Expandir para ir embora e encotrar e sair realmente do quarto
+        #     jump ficar_minigame1
+
+
+
+
+
+    #agora, ele já entendeu, então inicia o minigame
+    #o ship e o ed irão dar a dica para escolher a porta errada, qualquer uma das outras duas portas leva para o lugar certo
+    
+label ficar_minigame1:
+    jogador "Na verdade, prefiro vir por aqui"
+
+    ed "Hm? Por que? Estamos no corredor de novo, Caronte"
+
+    ship "O que deu em você, Caronte? Por que está escolhendo a porta errada? Você sabe que ela vai te fazer voltar para cá"
+
+    jogador "Não é nada em especial só queria testar uma coisa"
+
+    ed ".... Ok, então acho que agora podemos ir pela porta certa, pode ser?"
+    
+    menu escolher_porta_1:
+        "{b}Entrar porta 1{b}":
+            jump sair_minigame
+        "{b}Entrar porta 2{b}":
+            jump ficar_minigame2
+        "{b}Entrar porta 3{b}":
+            jump ficar_minigame2
+        # "{b}Ficar parado{b}": #Colocar isso daqui? Expandir para ir embora e encotrar e sair realmente do quarto
+        #     jump ficar_minigame1
+
+label ficar_minigame2:
+    ship "Você passa pela porta e volta para o corredor, de novo"
+
+    ed "Caronte? Você está tendo algum problema com a gente?"
+
+    ship "Por que diabos você não vai na porta certa? Só por que a gente está dizendo para ir nela?"
+
+    jogador "Claro que não. Só estava vendo uma coisa"
+
+    ed "Isso não faz o menor sentido, você não quer ir para a porta que você sabe que é a diferente porque a gente está dizendo para ir nela"
+
+    jogador "Na verdade, a pergunta é por que vocês estão pedindo para eu ir nessa porta? Tudo isso na verdade é bem estranho, não acham?"
+
+    ship "Hm? Sim, é estranho, claro"
+
+    ed "Tudo bem"
+
+    scene black
+
+    pause 0.2
+
+    scene tres_portas
+
+    jogador "Hm? O que foi isso?"
+
+    ed "Faz sentido o que você disse, Caronte, esquece essa primeira porta. Se ainda quiser entrar em alguma dessas portas, sinta-se à vontade"
+
+    ship "Hm, ok... Mas você ainda pode ir embora se quiser, esquece esse quarto. Esse anda-anda sem rumo está me irritando"
+
+    menu escolher_porta_2:
+        "{b}Entrar porta 1{b}":
+            jump ficar_minigame3
+        "{b}Entrar porta 2{b}":
+            jump sair_minigame
+        "{b}Entrar porta 3{b}":
+            jump ficar_minigame3
+        # "{b}Ficar parado{b}": #Colocar isso daqui? Expandir para ir embora e encotrar e sair realmente do quarto
+        #     jump ficar_minigame1    
+
+label ficar_minigame3:
+    ed "Agora você escolhe a primeira porta?"
+
+    ship "Que droga, Caronte, qual é o seu problema?"
+
+    jogador "Nada. Vocês que são estranhos. isso tudo estranho por que vocês querem que eu entre no quarto?"
+
+    ed "Você pode fazer o que você quiser, mas a gente ainda não apoia essa ideia. Não tem nada lá dentro, por que nos importaríamos?"
+
+    ship "toda porta que a gente mandar você entrar você vai nas outras? É isso?"
+
+    jogador "Não se preocupe, eu vou ir na certa agora. Qual eu deveria entrar?"
+
+    ship "É.... claro... Entra na terceira porta então"
+
+    menu escolher_porta_3:
+        "{b}Entrar porta 1{b}":
+            jump sair_minigame
+        "{b}Entrar porta 2{b}":
+            jump ficar_minigame4
+        "{b}Entrar porta 3{b}":
+            jump ficar_minigame4
+        # "{b}Ficar parado{b}": #Colocar isso daqui? Expandir para ir embora e encotrar e sair realmente do quarto
+        #     jump ficar_minigame1    
+
+label ficar_minigame4:
+    ed "Agora ele escolhe a porta que a gente mandou..."
+
+    ship "Chega dessa merda, qual seu problema, Caronte? Escolhe a maldita porta certa e entra nesse maldito quarto"
+
+    jogador "Não se preocupe, Harold, já deu para entender o que está acontecendo"
+
+    ship "Do que você está falando?"
+
+    jogador "Em um momento vocês não querem que eu entre no quarto de jeito nenhum, depois o quarto inteiro desaparace e vocês dizem que é 'só uma brincadeira da minha mente ou sei lá o que'"
+
+    jogador "Agora eu 'desapareço do quarto' e fica preso em um ciclo de portas infinitas, sendo que claramente tem algo de errado com uma das portas, mas essa fica mudando. Algo assim"
+
+    ed "Hm... você não disse nada na verdade, não tem nada em sua linha de raciocínio que diga que a gente está te trocando de lugar, não tem nem como fazermos isso"
+
+    ship "Escolhe uma porta, Caronte!"
+
+    jogador "Parece que vocês tem mais poder sobre mim do que eu realmente entendo"
+
+    ship "Escolha. Uma. Porta Caronte!"
+
+    menu escolher_porta_4:
+        "{b}Entrar porta 1{b}":
+            jump sair_minigame
+        "{b}Entrar porta 2{b}":
+            jump ficar_minigame4
+        "{b}Entrar porta 3{b}":
+            jump ficar_minigame4
+        "{b}Ficar parado{b}":
+            jump ficar_minigame5
+
+label ficar_minigame5:
+    ship "Maldita criança inútil"
+
+    ed "Chega disso a gente não vai chegar a lugar nenhum e o barco ainda está enchendo"
+
+    ed "Você se levanta e escolhe a terceira porta. Lá você fica no quarto escuro por um tempo. Depois nada acontece, estamos no quarto escuro de novo"
+
+    jogador "Será que a gente saiu do quarto em algum momento?"
+
+    jump parte_da_dor_fim_minigame_volta_para_quarto_escuro
+
+label sair_minigame:
+    ed "voce esta no crredor. Voce vira e as tres portas naõ estão mais ali, tem apenas uma"
+
+    jogador "o que? algo mudou"
+
+    ship "voce tenta abrir essa porta de novo e ela nao abre, a macaneta sequer gira. Não importa o quanto voc tente essas porta nunca mais vai abrir"
+
+    menu escolhas_principais_raiva_2:
+        "{b}Fugir do navio{b}":
+            jump fugir_do_navio_raiva
+        "{b}Encerrar sofrimento{b}":
+            jump encerrar_sofrimento
+
+
 label sair_do_quarto_34567:
     ed "Merda! Finalmente"
 
     ship "Você corre me direção ao banheiro, desesperadamente, querendo resolver essa merda logo"
 
     #Colocar esse som?
+    # play sound "porta_banheiro-batendo.mp3"
+    scene banheiro_remedio
+    
+    ed "Vai logo, Caronte. O armário está aberto e parece que ainda tem um pouco"
+
     play sound "door-slam-172171.mp3"
 
-    ed "Você passa finalmente pela porta, mas isso não importa agora. Olha para o armário que está na sua frente e pegue os remédios"
+    ed "Você finalmente entra, mas isso não importa agora."
+
+    ed "Olha para o armário que está na sua frente e pegue os remédios"
 
     jogador "Quando passo pela porta, escuto um barulho bem alto. Algo me diz que ela nunca mais vai abrir... nunca. Aqui é o banheiro?"
 
@@ -1333,7 +1689,7 @@ label sair_do_quarto_34567:
 
     ed "Apenas dois, é o su-"
 
-    ship "Todos, Caronte, pegue todos é o"
+    ship "Todos, Caronte, pegue todos é o-"
 
     ed "O que?! Sério isso? Agora?"
 
@@ -1351,7 +1707,7 @@ label sair_do_quarto_34567:
         "{b}Tomar todas as quatro pilulas{b}":
             jump escolha_morte_ou_vida_morte
         "{b}Tomar apenas três{b}":
-            jump morte_lenta
+            jump escolha_morte_ou_vida_morte #ou criar uma morte lenta?
         "{b}Tomar três ou quatro pilulas vai te matar, não escolhe essa{b}":
             jump escolha_morte_ou_vida
         "{b}Não vai não, se você estiver com dúvida, escolha a do meio, não?{b}":
@@ -1360,13 +1716,6 @@ label sair_do_quarto_34567:
             jump escolha_morte_ou_vida
         "{b}Não! Tomar apenas duas pilulas COM CERTEZA vai te matar{b}":
             jump escolha_morte_ou_vida
-
-    # ed "entramos no banheiro, pegamos remédios, tem anti-depressivos na banheiro, temos que tomá-lo para evitar que o bicho mate a gente"
-
-    # ed "ed e ship dizem que o jogador tem que tomar o remédio, só que ship diz que você tem que tomar tomas as várias pilulas e o ed não, diz que é só uma"
-
-    # ed "ed e  ship comecam a brigar, se o jogador tomar todas, ele mmorre, se ele tomar uma o ed ganha se ele tomar 5 ele também 
-    # morre, é uma tática do ship para enganar o jogador" 
 
 label escolha_morte_ou_vida_vida:
     ed "Excelente, Caronte. Graças a Deus, realmente achei que você cometeria alguma estupidez agora"
@@ -1416,6 +1765,8 @@ label escolha_morte_ou_vida_vida:
     unk "...."
 
     ed "Faz tempo que a gente não se vê..."
+
+    ed "Finalmente, Caronte, finalmente acabamos com esse ciclo maldito. Esse é o nosso verdadeiro final!"
 
     # scene estrelas
 
@@ -1504,7 +1855,7 @@ label escolha_morte_ou_vida_vida:
 
     #colocar um som de zumbido, tipo, atordoado?
 
-    jogador "Qu- porra?"
+    jogador "Qu- porra...?"
 
     ed "Não! Não! Não! Não! Não! Não!"
 
@@ -1512,6 +1863,8 @@ label escolha_morte_ou_vida_vida:
 
     #Trocar frase? "Você entendeu agora, né?"
     ship "Você realmente achou que era real?"
+
+    stop sound
 
     scene black with fade_in
 
@@ -1589,10 +1942,6 @@ label ficar_quarto_2:
         "{b}Ficar no quarto vazio{b}":
             jump ficar_quarto_3
 
-
-
-
-
 label ficar_quarto_1:
     # (Explorar quarto vazio)
 
@@ -1633,6 +1982,7 @@ label entrar_quarto_dnv:
 
     jogador "Mas o que?"
 
+#Resultado após o jogador passar da última porta
     #tem que terminar
     scene quarto_escuro
 
@@ -1710,8 +2060,6 @@ label Investigar_e_descobrir_a_verdade:
             jump entrar_quarto_dnv
     # [única opção disponível o jogador entra no barco]
     #  - Entrar no quarto
-
-
 
 
 label rota_raiva:
@@ -1814,7 +2162,7 @@ label fugir_do_navio_raiva:
     
     ed "No fim dessas escadas, vemos algo... tem algo ali.... uma... luz? Sim! Isso, é claro... é claro"
 
-    ed "É assim, Caronte, que encerrmos uma passagem para comçar outra completamente diferente. É assim que inicia o começo da nossa felicidade eterna, HAHAHA."
+    ed "É assim, Caronte, que encerrmos uma passagem para começar outra completamente diferente. É assim que inicia o começo da nossa felicidade eterna, HAHAHA."
 
     jump start
 
@@ -1963,7 +2311,7 @@ label fugir_navio_encerrar_sofrimento:
 
     jogador "Ele nunca esteve na verdade"
 
-    # scene manicomio
+    scene manicomio
 
     pause 2.0
 
@@ -2033,7 +2381,7 @@ label continuar_escolha:
 # Imagens pedir para o Prado:
 # - Imagem do céu estrelado, - quarto escuro, - talvez imagem do quadro/mãe do protagonista, - escadaria super longa
 # - maria morta, - maria na balada, - teto da balada, - banheiro, - deitado no banheiro, - armário do banheiro
-# - deitado parque, - deitado parque vendo mulher do quadro
+# - deitado parque, - deitado parque vendo mulher do quadro, - manicomio, - 3 portas do minigame, 
 # 
 #  musicas: muscia ambiente (natural do jogo?) cada rota tem uma música diferente?
 #  musica da balada, musica morte da maria
