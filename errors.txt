@@ -2,9 +2,18 @@
 errors listed below, and try again.
 
 
+<<<<<<< HEAD
 File "game/script.rpy", line 1349: end of line expected.
     ed "A gente te disse que você não bate muito bem da cabeça"~
                                                                ^
 
 Ren'Py Version: Ren'Py 8.2.2.24061201
 Sat Nov 30 02:33:33 2024
+=======
+File "game/script.rpy", line 1025: end of line expected.
+    jump label start
+               ^
+
+Ren'Py Version: Ren'Py 8.3.3.24111502
+Wed Nov 27 01:15:15 2024
+>>>>>>> 63d159485e25c762804a9e87f1e50fc51a718bf1
