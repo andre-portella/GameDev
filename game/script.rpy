@@ -247,7 +247,7 @@ image barco_mar = "barco_mar.png"
 image corredor = 'corredor.png'
 image banheiro = 'banero.png'
 image banheiro_remedio = 'banerober.png'
-image tres_portas
+# image tres_portas
 
 image black = "black.png"
 image quarto_probido_entrada = "quarto.png"
@@ -904,10 +904,131 @@ label desperdicar_item:
     $ porta_trancada = False
 
     #volta para o corredor sem dizerem nada.
-    jump corredor
+    jump rota_tristeza_desperdicio
 
 
 label rota_esperanca:
+
+    jump start
+
+#---------------------------------------------------------------------------------------------------------------------------------
+# ROTA TRISTEZA #
+
+label rota_tristeza_desistencia:
+
+    #Caminho: Desistência de vedar vazamento
+
+    ship "Agora, você deita no chão, com as costas viradas para o piso. Olhe para o teto do corredor e ouça o barulho da água tomando o barco."
+
+    #Mudança de cenário para o protagonista ficar flutuando no  fundo do mar.
+    ship "Eu sei o que se passa na sua mente. Sei de todas as falhas que tomam seus pensamentos nesse momento."
+
+    ship "Minha sugestão é permanecer parado. É só aguardar."
+
+    jump start
+
+label rota_tristeza_desperdicio:
+
+    scene barco_mar at blur_image with dissolve
+
+    jogador "O que podemos fazer agora? Algum outro item pelo barco?"
+
+    ed "Devo dizer que não há."
+
+    jogador "Ok… bem, o que faremos agora?"
+
+    ed "\Caronte, você não deveria ter feito isso, mas está tudo bem. Poderemos resolver isso. Acho que tem uma canoa em algum lugar por aqui. Podemos usar ela para fugir desse barco, apesar de ser arriscado."
+
+    ship "Fugir para quê? Sabemos que isso não é a solução dos seus problemas, Caronte, eu já te disse isso antes."
+
+    ed "Não escute ele, Caronte. Confie em mim, você tem uma vida maravilhosa pela frente! Na verdade, eu vou fazer melhor, vou te mostrar."
+
+    ed "Surge a imagem de uma linda moça na sua frente. Pele morena, cabelos escuros. O coração palpita forte."
+
+    ed "Você vê sua família, vocês estão... em uma igreja. Seus pais, tios e tias estão ali, todos te olhando, sorrindo, te amandoR tanto que você não consegue imaginar. A moça bonita está do seu lado, ela sorri timidamente."
+
+    ed "Você está feliz, você sorri imaginando esta cena junto de mim. Não é amável, Caronte? Não é um futuro perfeito? O que mais um homem poderia querer."
+
+    jogador "Sim! Hahah"
+
+    ship "Isso não existe! Uma vida feliz para você?"
+
+    ship "Estamos condenados nesse barco por um motivo. E pode ter certeza que não é por uma vida maravilhosa que você levava."
+    #(uma sombra preta toma a cena ou rabiscos pretos em toda parte)"
+
+    ship "A verdade é esta: você está jogado em uma sarjeta, enquanto vômito escorre pelas suas calças. Você é uma figura asquerosa que definha esperando a morte,  como um vira-lata que foi atropelado e esquecido para morrer. Esta é a verdade, isso é o que aconteceu com você antes."
+
+    jogador "Que?! Que merda é essa? Por que diabos você está falando isso?"
+
+    ed "Não, não escute ele, Caronte, ele está apenas distorcendo o que aconteceu. Tentando te manipular!"
+
+    ship "Eu? É ele quem está mentindo, ocultado a realidade para parecer algo belo. Você é um viciado, Caronte. Você tem problemas graves e não tem nada que possa te ajudar. É por isso que você deve morrer."
+
+    ship "Mais tarde, sua esposa, esta “morena bonita de cabelos escuros” te encontra e começa a chorar. Você fica se sentindo um lixo! E eu não quero passar por isso de novo! Eu não vou passar por isso de novo!"
+
+    ed "\Caronte, ele está mentindo, deixa eu te mostrar outra coisa."
+
+    ship "Não, eu ainda não terminei! Depois disso, ela tentou te levantar, te levar para casa e cuidar de você. Ela tentou enxergar em você uma pessoa digna. Mas não conseguia, ela não tinha força para te levantar e você mal se aguentava em pé."
+
+    ship "Ela chorava não só por ver o amor dela nessa situação lastimável, mas também por que você quebrou a promessa que vocês fizeram. Você prometeu, porra, a gente prometeu que não iria fazer mais essa merda e, no fim, a gente fez! E fizemos de novo, e de novo!.... Nenhum ser humano em sã consciência aguentaria essa tortura, Caronte… Confie em mim, eu não estou mentindo!"
+
+    ed "Esquece isso! Pense neste outro caso, esta outra possibilidade."
+
+    jogador "O quê? Eu… eu realmente fiz isso? Por…"
+
+    ed "Esqueça isso, Caronte. Me escute, pense nos seus filhos!"
+
+    ed "Você está sentado em uma cadeira, segurando a mão da moça bonita, na sua frente um menino e uma menina correm e brincam nas areias cristalinas da praia. O mar está no mais perfeito tom de azul, com o Sol aquecendo-o tão suavemente."
+
+    ed "A vida parece tão calma, com uma leve brisa passando pelas árvores e as fazendo ressoar. Mais distante, pássaros tomam o horizonte, colorindo o céu."
+
+    jogador "Sim, tudo isso parece tão bom! Por que minha vida não pode ser assim?"
+
+    ship "Por que você foi condenado por Deus a ser essa criatura repugnante!"
+
+    ship "Mentiras e mais mentiras! Isso nunca aconteceu, você tratava os seus filhos como se fossem lixo, Caronte!"
+
+    jogador "Espera, eu tenho filhos?"
+
+    ship "Você NUNCA deu um pingo de amor para eles! Não ouse tentar se convencer de que, em algum momento da sua vida, você foi bom ou deu qualquer tipo de alegria para aquelas crianças!"
+
+    jogador "Crianças? Mas co…"
+
+    ship "Tudo que você sabia fazer com aquelas crianças era gritar e xingar. Toda vez que elas te pediam alguma coisa, toda vez que elas te pediam qualquer forma de carinho ou amor, você as assustava. Isso quando não batia nelas!"
+
+    jogador "Meu Deus! Eu não fiz isso! Eu não lembro de nada."
+
+    ship "Até quando elas estavam tendo problemas nas escolas com os outros meninos, você nunca, nunca ajudou! Seu miserável!"
+
+    ship "Então, não ouse acreditar nas mentiras que o Ed te conta."
+
+    jogador "…"
+
+    ed "\Caronte, não acredite no que ele diz! É tudo mentira, você não é assim, você tem chance de mudar, chance de ser uma pessoa melhor. Acredite em mim, por favor. Acredite em nós dois."
+
+    jogador "Não… Eu acho que… eu entendo agora…"
+
+    jogador "Esse peso no meu corpo, essa desolação em minha cabeça, como se… algo muito ruim estivesse guardado aqui dentro… na verdade… eu acho que tudo faz sentido na realidade… Eu sou de fato uma criatura horrível, não sou?"
+
+    ed "Não, \Caronte. Você não é, você…"
+
+    ship "Sim! você é!"
+
+    jogador "Entendo… Realmente sou um maldito que apenas inferniza e destrói a vida das pessoas ao meu redor…."
+
+    ship "Você está ficando ainda mais cansado, Caronte. Você sente algo sumindo do seu corpo… você sente sua esperança se esvaindo."
+
+    #Ed Newgate desaparecendo
+    jogador "Ed, não resta muito para nós aqui."
+
+    ed "Espere!"
+
+    ship "Não interrompa! Sabemos que ele já se decidiu. Nós podemos sentir... "
+
+    jogador "Eu sinto muito, Ed…"
+
+    ship "O corpo dele já se encontra nas águas. E as preocupações que tanto nos assombraram foram esquecidas."
+
 
     jump start
 
@@ -1391,43 +1512,6 @@ label ficar_quarto_3:
 
 ##############
 
-    ed "Nós estamos nos sentindo estranhos."
-
-    ship "O que é isso? O que está acontecendo?"
-
-    jogador "Hã?"
-
-    ed "Estamos nos sentindo... zonzo..."
-    
-    #aplicar efeito de distorção que eles usam na porta, mas agr no quarto escuro
-
-    ed "O mundo parece estar girando.... O que é isso?"
-
-    ship "Sua cabeça começa a ficar mais leve..."
-    
-    ed "Seu corpo também, como se a gente estivesse flutuando, um embrulho no estômago toma a gente, tem alguma coisa na nossa barriga que precisa sair"
-
-    ed "Caronte, acho melhor a gente usar o banheiro, tem alguma coisa de errado com o nosso corpo"
-
-    jogador "O que? Droga, minha cabeça... O... Merda, eu sinto que vou vomitar! Onde tem um banheiro?"
-
-    #FALTA TERMINAR
-    scene quarto_escuro_banheiro
-
-    ed "Dentro deste quarto tem um, alí, na sua esquerda tem um banheiro"
-
-# (colocar a imagem de uma porta em uma tela toda preta)
-
-    ship "Fica ali, passando pela porta. Vamos logo, eu não estou aguentando mais!!"
-
-    jogador "Que droga de sensação é essa?!"
-
-    menu escolhas_sair_ficar_4:
-        "{b}Ir para o banheiro{b}":
-            jump sair_do_quarto_34567
-        "{b}Ficar aqui parado (vai ser ruim){b}":
-            jump ficar_quarto_4
-
 
 label cena_tres_portas:
     #primeiro, fazer o jogador entender o sistema de portas
@@ -1506,7 +1590,7 @@ label cena_tres_portas:
 label minigame_porta1:
     ed "Bem... então, Caronte, escolhe a primeira porta, não?"
 
-    menu escolher_porta_1:
+    menu escolha_minigame_porta1:
         "{b}Entrar porta 1{b}":
             jump sair_minigame
         "{b}Entrar porta 2{b}":
@@ -1633,9 +1717,9 @@ label ficar_minigame4:
         "{b}Entrar porta 1{b}":
             jump sair_minigame
         "{b}Entrar porta 2{b}":
-            jump ficar_minigame4
+            jump ficar_minigame5
         "{b}Entrar porta 3{b}":
-            jump ficar_minigame4
+            jump ficar_minigame5
         "{b}Ficar parado{b}":
             jump ficar_minigame5
 
@@ -1644,20 +1728,93 @@ label ficar_minigame5:
 
     ed "Chega disso a gente não vai chegar a lugar nenhum e o barco ainda está enchendo"
 
-    ed "Você se levanta e escolhe a terceira porta. Lá você fica no quarto escuro por um tempo. Depois nada acontece, estamos no quarto escuro de novo"
+    ed "Você se levanta e escolhe a terceira porta. Lá você fica no quarto escuro por um tempo. Depois nada acontece"
 
-    jogador "Será que a gente saiu do quarto em algum momento?"
+    ed "Estamos no quarto escuro de novo"
+
+    jogador "Hm... Olha só, parece que funcionou, não?"
 
     jump parte_da_dor_fim_minigame_volta_para_quarto_escuro
 
+label parte_da_dor_fim_minigame_volta_para_quarto_escuro:
+    ship "Feliz, agora, garoto? Estamos todos irritados e de volta nesse quarto"
+
+    ed "Já chega, Harold... Estamos aqui, querendo ou não"
+
+    jogador "Mas vocês não se importam com isso, certo? Vocês não gostam, mas não vão tentar ir contra a minha vontade... né?"
+
+    ed "Sim. Exato... Na verdade, essa caminhada toda me deu um pouco de cansaço... nossas pernas estão meio machucadas"
+
+    ship "É, claro, não está relacionado com estarmos destruidos desde o inicio dessa 'aventura' toda"
+
+    jogador "Bom... então ainda é um quarto escuro, certo?"
+
+    ed "Sim... nada aqui ainda"
+
+    jogador "Entendo, vou caminha por ele, então...."
+
+    ship "Ok... como quiser"
+
+    ed "Na verdade.... vocês não estão sentindo isso, Harold, Caronte?"
+
+    # ship "Por um segundo, você sente algo... não parece que é só cansaço mais... tem alguma outra coisa... não?"
+
+    # jogador "Hmm... O que foi agora? Estou me sentindo...."
+
+    # jogador "Hmm... Espera... Estranho, vocês dois... só estão relatando o que eu estou sentindo, certo? Nada mais... apenas o que eu realmente sinto..."
+
+    # ship "Sim, de fato... por que esse tom estranho? Alguma coisa errada?"
+
+    # jogador "Esse tempo todo foi assim? Desde o início vocês me diziam o que eu estava vendo, ouvindo e sentindo, não?"
+
+## VOLTA PARA O QUE ERA ANTES
+    
+    ed "Nós estamos nos sentindo estranhos."
+
+    ship "O que é isso? O que está acontecendo?"
+
+    jogador "Hã?"
+
+    ed "Estamos nos sentindo... zonzo..."
+    
+    #aplicar efeito de distorção que eles usam na porta, mas agr no quarto escuro
+
+    ed "O mundo parece estar girando.... O que é isso?"
+
+    ship "Sua cabeça começa a ficar mais leve..."
+    
+    ed "Seu corpo também, como se a gente estivesse flutuando, um embrulho no estômago toma a gente, tem alguma coisa na nossa barriga que precisa sair"
+
+    ed "Caronte, acho melhor a gente usar o banheiro, tem alguma coisa de errado com o nosso corpo"
+
+    jogador "O que? Droga, minha cabeça... O... Merda, eu sinto que vou vomitar! Onde tem um banheiro?"
+
+    #FALTA TERMINAR
+    scene quarto_escuro_banheiro
+
+    ed "Dentro deste quarto tem um, alí, na sua esquerda tem um banheiro"
+
+# (colocar a imagem de uma porta em uma tela toda preta)
+
+    ship "Fica ali, passando pela porta. Vamos logo, eu não estou aguentando mais!!"
+
+    jogador "Que droga de sensação é essa?!"
+
+    menu escolhas_sair_ficar_4:
+        "{b}Ir para o banheiro{b}":
+            jump sair_do_quarto_34567
+        "{b}Ficar aqui parado (vai ser ruim){b}":
+            jump ficar_quarto_4
+
 label sair_minigame:
-    ed "voce esta no crredor. Voce vira e as tres portas naõ estão mais ali, tem apenas uma"
+    ed "voce esta no corredor. Voce vira e as tres portas naõ estão mais ali, tem apenas uma"
 
     jogador "o que? algo mudou"
 
     ship "voce tenta abrir essa porta de novo e ela nao abre, a macaneta sequer gira. Não importa o quanto voc tente essas porta nunca mais vai abrir"
 
-    menu escolhas_principais_raiva_2:
+    #trocar por jump menu tal escolhas_principais_raiva_2
+    menu escolhas_principais_raiva_3:
         "{b}Fugir do navio{b}":
             jump fugir_do_navio_raiva
         "{b}Encerrar sofrimento{b}":

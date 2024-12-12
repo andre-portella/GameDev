@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1349: end of line expected.
-    ed "A gente te disse que você não bate muito bem da cabeça"~
-                                                               ^
+The label escolher_porta_1 is defined twice, at File "game/script.rpy", line 1593:
+    menu escolher_porta_1:
+and File "game/script.rpy", line 1621:
+    menu escolher_porta_1:
+
+
+The label escolhas_principais_raiva_2 is defined twice, at File "game/script.rpy", line 1816:
+    menu escolhas_principais_raiva_2:
+and File "game/script.rpy", line 2172:
+    menu escolhas_principais_raiva_2:
+
 
 Ren'Py Version: Ren'Py 8.2.2.24061201
-Sat Nov 30 02:33:33 2024
+Thu Dec 12 00:02:13 2024
