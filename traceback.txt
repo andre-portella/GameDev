@@ -1,22 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1381, in script
-    jump cena_tres_portas
-ScriptError: could not find label 'cena_tres_portas'.
+  File "game/script.rpy", line 1097, in script
+    figura "Você sou eu &UUU&uuQ&**&QYO&######@@@@@%%%"
+ValueError: incomplete format
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1381, in script
-    jump cena_tres_portas
-  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 1701, in execute
-    rv = renpy.game.script.lookup(target)
-  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\script.py", line 1103, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'cena_tres_portas'.
+  File "game/script.rpy", line 1097, in script
+    figura "Você sou eu &UUU&uuQ&**&QYO&######@@@@@%%%"
+  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 2560, in execute
+    Say.execute(self)
+  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 615, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\exports.py", line 1483, in say
+    what = what % tag_quoting_dict
+ValueError: incomplete format
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.2.2.24061201
 projetoX 1.0
-Sat Nov 30 02:47:15 2024
+Thu Dec 12 19:52:20 2024

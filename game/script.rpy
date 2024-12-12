@@ -217,6 +217,10 @@ init python:
     item_pego = False
     janela_consertada = False
 
+    olhou_retrato_mulher = False
+
+    contador_esperanca = 0
+
     #Não entrar no quarto proibido ate o jogador decidir se abre a porta ou não
     porta_trancada = True #//%Variavel que define quando a porta esta trancada ou nao. Ela fica trancada ate o jogador desperdicar o item, isso eh feito para corrigir um erro
     # do roteiro, faltava uma possibilidade de evento e fazer isso corrige o probelma
@@ -236,8 +240,11 @@ define jogador = Character("Jogador", window_style="my_custom_window")
 define ship = Character("Shipman Harold",  color="#FF0000", window_style="my_custom_window")
 define ed = Character("Ed Newgate", color="#0000FF", window_style="my_custom_window")
 
-define unk = Character("????", color="#FFFFFF", window_style="my_custom_window")
+define unk = Character(" ", color="#FFFFFF", window_style="my_custom_window")
 define maria = Character("Maria", color="#FFC0CB", window_style="my_custom_window")
+
+#mudar a cor do texto da fala para vermelho dps
+define figura = Character(" ", color="#FFFFFF", window_style="my_custom_window")
 
 image porta = "porta.png"
 image rachadura = "rachadura.png"
@@ -246,7 +253,7 @@ image conves = "conves.png"
 image barco_mar = "barco_mar.png"
 image corredor = 'corredor.png'
 image banheiro = 'banero.png'
-image banheiro_remedio = 'banerober.png'
+image banheiro_remedio = 'baneroaber.png'
 # image tres_portas
 
 image black = "black.png"
@@ -290,7 +297,7 @@ label start:
 
     scene conves_distortion with fade_in
 
-    jump rota_raiva
+    jump rota_esperanca
 
     # pause 0.5 #pausa a leitura dos códigos por 0.5 segundos
 
@@ -535,7 +542,7 @@ label zoom_in_rachadura:
                 "{b}Consertar rachadura{b}" if janela_consertada == False:
                     $ janela_consertada = True
                     scene rachadura_consertada with fade_in
-                    jump corredor
+                    jump rota_esperanca
                 "{b}Sair{b}":
                     scene corredor with fade_out and fade_in
                     jump menu_descobrir_barulho
@@ -906,10 +913,277 @@ label desperdicar_item:
     jump rota_tristeza_desperdicio
 
 
+
+##################### INICIO ROTA ESPERANÇA FELIPE ############################################################
 label rota_esperanca:
+
+    scene rachadura
+
+    ship "Você se ajoelha próximo à rachadura, resina em mãos. Seus dedos tremem enquanto tenta aplicá-la. A água que continua a entrar, fria, zomba dos seus esforços. Tanta pressa, tanto zelo... Será que, no fundo, você acredita que isso fará diferença?"
+
+    jogador" Claro que faz! Se eu não vedar isso, o barco vai afundar!"
+
+    # (Efeito sonoro)
+
+    ship "Ouviu isso? O som do inevitável. Mesmo que vede essa rachadura, quem garante que o barco inteiro não está prestes a ceder? Ao concluir o reparo e perceber que o vazamento persiste, você percebe a água entrando por outras fissuras menores ao redor."
+
+    jogador" Não pode ser... Acabei de consertar isso!"
+
+    ed "Você tapou um buraco em um navio que infelizmente já está condenado. Foi um esforço admirável, mas é como usar um curativo em uma ferida fatal."
+
+    ship "Veja como a água continua entrando. É engraçado, não é? O barco sempre esteve contra você."
+
+    jogador" Vocês me guiaram até aqui, prometeram que tudo isso acabaria se eu fechasse essa rachadura. Mentirosos!"
+
+    ship "A água começa a alcançar seus pés. O som do vazamento torna-se um rugido que preenche todo o ambiente. Você está parado diante da rachadura na parede. O som da água que antes parecia um sussurro distante agora cresce, reverberando nas paredes como um rugido vivo. A rachadura então pulsa como se tivesse vida própria, e através dela você vê algo brilhando – um reflexo? Uma memória?"
+
+    ed "Ao seu redor, o cenário parece se distorcer; sombras oscilam, e você sente como se estivesse sendo observado. Nós, muito além de narrar pensamentos, surgimos refletidos da rachadura. Nossas vozes agora emanam diretamente de nossas figuras, que parecem um reflexo de você mesmo."
+
+    ship "Você sabe que este barco não afunda pela rachadura, não sabe? Ele sempre afundará, seja pela água ou pelo peso que carrega."
+
+    ed "Sempre tento ajudar em todas as escolhas, mas ainda sou tido como mentiroso não? De qualquer forma parece que não há muita solução aqui, não é mesmo? Afinal, você fez tudo que sugeri mas nada mudou. Talvez seja mais produtivo parar de pensar numa solução e só aceitar as coisas do jeito que elas são. Afinal, nesse exato momento a água começa a alcançar seus joelhos."
+
+    ship "Interessante como ele encara essa rachadura como se fosse a origem de todos os problemas. E se, no fundo, ela for apenas mais um reflexo do desastre que ele carrega?"
+
+    ed "Harold, meu caro, deixe-o decidir. A rachadura é um caminho, sim. Toque-a. Ela pode te mostrar algo que realmente importa."
+
+    jogador" Você quer que eu toque nela? Depois de tudo isso? Suas palavras nunca ajudaram! Não confio em você."
+
+    ed "Ah, desconfiança... justo. Mas diga-me, o que você realmente tem a perder? A água já tomou o navio, e, francamente, correr não parece uma saída muito convincente."
+
+    ship "Você pode tentar tocar a rachadura, sim, mas onde isso te levará? Você sempre faz isso, não faz? Toca, tenta corrigir, mas nada muda. Sempre o mesmo ciclo... Uma tentativa desesperada de se enganar. A água, os sons, a rachadura... tudo apenas parte de uma grande farsa. Por favor, ignore esse charlatão. Ele adora vender respostas fáceis, mas não há atalhos para o inevitável. Corra para seu quarto. Lá, pelo menos, você pode encontrar algum controle – uma pequena ilusão de escolha."
+
+#    menu menu_escolhas_zoom_in_item:
+#         "{b}Quanto tempo falta?\[Opção Exploratória\]{b}":
+#             jump op_exp_quanto_tempo_falta
+#         # [Opção pegar item correto]:
+#         "{b}Pegar item{b}" if item_desperdicado == False and item_pego == False:
+#             jump pegar_item_correto 
+#         "{b}Desperdiçar item{b}" if item_desperdicado == False:
+#             jump desperdicar_item 
+#         "{b}Sair{b}":
+#             jump corredor 
+
+    # ---------------------------------------------------------------
+    menu escolha_1_esperanca:
+        "{b}Tocar a Rachadura{b}":
+            jump tocar_rachadura
+
+        "{b}Correr para o Quarto{b}":
+            jump correr_para_quarto
+
+
+label tocar_rachadura:
+    ed "Sabia que você faria isso. Às vezes, a tentação de encarar a verdade é maior que a dor de viver na mentira. O ambiente à sua volta pulsa, e a rachadura parece chamá-lo, como uma promessa de algo maior ou talvez mais perturbador. Você estende a mão, hesitante, e o reflexo de Edte empurrar para frente."
+
+    ship "Mas será que a verdade vai te salvar? Olhe para você. Você já está perdido, marinheiro. O que você acha que encontrará tocando isso? De qualquer forma, seu dedo toca a rachadura, e ela imediatamente se expande, engolindo sua mão. O som da água se torna um rugido ensurdecedor, e você é puxado para dentro. Em um instante, tudo se distorce ao seu redor."
+
+    scene quarto_probido_entrada
+
+    ed "E aqui estamos. Você é lançado de volta à seu quarto. Nada parece ter mudado, mas, assim que entra, algo estranho acontece. As paredes estão molhadas, os móveis são os mesmos, mas há uma sensação de repetição no ar. Você sente como se já tivesse estado ali antes, como se cada movimento fosse uma repetição de algo que já aconteceu, mesmo que tenha escolhido ignorar seu quarto completamente."
+
+    ship "Ah, a velha ilusão de que algo pode ser diferente. O que você achou que encontraria tocando aquela rachadura? A verdade? Ela sempre esteve aqui. Apenas você não quis enxergar"
+
+    # Continuação a partir da escolha 1:
+
+    ed "Você está de volta ao quarto. O espaço é o mesmo de antes, mas algo mudou. Os detalhes chamam sua atenção, como se o próprio quarto tivesse algo a dizer. A luz fraca da janela circular projeta um brilho sobre os móveis destruídos. Uma cadeira caída e uma cama ensanguentada dominam o centro da sala. As paredes molhadas parecem absorver o som, tornando o ambiente pesado e claustrofóbico. Na parede esquerda, um retrato emoldurado o encara, mesmo que o rosto pintado esteja indistinguível. Na parede oposta, uma segunda moldura apresenta uma família. A imagem está manchada, mas parece transmitir algo... como um apelo mudo."
+
+    ship "Isso não é um quarto. É uma cova, construída lentamente pela sua própria mente. Mas vá em frente, inspecione cada canto. Talvez você encontre o que procura. Ou, mais provavelmente, encontrará não encontrará nada. Você percebe que, embora o quarto pareça se repetir, há algo diferente agora: detalhes antes ignorados clamam pela sua atenção."
+
+    jogador" Sinto uma estranha sensação tomando conta de mim. Pela primeira vez estou livre do determinismo dos Narradores, e os cômodos do navio passam por minha mente como opções em um cardápio. As escolhas se alinham diante de mim:"
+
+    # ------------------------------------------------------------------------------------------
+    menu minigame_esperanca:
+        # Quarto -  #
+        "{b}Inspecionar os móveis destruídos{b}":
+            unk "Você se ajoelha próximo aos móveis destruídos. Um pedaço de madeira parece ter sido arrancado com violência, deixando farpas que apontam como lanças. Há algo estranho na forma como o sangue seco mancha o material, quase como se formasse palavras... mas, ao tocar, tudo desaparece como poeira."
+
+            unk "Não é o que você procura."
+
+            jump minigame_esperanca
+        "{b}Inspecionar os retratos a direita{b}":
+            unk "O retrato da família o encara com uma intensidade silenciosa. Os rostos, embora manchados e indistintos, parecem mudar ligeiramente de expressão toda vez que você desvia o olhar. Há algo perturbadoramente familiar neles. Você sente uma conexão, mas não consegue definir o motivo."
+
+            unk "Não é o que você procura."
+
+            jump minigame_esperanca
+        "{b}Inspecionar o sangue que mancha o chão{b}":
+            unk "Você se aproxima da mancha no chão. O sangue não está seco como deveria; ele brilha, viscoso, refletindo uma luz que não existe no ambiente. Quanto mais você olha, mais parece que está se movendo, como se tentasse formar algo vivo. Quando tenta tocar, a mancha simplesmente se dissolve em nada."
+            
+            unk "Não é o que você procura."
+        
+            jump minigame_esperanca
+        
+        "{b}Inspecionar o retrato a esquerda{b}": #
+            if olhou_retrato_mulher == False:
+                $ olhou_retrato_mulher = True
+                unk "O retrato o observa com um olhar vazio, mas há algo familiar nele. Ao chegar mais perto, você percebe que o rosto no quadro... é o seu. Mas há algo errado: os olhos estão completamente pretos, e o sorriso que ele ostenta é de puro escárnio. Quando tenta tocá-lo, o quadro parece se desfazer em uma névoa."
+                
+                unk "Não é o que você procura."
+                jump minigame_esperanca
+            
+            if olhou_retrato_mulher == True:
+                jump olhar_retrato_mulher_2_vez
+                
+
+        "{b}Voltar para o corredor{b}": #
+            jump corredor_esperanca
+
+
+label corredor_esperanca:
+    scene corredor
+
+    menu escolhas_corredor_esperanca:
+        "{b}Inspecionar a janela quebrada{b}":
+            unk "Você olha pela janela, mas a escuridão do mar não revela nada além de um vazio avassalador. A água que entra tem um cheiro de ferrugem e podridão. Tentar olhar mais fundo causa uma leve vertigem, e você decide desviar o olhar."
+            
+            unk "Não é o que você procura."
+            jump corredor_esperanca
+
+        "{b}Inspecionar as portas laterais{b}":
+            unk "Cada porta do corredor parece idêntica, mas, ao tocá-las, você sente resistência. Algumas estão trancadas, outras parecem apenas ilusões; seus dedos passam direto através delas. O som de algo se arrastando pode ser ouvido, mas nunca fica claro de onde vem."
+            
+            unk "Não é o que você procura."
+            jump corredor_esperanca
+
+        "{b}Inspecionar a porta central{b}":
+            unk "As fechaduras enferrujadas emitem um leve calor, um contraste com o frio do corredor. Cada uma parece pulsar, como se estivesse viva. Você tenta forçar a porta, mas ela não cede. Um som estranho escapa das fechaduras, como um sussurro."
+            
+            unk "Não é o que você procura."
+            jump corredor_esperanca
+
+        "{b}Voltar para o quarto{b}":
+            scene quarto_probido_entrada
+            jump minigame_esperanca
+
+        "{b}Voltar para o Convés{b}":
+            jump conves_esperanca
+
+label conves_esperanca:
+    scene conves
+
+    menu escolhas_conves_esperanca:
+        "{b}Inspecionar as marcas no chão{b}":
+            unk "As marcas parecem aleatórias à primeira vista, mas, ao observá-las mais de perto, você percebe padrões. Palavras como 'fuga', 'ciclo' e 'mentira' aparecem, mas estão incompletas. Quando você tenta seguir o padrão, elas desaparecem."
+
+            unk "Não é o que você procura."
+
+            jump escolhas_conves_esperanca
+
+        "{b}Inspecionar os mastros{b}":
+            unk "Os mastros do convés parecem altos demais, como se tocassem algo além do céu. Há cordas penduradas, balançando lentamente, mesmo sem vento. Uma sensação de desconforto cresce conforme você olha para eles, mas não há nada que você possa alcançar."
+            
+            unk "Não é o que você procura."
+
+            jump escolhas_conves_esperanca
+
+        "{b}Inspecionar o horizonte{b}":
+            unk "Você olha para o horizonte e percebe algo estranho: ele não se move. Não importa o quanto o navio balance, o horizonte permanece fixo, como uma pintura malfeita. Sua mente começa a vagar, e uma vertigem toma conta de você."
+            
+            unk "Não é o que você procura."
+
+            jump escolhas_conves_esperanca
+
+        "{b}Voltar para o corredor{b}":
+            jump corredor_esperanca
+
+        "{b}Voltar para a Cabine{b}":
+            jump cabine_esperanca
+
+
+label cabine_esperanca:
+    scene cabine_com_figura
+    
+    menu escolhas_cabine_esperanca:
+        "{b}Inspecionar a figura bizarra{b}":
+            unk "Você se aproxima da figura. Seus traços são indistinguíveis, como se alguém tivesse tentado desenhá-la e apagado várias vezes. Ao se aproximar, ela se mantém imóvel."
+            
+            figura "Quem é você?"
+
+            # em vermelho, leitura não imediata de preferencia )
+            figura "Você sou eu&UUU&uuQ&**&QYO&######@@@@@!!!¨¨*"
+
+            scene cabine_sem_figura with fade_in
+            
+            unk "O som reverbera pela sala antes de ela desaparecer como poeira ao vento."
+
+            unk "Não é o que você procura."
+
+            jump escolhas_cabine_esperanca
+
+        "{b}Inspecionar os mapas na mesa{b}":
+            unk "Você olha para os mapas, mas eles não fazem sentido. Os traços parecem formar rotas impossíveis, que terminam em círculos ou espirais. Alguns pontos marcados com 'X' parecem se mover enquanto você observa."
+            
+            unk "Não é o que você procura."
+
+            jump escolhas_cabine_esperanca
+
+        "{b}Inspecionar o diário no chão{b}":
+            unk "Um diário velho e rasgado está no chão. Quando você o abre, não há palavras; apenas páginas encharcadas que escorrem água entre os dedos. O som da água ecoa pela sala."
+            
+            unk "Não é o que você procura."
+    
+            jump escolhas_cabine_esperanca
+
+        "{b}Voltar para o Corredor{b}":
+            jump conves_esperanca
+
+    # ----------------------------------------------------------------------------------------- Obs: se contador bater cena de body horror e game over
+
+label olhar_retrato_mulher_2_vez:
+    # Inspecionando o Retrato da Mulher (Segunda Vez)
+
+    jogador "Algo naquele retrato... Não consigo tirar da cabeça. Preciso vê-lo novamente."
+
+    ed "Você se aproxima do retrato à esquerda mais uma vez. Desta vez, a sensação é diferente. A moldura parece pulsar suavemente, e o olhar da mulher não é mais vazio. Há algo mais profundo ali, algo que te chama."
+
+    ship "Ah, de volta ao mesmo lugar. Você achou que um olhar mais atento revelaria algo novo? Você é previsível. Sempre voltando às suas culpas. Você toca a moldura do retrato, e imediatamente sente uma onda de calor percorrer sua mão. A superfície do quadro parece se dissolver, e uma visão toma conta de sua mente."
+
+    ed "Não há mais o que fazer. Tenha cuidado, porque a verdade nunca vem sem um preço. O que você vê agora é o que você sempre soube... e sempre temeu. Você está parado no convés. Enquanto uma tempestade cai, diante de você se apresenta a mulher do retrato, seus olhos cheios de lágrimas e medo. Ela grita algo, mas o som é abafado pelo vento. Você sente o peso do metal em sua mão – um objeto que só pode ser descrito como um instrumento de morte."
+
+    ship "Você lembra agora, não é? Foi você que a trouxe aqui, você que segurou a arma, você que decidiu seu destino. Você vê a si mesmo empurrando a mulher para trás. Ela tropeça, seu corpo batendo contra o convés. A tempestade consome tudo, mas você ouve o som claro de algo quebrando. Você grita – não por arrependimento, mas por raiva. O momento congela, e o cenário se desfaz como vidro estilhaçado. De volta ao retrato, você percebe que ele agora está vazio. A mulher se foi, deixando apenas um pedaço de papel dobrado na moldura. Você o pega."
+
+    ed "Ah, então você encontrou um fragmento da realidade. Um fragmento que confirma aquilo que você já sabia, mas fingiu esquecer. O sangue naquele convés, o silêncio neste navio... tudo isso é sua criação. O papel tem apenas três palavras escritas: 'Eu perdoo você.' Mas, ao ler, o papel desintegra-se em pó, como se nunca tivesse existido."
+
+    ed "Ah, ele começa a entender. Mas será que já percebeu quem realmente está conduzindo esse ciclo?"
+
+    ed "E aí está você. As escolhas que você tanto procura... sempre foi uma ilusão. O que você não entende é que o navio já está afundando desde o começo. Tudo o que você fez, todas as tentativas, levaram você de volta ao mesmo ponto. A rachadura, a mulher, o barco afundando... Não há saída, nunca houve. Você nunca quis saber quem quebrou a janela? Quem deixou a água entrar? Mas, ei, talvez isso não importe mais. Afinal, o barco afundará, com ou sem rachaduras."
+
+    ship "Pobre Ed. Sempre tentando levar os outros ao 'entendimento'. Mas é engraçado... o ciclo não é escolha dele, nem sua. É escolha de algo maior. Talvez você descubra isso... na próxima vez."
+
+    ship "Outra tentativa. Outro fracasso. Mas, como sempre, ele tentará de novo."
+
+    ed "E, talvez, um dia, ele veja o reflexo completo."
+
+    unk "O ciclo continua."
+    
+    jump start
+
+    # ========================================================================================
+label correr_para_quarto:
+    ed "Você decide correr para o seu quarto, deixando a rachadura e a água para trás. Seus passos ecoam no corredor alagado do barco, o som da água se intensificando a cada pisada. Há algo de urgente em sua corrida, como se estivesse fugindo de algo maior que você mesmo, mas, ao mesmo tempo, você sente uma estranha calmaria, como se fosse a última coisa que pudesse fazer."
+
+    ship "Você corre, mas a cada passo sente que o corredor está se esticando. Ele parece nunca terminar, cada porta e cada janela surgem mais distantes, como se o espaço estivesse sendo distorcido, afastando o objetivo cada vez mais. O som da água atrás de você ecoa mais alto, mas algo está estranho. Você não está indo a lugar algum. Olha o que acontece quando você tenta: o corredor se estica, se alonga, e a porta nunca chega."
+
+    ed "Você olha para frente e vê duas opções. Seguir adiante para a porta, cada vez ficando mais imperceptível, e o reflexo do vidro quebrado, que reflete sua figura distorcida."
+    
+    menu escolha_esperanca_2:
+        "{b}Voltar a escolha 1{b}":
+            jump escolha_1_esperanca
+
+        "{b}Continuar Correndo para o Quarto{b}":
+            ed "Você decide seguir em frente. Cada passo agora parece ser uma tentativa desesperada de continuar, mas o corredor nunca acaba. Você sente o peso da água subindo pelas suas pernas, seu corpo ficando mais pesado, mas ainda assim não para de correr. O corredor nunca termina, e você nunca vai chegar aonde quer. Você está apenas adiando o inevitável."
+
+            ship "Corra, corra até não poder mais. O corredor continua a se esticar, e você sente o peso da água aumentar enquanto corre. A cada passo, você afunda mais, e o som da água se mistura com sua respiração ofegante. Mas algo está acontecendo: a água começa a envolver seu corpo, sua respiração fica mais pesada, e você percebe que está sendo arrastado pela correnteza."
+
+            jogador" ahgh...?"
+
+            ship "Você tenta gritar, mas a água invade sua boca. A visão começa a turvar, e a sensação de afogamento se torna imersiva. O corredor se estende ainda mais enquanto você, incapaz de se mover, é finalmente consumido pela água. O som da água é tudo o que resta, e você percebe que nunca realmente escapou. Você morre afogado, e o ciclo, como sempre, reinicia. A água está à sua volta novamente, o navio sempre afundando, sempre repetindo. Mas algo em seu peito parece saber que nada disso vai mudar."
 
     jump start
 
+
+#########################################################################################################################################
 #---------------------------------------------------------------------------------------------------------------------------------
 # ROTA TRISTEZA #
 

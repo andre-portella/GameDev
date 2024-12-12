@@ -2,7 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 3179: Indentation mismatch.
+File "game/script.rpy", line 1108: end of line expected.
+    unk "Você olha para os mapas, mas eles não fazem sentido. Os traços parecem formar rotas impossíveis, que terminam em círculos ou espirais. Alguns pontos marcados com "X" parecem se mover enquanto você observa."
+                                                                                                                                                                            ^
 
 Ren'Py Version: Ren'Py 8.2.2.24061201
-Thu Dec 12 00:54:38 2024
+Thu Dec 12 02:24:53 2024
