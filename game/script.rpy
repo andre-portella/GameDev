@@ -581,7 +581,7 @@ label desistir_conserto:
             jump voltar_corredor
 
         "{b}Desistir.{b}":
-            jump rota_tristeza
+            jump rota_tristeza_desistencia
 
     label voltar_corredor:
         jogador "Preciso vedar logo essa rachadura." with dissolve
@@ -699,7 +699,6 @@ label aproximar_porta:
         "{b}Entrar no quarto{b}":
             jump Entrar_quarto_proibido
     
-    ed "test"
 
 label op_exp_ouvir_porta:
     jogador "Espera, que barulho é esse? Está vindo de dentro do quarto..." with dissolve
@@ -1028,7 +1027,6 @@ label rota_tristeza_desperdicio:
     jogador "Eu sinto muito, Ed…"
 
     ship "O corpo dele já se encontra nas águas. E as preocupações que tanto nos assombraram foram esquecidas."
-
 
     jump start
 
@@ -2554,11 +2552,3 @@ label continuar_escolha:
 #  musica da balada, musica morte da maria
 # FIM ROTA RAIVA #
 #---------------------------------------------------------------------------------------------------------------------------------
-
-
-label rota_tristeza:
-
-    jump start
-
-
-return

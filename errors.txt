@@ -2,17 +2,7 @@
 errors listed below, and try again.
 
 
-The label escolher_porta_1 is defined twice, at File "game/script.rpy", line 1593:
-    menu escolher_porta_1:
-and File "game/script.rpy", line 1621:
-    menu escolher_porta_1:
-
-
-The label escolhas_principais_raiva_2 is defined twice, at File "game/script.rpy", line 1816:
-    menu escolhas_principais_raiva_2:
-and File "game/script.rpy", line 2172:
-    menu escolhas_principais_raiva_2:
-
+File "game/script.rpy", line 3179: Indentation mismatch.
 
 Ren'Py Version: Ren'Py 8.2.2.24061201
-Thu Dec 12 00:02:13 2024
+Thu Dec 12 00:54:38 2024
