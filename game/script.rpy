@@ -1557,7 +1557,7 @@ label cena_tres_portas:
 
     jogador "Hm? Por que eu iria?"
 
-    ship "Porque é a primeira, é o que todo mundo escolheira, não?"
+    ship "Porque é a primeira, é o que todo mundo escolheria, não?"
 
     jogador "Do que você está falando? Inclusive..."
 
@@ -1571,7 +1571,7 @@ label cena_tres_portas:
 
     ed "Hm? Por que você diz isso? Não faz muito sentido"
 
-    ship "Sim, realmente não faz muito, deve ser alguma estranheza sua rapaz"
+    ship "Sim, realmente não faz muito, deve ser alguma estranheza sua, rapaz"
 
     jogador "Tá, talvez isso seja estranho, mas tenho a impressão de que eu estou sobrevivendo aqui"
 
@@ -1672,15 +1672,21 @@ label ficar_minigame3:
 
     ship "Que droga, Caronte, qual é o seu problema?"
 
-    jogador "Nada. Vocês que são estranhos. isso tudo estranho por que vocês querem que eu entre no quarto?"
+    jogador "Nada. Vocês que são estranhos. Isso tudo estranho por que vocês querem que eu entre no quarto?"
 
     ed "Você pode fazer o que você quiser, mas a gente ainda não apoia essa ideia. Não tem nada lá dentro, por que nos importaríamos?"
 
-    ship "toda porta que a gente mandar você entrar você vai nas outras? É isso?"
+    ship "Toda porta que a gente mandar você entrar você vai nas outras? É isso?"
 
     jogador "Não se preocupe, eu vou ir na certa agora. Qual eu deveria entrar?"
 
     ship "É.... claro... Entra na terceira porta então"
+
+    scene black
+
+    pause 0.2
+
+    scene tres_portas
 
     menu escolher_porta_3:
         "{b}Entrar porta 1{b}":
@@ -1703,7 +1709,7 @@ label ficar_minigame4:
 
     jogador "Em um momento vocês não querem que eu entre no quarto de jeito nenhum, depois o quarto inteiro desaparace e vocês dizem que é 'só uma brincadeira da minha mente ou sei lá o que'"
 
-    jogador "Agora eu 'desapareço do quarto' e fica preso em um ciclo de portas infinitas, sendo que claramente tem algo de errado com uma das portas, mas essa fica mudando. Algo assim"
+    jogador "Agora eu 'desapareço do quarto' e fico preso em um ciclo de portas infinitas, sendo que claramente tem algo de errado com uma das portas, mas essa fica mudando. Algo assim"
 
     ed "Hm... você não disse nada na verdade, não tem nada em sua linha de raciocínio que diga que a gente está te trocando de lugar, não tem nem como fazermos isso"
 
@@ -1730,6 +1736,8 @@ label ficar_minigame5:
 
     ed "Você se levanta e escolhe a terceira porta. Lá você fica no quarto escuro por um tempo. Depois nada acontece"
 
+    scene quarto_escuro
+
     ed "Estamos no quarto escuro de novo"
 
     jogador "Hm... Olha só, parece que funcionou, não?"
@@ -1751,7 +1759,7 @@ label parte_da_dor_fim_minigame_volta_para_quarto_escuro:
 
     ed "Sim... nada aqui ainda"
 
-    jogador "Entendo, vou caminha por ele, então...."
+    jogador "Entendo, vou caminhar por ele, então...."
 
     ship "Ok... como quiser"
 
@@ -1807,11 +1815,13 @@ label parte_da_dor_fim_minigame_volta_para_quarto_escuro:
             jump ficar_quarto_4
 
 label sair_minigame:
-    ed "voce esta no corredor. Voce vira e as tres portas naõ estão mais ali, tem apenas uma"
+    ed "Você esta no corredor. Você vira e as tres portas não estão mais ali, tem apenas uma"
 
-    jogador "o que? algo mudou"
+    jogador "O que? algo mudou"
 
-    ship "voce tenta abrir essa porta de novo e ela nao abre, a macaneta sequer gira. Não importa o quanto voc tente essas porta nunca mais vai abrir"
+    # play sound porta_fechada
+
+    ship "Você tenta abrir essa porta de novo e ela nao abre, a macaneta sequer gira. Não importa o quanto você tente essa porta nunca mais vai abrir"
 
     #trocar por jump menu tal escolhas_principais_raiva_2
     menu escolhas_principais_raiva_3:
