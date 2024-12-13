@@ -219,6 +219,8 @@ init python:
 
     olhou_retrato_mulher = False
 
+    max_tentativas = 3
+
     contador_esperanca = 0
 
     #Não entrar no quarto proibido ate o jogador decidir se abre a porta ou não
@@ -973,6 +975,13 @@ label rota_esperanca:
             jump correr_para_quarto
 
 
+label acabou_tempo_esperanca:
+    scene boneco_distorcido
+
+    pause 2.0
+
+    jump start
+
 label tocar_rachadura:
     ed "Sabia que você faria isso. Às vezes, a tentação de encarar a verdade é maior que a dor de viver na mentira. O ambiente à sua volta pulsa, e a rachadura parece chamá-lo, como uma promessa de algo maior ou talvez mais perturbador. Você estende a mão, hesitante, e o reflexo de Edte empurrar para frente."
 
@@ -995,19 +1004,32 @@ label tocar_rachadura:
     # ------------------------------------------------------------------------------------------
     menu minigame_esperanca:
         # Quarto -  #
+
         "{b}Inspecionar os móveis destruídos{b}":
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             unk "Você se ajoelha próximo aos móveis destruídos. Um pedaço de madeira parece ter sido arrancado com violência, deixando farpas que apontam como lanças. Há algo estranho na forma como o sangue seco mancha o material, quase como se formasse palavras... mas, ao tocar, tudo desaparece como poeira."
 
             unk "Não é o que você procura."
 
             jump minigame_esperanca
         "{b}Inspecionar os retratos a direita{b}":
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             unk "O retrato da família o encara com uma intensidade silenciosa. Os rostos, embora manchados e indistintos, parecem mudar ligeiramente de expressão toda vez que você desvia o olhar. Há algo perturbadoramente familiar neles. Você sente uma conexão, mas não consegue definir o motivo."
 
             unk "Não é o que você procura."
 
             jump minigame_esperanca
         "{b}Inspecionar o sangue que mancha o chão{b}":
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             unk "Você se aproxima da mancha no chão. O sangue não está seco como deveria; ele brilha, viscoso, refletindo uma luz que não existe no ambiente. Quanto mais você olha, mais parece que está se movendo, como se tentasse formar algo vivo. Quando tenta tocar, a mancha simplesmente se dissolve em nada."
             
             unk "Não é o que você procura."
@@ -1015,6 +1037,10 @@ label tocar_rachadura:
             jump minigame_esperanca
         
         "{b}Inspecionar o retrato a esquerda{b}": #
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             if olhou_retrato_mulher == False:
                 $ olhou_retrato_mulher = True
                 unk "O retrato o observa com um olhar vazio, mas há algo familiar nele. Ao chegar mais perto, você percebe que o rosto no quadro... é o seu. Mas há algo errado: os olhos estão completamente pretos, e o sorriso que ele ostenta é de puro escárnio. Quando tenta tocá-lo, o quadro parece se desfazer em uma névoa."
@@ -1035,18 +1061,30 @@ label corredor_esperanca:
 
     menu escolhas_corredor_esperanca:
         "{b}Inspecionar a janela quebrada{b}":
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             unk "Você olha pela janela, mas a escuridão do mar não revela nada além de um vazio avassalador. A água que entra tem um cheiro de ferrugem e podridão. Tentar olhar mais fundo causa uma leve vertigem, e você decide desviar o olhar."
             
             unk "Não é o que você procura."
             jump corredor_esperanca
 
         "{b}Inspecionar as portas laterais{b}":
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             unk "Cada porta do corredor parece idêntica, mas, ao tocá-las, você sente resistência. Algumas estão trancadas, outras parecem apenas ilusões; seus dedos passam direto através delas. O som de algo se arrastando pode ser ouvido, mas nunca fica claro de onde vem."
             
             unk "Não é o que você procura."
             jump corredor_esperanca
 
         "{b}Inspecionar a porta central{b}":
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             unk "As fechaduras enferrujadas emitem um leve calor, um contraste com o frio do corredor. Cada uma parece pulsar, como se estivesse viva. Você tenta forçar a porta, mas ela não cede. Um som estranho escapa das fechaduras, como um sussurro."
             
             unk "Não é o que você procura."
@@ -1064,6 +1102,10 @@ label conves_esperanca:
 
     menu escolhas_conves_esperanca:
         "{b}Inspecionar as marcas no chão{b}":
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             unk "As marcas parecem aleatórias à primeira vista, mas, ao observá-las mais de perto, você percebe padrões. Palavras como 'fuga', 'ciclo' e 'mentira' aparecem, mas estão incompletas. Quando você tenta seguir o padrão, elas desaparecem."
 
             unk "Não é o que você procura."
@@ -1071,6 +1113,10 @@ label conves_esperanca:
             jump escolhas_conves_esperanca
 
         "{b}Inspecionar os mastros{b}":
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             unk "Os mastros do convés parecem altos demais, como se tocassem algo além do céu. Há cordas penduradas, balançando lentamente, mesmo sem vento. Uma sensação de desconforto cresce conforme você olha para eles, mas não há nada que você possa alcançar."
             
             unk "Não é o que você procura."
@@ -1078,6 +1124,10 @@ label conves_esperanca:
             jump escolhas_conves_esperanca
 
         "{b}Inspecionar o horizonte{b}":
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             unk "Você olha para o horizonte e percebe algo estranho: ele não se move. Não importa o quanto o navio balance, o horizonte permanece fixo, como uma pintura malfeita. Sua mente começa a vagar, e uma vertigem toma conta de você."
             
             unk "Não é o que você procura."
@@ -1096,6 +1146,10 @@ label cabine_esperanca:
     
     menu escolhas_cabine_esperanca:
         "{b}Inspecionar a figura bizarra{b}":
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             unk "Você se aproxima da figura. Seus traços são indistinguíveis, como se alguém tivesse tentado desenhá-la e apagado várias vezes. Ao se aproximar, ela se mantém imóvel."
             
             figura "Quem é você?"
@@ -1112,6 +1166,10 @@ label cabine_esperanca:
             jump escolhas_cabine_esperanca
 
         "{b}Inspecionar os mapas na mesa{b}":
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             unk "Você olha para os mapas, mas eles não fazem sentido. Os traços parecem formar rotas impossíveis, que terminam em círculos ou espirais. Alguns pontos marcados com 'X' parecem se mover enquanto você observa."
             
             unk "Não é o que você procura."
@@ -1119,6 +1177,10 @@ label cabine_esperanca:
             jump escolhas_cabine_esperanca
 
         "{b}Inspecionar o diário no chão{b}":
+            $ contador_esperanca = contador_esperanca + 1
+            if contador_esperanca == max_tentativas:
+                jump acabou_tempo_esperanca
+
             unk "Um diário velho e rasgado está no chão. Quando você o abre, não há palavras; apenas páginas encharcadas que escorrem água entre os dedos. O som da água ecoa pela sala."
             
             unk "Não é o que você procura."
