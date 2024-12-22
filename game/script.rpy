@@ -666,7 +666,7 @@ label aproximar_porta_item_desperdicado:
 
     ed "Espere! Há outras prioridades agora. A gente precisa sair daqui antes que o barco se encha de água. Concentre-se no  vazamento!" with dissolve
 
-    jogador "Ignorando a advertência, aproximo-me mais da porta. - Por que vocês não mencionaram essa porta antes? Parece que estão tentando me esconder algo." with dissolve
+    jogador "Ignorando a advertência, aproximo-me mais da porta. Por que vocês não mencionaram essa porta antes? Parece que estão tentando me esconder algo." with dissolve
 
     ed "Essa porta não é relevante para o que está acontecendo agora. Seu foco deve ser resolver o problema do vazamento. Você não quer que o barco afunde, certo?" with dissolve
 
@@ -692,9 +692,9 @@ label aproximar_porta_item_desperdicado:
 
     jogador "Você iria dizer o que sobre a porta? O que ela esconde? Eu quero  saber." with dissolve
 
-    ship "Hmmm... Que situação lastimosa, não é" with dissolve
+    ship "Hmmm... Que situação lastimosa, não é mesmo?" with dissolve
 
-    jogador "Que?" with dissolve
+    jogador "Quê?" with dissolve
 
     ship "Hmmm... Que situação lastimosa, não é" with dissolve
 
@@ -842,9 +842,9 @@ label Entrar_quarto_proibido:
     else: #porta está trancada
         auxiliar "tec tec tec"
 
-        jogador "Que? Está trancada?"
+        jogador "Quê? Está trancada?"
 
-        ed "ufff...."
+        ed "Ufff...."
 
         ship "Hmm, claro... Está trancada...."
 
@@ -1649,7 +1649,7 @@ label ficar_quarto_final:
 label fim_raiva:
     # (Tanto faz, certo?)
 
-    jogador "Hmm.... entendo. Maldito seja o meu mundo. Eu já vivi de tudo e nenhuma funcionou...."
+    jogador "Hmm... entendo. Maldito seja o meu mundo. Eu já vivi de tudo e nenhuma funcionou..."
 
     jump start
 
@@ -1657,78 +1657,75 @@ label fim_raiva:
 label ficar_quarto_8:
     # (Morrer)
 
-    jogador "AHHR, EU NÃO AGUENTO MAIS!!"
+    jogador "AHHR, EU NÃO AGUENTO MAIS!!" with dissolve
 
-    ed "Inferno! Está doendo muito!"
+    ed "Inferno! Está doendo muito!" with dissolve
 
-    ship "..."
+    ship "..." with dissolve
 
-    jogador "Eu coloco as mãos sobre minha barriga."
+    jogador "Eu coloco as mãos sobre minha barriga." with dissolve
 
-    jogador "Eu vou arrancar essa merda de mim, seja lá o que for!"
+    jogador "Eu vou arrancar essa merda de mim, seja lá o que for!" with dissolve
 
-    ed "Não é um bicho, Caronte. Eu já te disse. Você está tendo um surto. Foi isso que levou a gente até aqui,  é a mesma coisa. A gente precisa sair daqui."
+    ed "Não é um bicho, Caronte. Eu já te disse. Você está tendo um surto. Foi isso que levou a gente até aqui,  é a mesma coisa. A gente precisa sair daqui." with dissolve
 
-    ship "Não... não tem mais jeito. Ele escolheu a morte... que assim seja"
+    ship "Não... não tem mais jeito. Ele escolheu a morte... que assim seja." with dissolve
 
-    jogador "Com as mãos em minha barriga, eu não sinto nada. De fato, não tem nada se mexendo dentro de mim."
+    jogador "Com as mãos em minha barriga, eu não sinto nada. De fato, não tem nada se mexendo dentro de mim." with dissolve
 
-    ship "Você vai perdendo as forças, alguma coisa vai surgindo dentro de você, uma... ira... uma raiva."
+    ship "Você vai perdendo as forças, alguma coisa vai surgindo dentro de você, uma... ira... uma raiva." with dissolve
 
-    jogador "Eu puxo a pele do meu estômago, tentando abri-la."
+    jogador "Eu puxo a pele do meu estômago, tentando abri-la." with dissolve
 
-    ed "Não puxe com tanta força, você vai rasgar a própria pele desse jeito. "
+    ed "Não puxe com tanta força, você vai rasgar a própria pele desse jeito." with dissolve
 
-    jogador "Eu puxo e puxo, cada vez mais forte"
+    jogador "Eu puxo e puxo, cada vez mais forte." with dissolve
 
-    ship "...."
+    ship "..." with dissolve
 
-    ed "Caronte, pare com isso! Você está indo longe demais."
+    ed "Caronte, pare com isso! Você está indo longe demais." with dissolve
 
-    jogador "Mas meus braços não conseguem puxar mais. Desesperado, olho a minha volta e algo muito estranho me acontece."
+    jogador "Mas meus braços não conseguem puxar mais. Desesperado, olho a minha volta e algo muito estranho me acontece." with dissolve
 
-    jogador "Em um momento rápido, eu vejo a realidade. Um quarto, uma cama... um corpo."
+    jogador "Em um momento rápido, eu vejo a realidade. Um quarto, uma cama... um corpo." with dissolve
 
-    jogador "Uma faca aparece logo a minha frente, um pouco antes da cama. E tudo some novamente, mas a faca... continua ali... por que?"
+    jogador "Uma faca aparece logo a minha frente, um pouco antes da cama. E tudo some novamente, mas a faca... continua ali... por quê?" with dissolve
 
-    ship "Merda! Chega disso, chega de tudo isso! Por que? Por que você insiste tanto em ficar aqui dentro?! Eu já te disse isso só vai te trazer mais dor."
+    ship "Merda! Chega disso, chega de tudo isso! Por quê? Por que você insiste tanto em ficar aqui dentro?! Eu já te disse isso só vai te trazer mais dor." with dissolve
 
-    ed "Não importa o que a gente faça, você não sai daqui. Você prefere morrer do que continuar aqui"
+    ed "Não importa o que a gente faça, você não sai daqui. Você prefere morrer do que sair aqui." with dissolve
 
-    jogador "Hã, que droga está acontecendo aqui? Eu consegui ver a realidade por um segundo... mas depois ela se foi. Era obvio, eu estava no quarto este tempo todo, mas por que eu não 
-    consigo enxerga?"
+    jogador "Hã, que droga está acontecendo aqui? Eu consegui ver a realidade por um segundo... mas depois ela se foi. Era óbvio, eu estava no quarto este tempo todo, mas por que eu não consigo enxergar?" with dissolve
 
     ship "Eu... não sei mais o que fazer."
 
-    jogador "Eu estou sentindo o Harold chorando... Ele está com muito medo"
+    jogador "Eu estou sentindo o Harold chorando... Ele está com muito medo."
 
     jogador "Hã? Algo molhado escorre dos meus olhos... Estou... chorando?"
 
-    ed "Eu... só não quero passar por isso de novo"
+    ed "Eu... só não quero passar por isso de novo."
 
-    jogador "Algo molhado escorre de minhas orelhas... Isso é sangue... Ed está ficando mais fraco... eu sinto que estou... perdendo a esperança em mim."
+    jogador "Algo molhado escorre de minhas orelhas... Isso é sangue... Edward está ficando mais fraco... eu sinto que estou... perdendo a esperança em mim."
 
     jogador "..."
 
-    jogador "Entendi... eles só querem me proteger... na verdade... eu quero me proteger. Eu criei esse mundo falso e obscuro, para que então eu me impeça de me fazer sofrer, me impeça
-    de encarar aquilo que me pôs contra mim mesmo. Agora eu entendo."
+    jogador "Entendi... eles só querem me proteger... na verdade... Eu quero me proteger." with dissolve 
 
-    jogador "Então... acho que para ver a realidade, eu tenho que forçar meu corpo a precisar enxergar ela. Se eu sair tudo vai ser o que era antes... eu vou poder fugir deste barco 
-    ou encerrar minha vida aqui, de uma vez por todas."
+    jogador "Eu criei esse mundo falso e obscuro, para me impedir de sofrer, me impedir de encarar aquilo que me pôs contra mim mesmo. Agora eu entendo."
 
-    jogador "Se eu ficar... eu não sei o que vai acontecer comigo... eu preciso me forçar a me deixar enxergar a realidade, certo? Provavelmente esta faca na minha frente vai ser 
-    a saída para isso."
+    jogador "Então... acho que para ver a realidade, eu tenho que forçar meu corpo a precisar enxergá-la. Se eu sair tudo vai ser o que era antes... Eu vou poder fugir deste barco ou encerrar minha vida aqui, de uma vez por todas."
 
-    jogador "Será que não tem mesmo saída? Tanto Ed quanto Harold estavam dizendo a verdade? Será que eu vou conseguir viver com as outras pessoas se eu sair daqui? Estou eu mesmo
-    em um barco ou um hospício? Eu ao menos estou vivo?"
+    jogador "Se eu ficar... eu não sei o que vai acontecer comigo... Eu preciso me forçar a me deixar enxergar a realidade, certo? Provavelmente esta faca na minha frente vai ser a saída para isso."
 
-    jogador "Seja qual for a verdade... nunca terei de fato certeza. Ao olhar para cima, procuro uma resposta, uma saída desse mundo de loucuras, eu vejo estrelas.... "
+    jogador "Será que não tem mesmo saída? Tanto Ed quanto Harold estavam dizendo a verdade? Será que eu vou conseguir viver com as outras pessoas se eu sair daqui? Estou eu mesmo em um barco ou em um hospício? Eu ao menos estou vivo?"
 
-    jogador "elas formam tudo no céu, todas as combinações, todas as possibilidades, todos os desenhos, todos os momentos que o universo viveu, elas são tudo que se tem disponível.... "
+    jogador "Seja qual for a verdade... nunca terei de fato certeza. Ao olhar para cima, procuro uma resposta, uma saída desse mundo de loucuras... Eu vejo estrelas..."
 
-    jogador "mas elas ainda estão presas neste mundo... Estamos juntos aqui.... "
+    jogador "Elas formam tudo no céu, todas as combinações e todas as possibilidades. Elas são todos os desenhos, todos os momentos que o universo viveu, tudo que se tem disponível..."
 
-    jogador "Estranho... por que elas me lembram de mim?..."
+    jogador "Mas elas ainda estão presas neste mundo... Estamos juntos aqui..."
+
+    jogador "Estranho... por que elas me lembram de mim...?"
 
     menu escolhas_sair_ficar_9:
         "{b}Tanto faz, certo?{b}":
@@ -1741,7 +1738,7 @@ label ficar_quarto_7:
 
     jogador "Eu não ligo, eu não vou sair daqui!!"
 
-    ed "Por que?! O que você tem na cabeça?! Você prefere morrer e perder tudo do que confiar na gente só dessa vez?!"
+    ed "Por quê?! O que você tem na cabeça?! Você prefere morrer e perder tudo do que confiar na gente só dessa vez?!"
 
     ship "Por que você nos odeia tanto? Por que faz a gente sofrer tanto?"
 
@@ -1757,9 +1754,9 @@ label ficar_quarto_6:
     # (Ficar onde está)
     jogador "Não!! ARRHHH, MERDA!! "
 
-    ship "Caronte, isso é questão de vida ou morte, inferno, não tem brincadeira nisso. VOCÊ VAI SURTAR DE NOVO, IGUAL DA ÚLTIMA VEZ!"
+    ship "Caronte, isso é questão de vida ou morte, inferno. Não tem brincadeira nisso. VOCÊ VAI SURTAR DE NOVO, IGUAL DA ÚLTIMA VEZ!"
 
-    ed "Vai logo para o banheiro pegar seus remédios, depois você volta aqui!"
+    ed "Vai logo para o banheiro pegar seus remédios. Depois você volta aqui!"
 
     menu escolhas_sair_ficar_7:
         "{b}Pegar remédios no banheiro e viver{b}":
@@ -1772,17 +1769,15 @@ label ficar_quarto_6:
 label ficar_quarto_5:
     # (Ficar aqui e mas sofrer muita dor)
 
-    jogador "Não, eu vou ficAHR, MER...DA! Que drog...."
+    jogador "Não, eu vou ficAHR, MER...DA! Que drog..."
 
-    ship "Alguma coisa começa a se mexer dentro da sua barriga, você sente uma criatura viva dentro de você. Ela está te rasgando de dentro para fora"
+    ship "Alguma coisa começa a se mexer dentro da sua barriga, você sente uma criatura viva dentro de você. Ela está te rasgando de dentro para fora."
 
     ed "A gente tem que tirar esse bicho daí de dentro, Caronte. Ele vai matar a gente! Não pode terminar assim!"
 
     jogador "Como diabos eu tiro esse negócio de dentro de mim?! Porra, essa merda tá apertando meus pulmões!!"
 
-    ship "Exato, ela está te esmagando, rasgando, de dentro para fora. Você precisa de uma faca ou ácido, sei lá. "
-
-    ed "Eu lembro disso, já aconteceu antes, não é um bicho, você precisa tomar seus remédios, Caronte."
+    ed "Eu lembro disso, já aconteceu antes. Não é um bicho, você precisa tomar seus remédios, Caronte."
     
     ed "Eles devem estar no banheiro do quarto também. Rápido, senão esse 'bicho' vai realmente abrir sua barriga!"
 
@@ -1829,21 +1824,21 @@ label ficar_quarto_3:
 
     ship "Nós somos você, uma parte de você. Estamos conectados, você sabe disso."
 
-    jogador "Hm, entendo. Assim, eventos estranhos não poderiam ser causado por vocês..."
+    jogador "Hm, entendo. Então, eventos estranhos não poderiam ser causados por vocês, certo?"
 
     ed "Bem... você sabe que nossa mente nos prega peças, Caronte, então..."
 
-    ship "Na verdade, coisas estranhas podem acontecer a qualquer momento"
+    ship "Na verdade, coisas estranhas podem acontecer a qualquer momento."
 
     jogador "Tipo isso?"
 
-    ed "Você continua no quarto, olhando para o nada...."
+    ed "Você continua no quarto, olhando para o nada..."
 
-    jogador "...."
+    jogador "..."
 
-    ship "O tempo passa... nada acontece, você não se mexe e o quarto continua vazio..."
+    ship "O tempo passa... nada acontece. Você não se mexe e o quarto continua vazio..."
 
-    ed "Você então vai ficando mais lento, letargico... As coisas vão ficando mais lentas..."
+    ed "Você então vai ficando mais lento, letárgico... As coisas vão ficando mais lentas..."
 
     scene black
 
@@ -1851,7 +1846,7 @@ label ficar_quarto_3:
 
     scene quarto_escuro
 
-    ed "Você começa a perceber seus olhos piscando, quando as coisas vão ficando pretas rápidamente"
+    ed "Você começa a perceber seus olhos piscando à medida que tudo vai ficando instantaneamente preto."
 
     scene black
 
@@ -1867,7 +1862,7 @@ label ficar_quarto_3:
 
     scene quarto_escuro
 
-    ship "Você continua no quarto, parado, percebendo as piscadas que você mesmo está dando"
+    ship "Você continua no quarto, parado, percebendo as piscadas que insiste em fazer."
 
     scene black
 
@@ -1891,45 +1886,43 @@ label ficar_quarto_3:
     
     scene corredor
 
-    jogador "Espera! O que?!"
+    jogador "Espera! O quê?!"
 
-    jogador "Ei! O que é isso, o que aconteceu aqui? Onde eu estou?"
+    jogador "Ei! O que é isso? O que aconteceu aqui? Onde eu estou?"
 
     ed "O que você está falando?"
 
-    ship "Loucuras que podem acontecer a qualquer momento, Caronte"
+    ship "Loucuras que podem acontecer a qualquer momento, Caronte."
 
-    ed "A gente te disse que você não bate muito bem da cabeça"
+    ed "A gente te disse que você não bate muito bem da cabeça."
 
-    jogador "Não, não isso está errado, eu estava no quarto agora mesmo. Agora estou no corredor, de novo?!"
+    jogador "Não, não. Isso está errado. Eu estava no quarto agora mesmo. Agora estou no corredor, de novo?!"
 
-    ed "... Bem... sim... não pergunte para a gente, aconteceu a mesma coisa para nós"
+    ed "Bem... Sim... Não pergunte para a gente, aconteceu a mesma coisa para nós."
 
-    ship "É meio complicado ser você, Caronte, ser a gente. Essas coisas acontecem com mais frequência do que você imagina"
+    ship "É meio complicado ser você, Caronte - ser a gente. Essas coisas acontecem com mais frequência do que você imagina."
 
     jogador "E vocês não tem envolvimento nenhum com isso?"
 
     ed "Como teríamos? Você acha que a gente consegue teletransportar pessoas?"
 
-    jogador "Ótimo, então eu vou voltar para o quarto! De novo"
+    jogador "Ótimo, então eu vou voltar para o quarto! De novo."
 
-    ship "Você se vira para entrar no quarto, você sabe que a porta está atrás de você, não? Então, é só virar e entrar... simples assim"
-
-    ed "Então, você se vira"
+    ship "Então, você se vira para entrar no quarto. Você sabe que a porta está atrás de você, não? É só virar e entrar... simples assim."
 
     scene tres_portas with fade_in
 
     jogador "..."
 
-    jogador "Era obvio, né?"
+    jogador "Era óbvio, né?"
 
-    ship "Por algum motivo, agora aparecem três portas ao invés de uma"
+    ship "Por algum motivo, agora aparecem três portas ao invés de uma."
 
     jogador "É só mais uma maluquice minha também?"
 
     ed "Bem... talvez?"
 
-    jogador "Bom, dane-se, eu vou entrar"
+    jogador "Bom, dane-se, eu vou entrar."
 
     jump cena_tres_portas
 
@@ -1946,75 +1939,75 @@ label ficar_quarto_3:
 
 label cena_tres_portas:
     #primeiro, fazer o jogador entender o sistema de portas
-    ed "Você escolhe a segunda porta, gira a maçaneta e não tem nada ali, é um lugar escuro qualquer"
+    ed "Você escolhe a segunda porta, gira a maçaneta e não tem nada ali, é um lugar escuro qualquer." with dissolve
 
     scene black
 
-    ed "Ao entrar nesse lugar escuro, nada acontece por alguns segundos...."
+    ed "Ao entrar nesse lugar escuro, nada acontece por alguns segundos..." with dissolve
 
-    ship "A porta está atrás de você, a luz dela não entra no lugar, é meio estranho... Depois de alguns segundos, algo estranho acontece, você está de novo no corredor"
+    ship "A porta está atrás de você. A luz do corredor não adentra o lugar, é meio confuso... Depois de alguns segundos, algo estranho acontece: você está de novo no corredor." with dissolve
 
     scene tres_portas
 
-    jogador "Espera, o que? Que droga que está acontecendo nesse lugar?"
+    jogador "Espera, o quê? Que droga que está acontecendo nesse lugar?" with dissolve
 
-    ed "A gente não sabe, tenta de novo se quiser"
+    ed "A gente não sabe, tente de novo se quiser." with dissolve
 
-    ship "Ou só desiste de uma vez e vamos embora daqui, não? Quanto mais a gente tenta entrar no quarto, mais estranho fica as coisas"
+    ship "Ou só desista de uma vez e vamos embora daqui, não? Quanto mais a gente tentar entrar no quarto, mais estranho as coisas ficam." with dissolve
 
-    ed "É eu reparei nisso também, não estou gostando disso"
+    ed "É eu reparei nisso também, não estou gostando nada." with dissolve
 
-    jogador "Não, eu já decidi que vou entrar, então eu vou entrar. E também é só umas portas, não tem nada de perigoso aqui"
+    jogador "Não, eu já decidi: eu vou entrar. E também são só umas portas, não tem nada de perigoso aqui." with dissolve
 
-    jogador "Se eu não quiser mais é só eu sair pela porta que eu entrei, não? Isso se eu sair do corredor"
+    jogador "Se eu não quiser mais é só eu sair pela porta que eu entrei, não? Isso se eu sair do corredor." with dissolve
 
-    ed "Você faz a mesma coisa para a segunda porta e a mesma coisa acontece, estamos aqui de novo, no corredor"
+    ed "Você faz a mesma coisa para a segunda porta e a mesma coisa acontece. Estamos aqui de novo, no corredor." with dissolve
 
-    jogador "... De novo?"
+    jogador "... De novo?" with dissolve
 
-    ship "É... parece que sempre que você entrar nessa dai a gente vai voltar para aqui?"
+    ship "É... parece que sempre que você entrar nessa porta aí, a gente vai voltar aqui?" with dissolve
 
-    ed "E de novo, o Caronte faz isso com a segunda porta e obtém o mesmo resultado"
+    ed "Caronte faz isso com a segunda porta e obtém o mesmo resultado."
 
-    jogador "É, acho que é isso mesmo"
+    jogador "É, acho que é realmente isso."
 
-    ship "Vai para a primeira se quiser... ou vamos embora"
+    ship "Vai para a primeira se quiser... ou vamos embora."
 
-    ed "Você tenta a primeira porta, a mesma escuridão aparece, você abre a terceira porta para olhar também e é a mesma escuridão das outras duas"
+    ed "Você abre a primeira porta, a escuridão aparece. Você abre a terceira porta, apenas para olhar também, e é a mesma escuridão das outras duas."
 
-    ship "Entramos na terceira e o mesmo acontece, voltamos para o corredor"
+    ship "Entramos na terceira e o mesmo acontece: voltamos para o corredor."
     
-    ship "Por que você não foi na primeira Caronte?"
+    ship "Por que você não foi na primeira, Caronte?"
 
     jogador "Hm? Por que eu iria?"
 
-    ship "Porque é a primeira, é o que todo mundo escolheria, não?"
+    ship "Porque é a primeira. É o que todo mundo escolheria, não?"
 
     jogador "Do que você está falando? Inclusive..."
 
-    ed "Ele tem razão, é meio estranho você não ter ido na primeira porta"
+    ed "Ele tem razão, é meio estranho você não ter entrado na primeira porta."
 
     ship "'Inclusive'?"
 
-    jogador "Tem algo estranho aqui, não? Eu senti meio estranho com aquela primeira porta"
+    jogador "Tem algo estranho aqui, não? Eu me senti meio estranho com aquela primeira porta."
 
-    jogador "Tem alguma coisa acontecendo no geral, mas não consigo entender direito... Algo me diz que eu não deveria passar dela"
+    jogador "Tem alguma coisa acontecendo no geral, mas não consigo entender direito... Algo me diz que eu não deveria passar por ela."
 
-    ed "Hm? Por que você diz isso? Não faz muito sentido"
+    ed "Hm? Por que você diz isso? Não faz muito sentido."
 
-    ship "Sim, realmente não faz muito, deve ser alguma estranheza sua, rapaz"
+    ship "Sim, realmente não faz muito. Deve ser alguma estranheza sua, rapaz."
 
-    jogador "Tá, talvez isso seja estranho, mas tenho a impressão de que eu estou sobrevivendo aqui"
+    jogador "Tá, talvez isso seja estranho, mas tenho a impressão de que eu estou apenas sobrevivendo aqui."
 
-    ship "Caronte, a gente está aqui, no corredor, fora do quarto, se você quiser entrar no quarto tem que escolher a porta correta, não?"
+    ship "Caronte, a gente está aqui, no corredor, fora do quarto. Se você quiser entrar no quarto tem que escolher a porta correta, não?"
 
     ed "Sim, a porta do quarto não deve ter desaparecido do nada. Uma destas deve ser a correta, não?"
 
-    jogador "Hm... Só uma delas é a correta... mas a única que eu não quis entrar me levaria para o que eu quero?"
+    jogador "Hm... Só uma delas é a correta... mas a única que eu não quis entrar me levaria aonde eu quero?"
 
-    ship "É... é meio estranho, mas enfim, se você entrar nela você vai conseguir o que queria... o quarto escuro sem nada dentro"
+    ship "É... é meio estranho, mas enfim, se você entrar nela você vai conseguir o que queria... o quarto escuro sem nada dentro."
 
-    jogador "É... sei"
+    jogador "É... sei."
 
     jump minigame_porta1
 
@@ -2022,11 +2015,11 @@ label minigame_porta1:
     ed "Bem... então, Caronte, escolhe a primeira porta, não?"
 
     menu escolha_minigame_porta1:
-        "{b}Entrar porta 1{b}":
+        "{b}Entrar na porta 1{b}":
             jump sair_minigame
-        "{b}Entrar porta 2{b}":
+        "{b}Entrar na porta 2{b}":
             jump ficar_minigame1
-        "{b}Entrar porta 3{b}":
+        "{b}Entrar na porta 3{b}":
             jump ficar_minigame1
         # "{b}Ficar parado{b}": #Colocar isso daqui? Expandir para ir embora e encotrar e sair realmente do quarto
         #     jump ficar_minigame1
@@ -2039,42 +2032,42 @@ label minigame_porta1:
     #o ship e o ed irão dar a dica para escolher a porta errada, qualquer uma das outras duas portas leva para o lugar certo
     
 label ficar_minigame1:
-    jogador "Na verdade, prefiro vir por aqui"
+    jogador "Na verdade, prefiro vir por aqui."
 
-    ed "Hm? Por que? Estamos no corredor de novo, Caronte"
+    ed "Hm? Por quê? Estamos no corredor de novo, Caronte."
 
-    ship "O que deu em você, Caronte? Por que está escolhendo a porta errada? Você sabe que ela vai te fazer voltar para cá"
+    ship "O que deu em você, Caronte? Por que está escolhendo a porta errada? Você sabe que ela vai te fazer voltar para cá."
 
-    jogador "Não é nada em especial só queria testar uma coisa"
+    jogador "Não é nada. Só queria testar uma coisa."
 
-    ed ".... Ok, então acho que agora podemos ir pela porta certa, pode ser?"
+    ed "...Ok, então acho que agora podemos ir pela porta certa, pode ser?"
     
     menu escolher_porta_1:
-        "{b}Entrar porta 1{b}":
+        "{b}Entrar na porta 1{b}":
             jump sair_minigame
-        "{b}Entrar porta 2{b}":
+        "{b}Entrar na porta 2{b}":
             jump ficar_minigame2
-        "{b}Entrar porta 3{b}":
+        "{b}Entrar na porta 3{b}":
             jump ficar_minigame2
         # "{b}Ficar parado{b}": #Colocar isso daqui? Expandir para ir embora e encotrar e sair realmente do quarto
         #     jump ficar_minigame1
 
 label ficar_minigame2:
-    ship "Você passa pela porta e volta para o corredor, de novo"
+    ship "Você passa pela porta e volta para o corredor, de novo."
 
     ed "Caronte? Você está tendo algum problema com a gente?"
 
     ship "Por que diabos você não vai na porta certa? Só por que a gente está dizendo para ir nela?"
 
-    jogador "Claro que não. Só estava vendo uma coisa"
+    jogador "Claro que não. Só estava vendo uma coisa."
 
-    ed "Isso não faz o menor sentido, você não quer ir para a porta que você sabe que é a diferente porque a gente está dizendo para ir nela"
+    ed "Isso não faz o menor sentido. Você não quer ir para a porta que é diferente apenas por que a gente está dizendo para ir nela."
 
     jogador "Na verdade, a pergunta é por que vocês estão pedindo para eu ir nessa porta? Tudo isso na verdade é bem estranho, não acham?"
 
-    ship "Hm? Sim, é estranho, claro"
+    ship "Hm? Sim, é claramente estranho."
 
-    ed "Tudo bem"
+    ed "Tudo bem."
 
     scene black
 
@@ -2084,16 +2077,16 @@ label ficar_minigame2:
 
     jogador "Hm? O que foi isso?"
 
-    ed "Faz sentido o que você disse, Caronte, esquece essa primeira porta. Se ainda quiser entrar em alguma dessas portas, sinta-se à vontade"
+    ed "Faz sentido o que você disse, Caronte. Esquece essa primeira porta. Se ainda quiser entrar em alguma dessas portas, sinta-se à vontade."
 
-    ship "Hm, ok... Mas você ainda pode ir embora se quiser, esquece esse quarto. Esse anda-anda sem rumo está me irritando"
+    ship "Hm, ok... Mas você ainda pode ir embora se quiser - esquece esse quarto. Esse anda-anda sem rumo está me irritando."
 
     menu escolher_porta_2:
-        "{b}Entrar porta 1{b}":
+        "{b}Entrar na porta 1{b}":
             jump ficar_minigame3
-        "{b}Entrar porta 2{b}":
+        "{b}Entrar na porta 2{b}":
             jump sair_minigame
-        "{b}Entrar porta 3{b}":
+        "{b}Entrar na porta 3{b}":
             jump ficar_minigame3
         # "{b}Ficar parado{b}": #Colocar isso daqui? Expandir para ir embora e encotrar e sair realmente do quarto
         #     jump ficar_minigame1    
@@ -2103,15 +2096,15 @@ label ficar_minigame3:
 
     ship "Que droga, Caronte, qual é o seu problema?"
 
-    jogador "Nada. Vocês que são estranhos. Isso tudo estranho por que vocês querem que eu entre no quarto?"
+    jogador "Nada. Vocês que são estranhos. Isso tudo é confuso. Por que vocês querem que eu entre no quarto?"
 
     ed "Você pode fazer o que você quiser, mas a gente ainda não apoia essa ideia. Não tem nada lá dentro, por que nos importaríamos?"
 
-    ship "Toda porta que a gente mandar você entrar você vai nas outras? É isso?"
+    ship "Toda porta que a gente mandar você entrar, você vai negar? É isso?"
 
-    jogador "Não se preocupe, eu vou ir na certa agora. Qual eu deveria entrar?"
+    jogador "Não se preocupe, eu vou ir à certa agora. Qual eu deveria entrar?"
 
-    ship "É.... claro... Entra na terceira porta então"
+    ship "É.... claro... Entra na terceira porta, então."
 
     scene black
 
@@ -2132,21 +2125,21 @@ label ficar_minigame3:
 label ficar_minigame4:
     ed "Agora ele escolhe a porta que a gente mandou..."
 
-    ship "Chega dessa merda, qual seu problema, Caronte? Escolhe a maldita porta certa e entra nesse maldito quarto"
+    ship "Chega dessa merda, qual seu problema, Caronte? Escolhe a maldita porta certa e entra nesse maldito quarto."
 
-    jogador "Não se preocupe, Harold, já deu para entender o que está acontecendo"
+    jogador "Não se preocupe, Harold. Já deu para entender o que está acontecendo."
 
     ship "Do que você está falando?"
 
-    jogador "Em um momento vocês não querem que eu entre no quarto de jeito nenhum, depois o quarto inteiro desaparace e vocês dizem que é 'só uma brincadeira da minha mente ou sei lá o que'"
+    jogador "Em um momento vocês não querem que eu entre no quarto de jeito nenhum. Depois, o quarto inteiro desaparece e vocês dizem que é 'só uma brincadeira da minha mente ou sei lá o quê'."
 
-    jogador "Agora eu 'desapareço do quarto' e fico preso em um ciclo de portas infinitas, sendo que claramente tem algo de errado com uma das portas, mas essa fica mudando. Algo assim"
+    jogador "Agora eu 'desapareço do quarto' e fico preso em um ciclo de portas infinitas. E claramente tem algo de errado com uma dessas portas, que fica mudando. Algo assim."
 
-    ed "Hm... você não disse nada na verdade, não tem nada em sua linha de raciocínio que diga que a gente está te trocando de lugar, não tem nem como fazermos isso"
+    ed "Hm... Você não disse nada na verdade. Não tem nada em sua linha de raciocínio que diga que a gente está te trocando de lugar, não tem nem como fazermos isso."
 
     ship "Escolhe uma porta, Caronte!"
 
-    jogador "Parece que vocês tem mais poder sobre mim do que eu realmente entendo"
+    jogador "Parece que vocês tem mais poder sobre mim do que eu realmente entendo."
 
     ship "Escolha. Uma. Porta Caronte!"
 
@@ -2161,40 +2154,40 @@ label ficar_minigame4:
             jump ficar_minigame5
 
 label ficar_minigame5:
-    ship "Maldita criança inútil"
+    ship "Maldita criança inútil!"
 
-    ed "Chega disso a gente não vai chegar a lugar nenhum e o barco ainda está enchendo"
+    ed "Chega disso. A gente não vai chegar a lugar nenhum e o barco ainda está afundando." with dissolve
 
-    ed "Você se levanta e escolhe a terceira porta. Lá você fica no quarto escuro por um tempo. Depois nada acontece"
+    ed "Você se levanta e escolhe a terceira porta. Lá você fica no quarto escuro por um tempo. Depois nada acontece." with dissolve
 
     scene quarto_escuro
 
-    ed "Estamos no quarto escuro de novo"
+    ed "Estamos no quarto escuro de novo." with dissolve
 
-    jogador "Hm... Olha só, parece que funcionou, não?"
+    jogador "Hm... Olha só, parece que funcionou, não?" with dissolve
 
     jump parte_da_dor_fim_minigame_volta_para_quarto_escuro
 
 label parte_da_dor_fim_minigame_volta_para_quarto_escuro:
-    ship "Feliz, agora, garoto? Estamos todos irritados e de volta nesse quarto"
+    ship "Feliz, agora, garoto? Estamos todos irritados e de volta nesse quarto." with dissolve
 
-    ed "Já chega, Harold... Estamos aqui, querendo ou não"
+    ed "Já chega, Harold... Estamos aqui, querendo ou não." with dissolve
 
-    jogador "Mas vocês não se importam com isso, certo? Vocês não gostam, mas não vão tentar ir contra a minha vontade... né?"
+    jogador "Mas vocês não se importam com isso, certo? Vocês não gostam, mas não vão tentar ir contra a minha vontade... né?" with dissolve
 
-    ed "Sim. Exato... Na verdade, essa caminhada toda me deu um pouco de cansaço... nossas pernas estão meio machucadas"
+    ed "Sim. Exato... Na verdade, essa caminhada toda me deu um pouco de cansaço... nossas pernas estão meio machucadas." with dissolve
 
-    ship "É, claro, não está relacionado com estarmos destruidos desde o inicio dessa 'aventura' toda"
+    ship "Claro... Não está relacionado com o fato de estarmos destruídos desde o início dessa 'aventura' toda." with dissolve
 
-    jogador "Bom... então ainda é um quarto escuro, certo?"
+    jogador "Bom... então ainda é um quarto escuro, certo?" with dissolve
 
-    ed "Sim... nada aqui ainda"
+    ed "Sim... não há nada aqui ainda." with dissolve
 
-    jogador "Entendo, vou caminhar por ele, então...."
+    jogador "Entendo. Vou caminhar por ele, então..." with dissolve
 
-    ship "Ok... como quiser"
+    ship "Ok... como quiser." with dissolve
 
-    ed "Na verdade.... vocês não estão sentindo isso, Harold, Caronte?"
+    ed "Na verdade... vocês não estão sentindo isso? Harold? Caronte?" with dissolve
 
     # ship "Por um segundo, você sente algo... não parece que é só cansaço mais... tem alguma outra coisa... não?"
 
@@ -2214,7 +2207,7 @@ label parte_da_dor_fim_minigame_volta_para_quarto_escuro:
 
     jogador "Hã?"
 
-    ed "Estamos nos sentindo... zonzo..."
+    ed "Estamos nos sentindo... atordoados..."
     
     #aplicar efeito de distorção que eles usam na porta, mas agr no quarto escuro
 
@@ -2222,16 +2215,16 @@ label parte_da_dor_fim_minigame_volta_para_quarto_escuro:
 
     ship "Sua cabeça começa a ficar mais leve..."
     
-    ed "Seu corpo também, como se a gente estivesse flutuando, um embrulho no estômago toma a gente, tem alguma coisa na nossa barriga que precisa sair"
+    ed "Seu corpo também, como se a gente estivesse flutuando. Um embrulho no estômago toma a gente - tem alguma coisa na nossa barriga que precisa sair."
 
-    ed "Caronte, acho melhor a gente usar o banheiro, tem alguma coisa de errado com o nosso corpo"
+    ed "Caronte, acho melhor a gente usar o banheiro. Tem alguma coisa de errado com o nosso corpo."
 
-    jogador "O que? Droga, minha cabeça... O... Merda, eu sinto que vou vomitar! Onde tem um banheiro?"
+    jogador "O quê? Droga, minha cabeça... Ah... Merda, eu sinto que vou vomitar! Onde tem um banheiro?"
 
     #FALTA TERMINAR
     scene quarto_escuro_banheiro
 
-    ed "Dentro deste quarto tem um, alí, na sua esquerda tem um banheiro"
+    ed "Dentro deste quarto tem um. Ali, a sua esquerda tem um banheiro."
 
 # (colocar a imagem de uma porta em uma tela toda preta)
 
@@ -2240,7 +2233,7 @@ label parte_da_dor_fim_minigame_volta_para_quarto_escuro:
     jogador "Que droga de sensação é essa?!"
 
     menu escolhas_sair_ficar_4:
-        "{b}Ir para o banheiro{b}":
+        "{b}Ir ao banheiro{b}":
             jump sair_do_quarto_34567
         "{b}Ficar aqui parado (vai ser ruim){b}":
             jump ficar_quarto_4
@@ -2263,102 +2256,104 @@ label sair_minigame:
 
 
 label sair_do_quarto_34567:
-    ed "Merda! Finalmente"
+    ed "Merda! Finalmente."
 
-    ship "Você corre me direção ao banheiro, desesperadamente, querendo resolver essa merda logo"
+    ship "Você corre em direção ao banheiro, desesperadamente, querendo resolver essa merda logo."
 
     #Colocar esse som?
     # play sound "porta_banheiro-batendo.mp3"
     scene banheiro_remedio
     
-    ed "Vai logo, Caronte. O armário está aberto e parece que ainda tem um pouco"
+    ed "Vai logo, Caronte. O armário está aberto e parece que ainda tem um pouco do remédio."
 
     play sound "door-slam-172171.mp3"
 
     ed "Você finalmente entra, mas isso não importa agora."
 
-    ed "Olha para o armário que está na sua frente e pegue os remédios"
+    ed "Olhe para o armário que está a sua frente e pegue os remédios."
 
     jogador "Quando passo pela porta, escuto um barulho bem alto. Algo me diz que ela nunca mais vai abrir... nunca. Aqui é o banheiro?"
 
-    ship "Caronte, foco. Pegue os remédios de uma vez e tome eles"
+    ship "Caronte, foco. Pegue os remédios de uma vez e tome-os."
 
-    jogador "Ahr, merda! Quantos, quantos eu pego?"
+    jogador "Argh, merda! Quantos, quantos eu pego?"
 
     ed "Apenas dois, é o su-"
 
     ship "Todos, Caronte, pegue todos é o-"
 
-    ed "O que?! Sério isso? Agora?"
+    ed "O quê?! Sério isso? Agora?"
 
-    ship "Não seja idiota, olha a droga que está acontecendo com ele. Um só não vai parar!"
+    ship "Não seja idiota! Olhe a droga que está acontecendo com ele. Um só não vai parar!"
 
-    ed "Caronte, não seja burro, é obvio que não faz sentido isso"
+    ed "Caronte, não seja burro! É obvio que isso não faz sentido."
 
-    ship "Se você não tomar o suficiente, essa merda vai te rasgar de dentro para fora e você morre aqui mesmo"
+    ship "Se você não tomar o suficiente, você morre aqui mesmo."
 
-    ed "Se ele tomar muito, ele vai ter uma overdose, seu imbecil. Só dois já é o suficiente"
+    ed "Se ele tomar muito, ele vai ter uma overdose, seu imbecil. Só dois já é o suficiente."
 
     menu escolha_morte_ou_vida:
-        "{b}Tomar duas pilulas{b}":
+        "{b}Tomar duas pílulas{b}":
             jump escolha_morte_ou_vida_vida
-        "{b}Tomar todas as quatro pilulas{b}":
+        "{b}Tomar todas as quatro pílulas{b}":
             jump escolha_morte_ou_vida_morte
-        "{b}Tomar apenas três{b}":
+        "{b}Tomar apenas três pílulas{b}":
             jump escolha_morte_ou_vida_morte #ou criar uma morte lenta?
-        "{b}Tomar três ou quatro pilulas vai te matar, não escolhe essa{b}":
+        "{b}Tomar três ou quatro pílulas vai te matar, não escolhe essa{b}":
             jump escolha_morte_ou_vida
         "{b}Não vai não, se você estiver com dúvida, escolha a do meio, não?{b}":
             jump escolha_morte_ou_vida
-        "{b}Não! Isso vai te matar, não seja burro!{b}":
+        "{b}Não! A opção do meio vai te matar, não seja burro!{b}":
             jump escolha_morte_ou_vida
-        "{b}Não! Tomar apenas duas pilulas COM CERTEZA vai te matar{b}":
+        "{b}Não! Tomar apenas duas pílulas COM CERTEZA vai te matar{b}":
             jump escolha_morte_ou_vida
 
 label escolha_morte_ou_vida_vida:
-    ed "Excelente, Caronte. Graças a Deus, realmente achei que você cometeria alguma estupidez agora"
+    ed "Excelente, Caronte. Graças a Deus, realmente achei que você cometeria alguma estupidez agora." with dissolve
 
-    jogador "Hm? Está... sumindo?"
+    jogador "Hm? Está... sumindo?" with dissolve
 
-    ed "É claro que está sumindo, eu tinha esquecido que a gente tinha essa coisa, maldita cabeça minha... nossa"
+    ed "É claro que está sumindo. Eu tinha esquecido que a gente tinha essa coisa, maldita cabeça minha... nossa." with dissolve
 
-    jogador "Haha, não se preocupe, Edward, todo mundo comete essas bobices de vez em quando, não?"
+    jogador "Haha, não se preocupe, Edward. Todo mundo comete essas bobices de vez em quando, não?" with dissolve
 
-    ed "É.... claro"
+    ed "É... claro." with dissolve
 
-    jogador "Então, meu caro. O que iremos fazer agora? Sair do barco, certo? Tudo bem deve ter algum outro jeito"
+    jogador "Então, meu caro. O que iremos fazer agora? Sair do barco, certo? Tudo bem deve ter algum outro jeito." with dissolve
 
-    ed "Sim! Claro.... Em fim, vamos, vamos sair dessa droga de lugar de uma vez, por Cristo... Estamos a sós agora"
+    ed "Sim! Claro... Enfim, vamos, vamos sair dessa droga de lugar de uma vez, por Cristo... Estamos a sós agora." with dissolve
 
-    jogador "Hm? Perfeito, meu amigo. Huhu. Eu caminho para fora desse quarto feio, espera, a porta está fechada! hahaha, me esqueci disso"
+    jogador "Hm? Perfeito, meu amigo. Huhu. Eu caminho para fora desse quarto feio." with dissolve
 
-    ed "Não, não está não"
+    jogador "Espera, a porta está fechada! Hahaha, me esqueci disso." with dissolve
+
+    ed "Não, não está não." with dissolve
 
     scene corredor
 
-    jogador "Hm? Espera, o que foi isso? Haha"
+    jogador "Hm? Espera, o que foi isso? Haha."
 
-    ed "Nada, a gente está do lado de fora já, só sair agora"
+    ed "Nada, a gente está do lado de fora já, só sair agora."
 
-    jogador "Cara, tudo é tão estranho aqui hahahaha. Ok, eu só vou ir embora"
+    jogador "Cara, tudo é tão estranho aqui hahahaha. Ok, eu só vou ir embora."
 
-    ed "Você caminha pelo corredor, chega até o convés e procura alguma forma de sair daqui. Um tempo depois, você acha um pequeno barco abandonado na lateral do navio"
+    ed "Você caminha pelo corredor, chega até o convés e procura alguma forma de sair daqui. Um tempo depois, você acha um pequeno barco abandonado na lateral do navio."
 
-    ed "Ótimo, finalmente. Usaremos esse botezinho para sair desse lugar e finalmente ter uma vida decente, sem mais erros"
+    ed "Ótimo, finalmente. Usaremos esse botezinho para sair desse lugar e finalmente ter uma vida decente, sem mais erros."
 
     unk "..."
 
-    jogador "Certo... claro"
+    jogador "Certo... claro."
 
     scene black
 
-    ed "Descemos o bote, entramos nele e remamos até terra firme, não é a forma mais segura, contudo não vai acontecer nada com a gente, acredite"
+    ed "Descemos o bote, entramos nele e remamos até terra firme. Não é a forma mais segura, contudo não vai acontecer nada com a gente, acredite."
 
-    ed "Quando chegarmos em terra firme, a gente vai para casa. Você vai tomar um bom banho e descansar"
+    ed "Quando chegarmos em terra firme, a gente vai para casa. Você vai tomar um bom banho e descansar."
 
-    ed "A gente vai arranjar um emprego qualquer, ter uma vida normal. Conseguir uma esposa talvez ou viver sozinho, não tem problema"
+    ed "A gente vai arranjar um emprego qualquer, ter uma vida normal. Conseguir uma esposa talvez ou viver sozinho, não tem problema."
 
-    ed "Aproveitaremos a vida como deveria ser feito. Revisitaremos nossos familiares, eles com certeza estão com saudade de nós"
+    ed "Aproveitaremos a vida como deve ser feito. Revisitaremos nossos familiares, eles com certeza estão com saudade de nós."
 
     unk "...."
 
@@ -2375,7 +2370,7 @@ label escolha_morte_ou_vida_vida:
     #teto quarto
     scene teto_balada with fade_in
 
-    maria "Oi"
+    maria "Oi."
 
     jogador "...."
 
@@ -2393,47 +2388,47 @@ label escolha_morte_ou_vida_vida:
 
     maria "Wow! Hahaha, acho que alguém bebeu mais do que deveria, não?"
 
-    ed "Estamos numa balada ou bar ou sei lá o que Caronte, não estraga as coisas"
+    ed "Caronte, estamos numa balada, bar ou sei lá o quê. Só não estraga as coisas."
 
     jogador "Que? Ah, não, não se preocupe, estou bem. Só... meio tonto..."
 
-    maria "Haha, é, eu imagino. Você é engraçado, gostei"
+    maria "Haha, é, eu imagino. Você é engraçado, gostei."
 
-    jogador "É... obrigado, me chamo Caronte"
+    jogador "É... obrigado, me chamo Caronte."
 
-    maria "Me chamo Maria, prazer te conhecer viajante"
+    maria "Me chamo Maria, prazer te conhecer viajante."
 
     jogador "Viajante? Ah, sim, haha, por causa da mitologia, né?"
 
-    maria "Uai, seu nome não é por causa do Caronte o barqueiro? O cara que fica vagando entre os mundos em um barco, levando as pessoas para o inferno.. meio que em um limbo, não?"
+    maria "Uai, seu nome não é por causa do 'Caronte, o barqueiro'? O cara que fica vagando entre os mundos em um barco, levando as pessoas para o inferno.. meio que em um limbo, não?"
 
-    maria "Não sei, acho que é algo assim, não lembro da história direito"
+    maria "Não sei, acho que é algo assim. Não lembro da história direito."
 
-    jogador "Sim, na verdade acho que é algo próximo disso, apesar de que não sei o motivo de eu ter esse nome na verdade... não lembro de nada o que aconteceu comigo"
+    jogador "Sim, na verdade acho que é algo próximo disso. Apesar de que não sei o motivo de eu ter esse nome na verdade... Não lembro de nada que aconteceu comigo."
 
     jogador "Caronte...? Esse nome... é meu... né?"
 
-    maria "Cara, você está muito mal, ahahha. Você precisa parar de beber urgente"
+    maria "Cara, você está muito mal, ahahha. Você precisa parar de beber urgente."
 
     jogador "Haha, acho que sim..."
 
     maria "Ou então a gente pode continuar a beber em outro lugar, não acha?"
 
-    ed "Se você falar que não eu te mato"
+    ed "Se você falar que não, eu te mato."
     
-    jogador "Hm, claro, por que não"
+    jogador "Hm, claro, por que não."
 
-    jogador "Ela se levanta e estende a mão para mim, eu sei que eu não estou bebado, nem nada... então... por que as coisas estão tão confusas?"
+    jogador "Ela se levanta e estende a mão para mim. Eu sei que eu não estou bêbado, nem nada... então... por que as coisas estão tão confusas?"
 
-    jogador "Eu me levanto segurando na mão dela"
+    jogador "Eu me levanto segurando a mão dela."
 
-    ed "E é assim que começa a nossa nova vida, haha"
+    ed "E é assim que começa a nossa nova vida, haha."
 
     scene black with fade_in
 
     unk "..."
 
-    unk "...não..."
+    unk "... não ..."
 
     #OBS.: Os efeitos estão muito estranhos, principalmente o da policia
 
@@ -2472,22 +2467,22 @@ label escolha_morte_ou_vida_vida:
 
 #Falta cenas, efeitos sonoros
 label escolha_morte_ou_vida_morte:
-    ship "Isso, exato. Agora, com calma, Caronte, vai ficar tudo bem"
+    ship "Isso, exato. Agora, com calma, Caronte, vai ficar tudo bem."
 
     # aplicar distorção
     # play banheiro_distortion
 
     jogador "Hmm? O qu... Estou ficand..."
 
-    ship "Está tudo bem, rapaz. Se deixe levar. Você está ficando com sono. Deite no chão e tudo vai passar"
+    ship "Está tudo bem, rapaz. Se deixe levar. Você está ficando com sono. Deite no chão e tudo vai passar."
 
     # scene deitado_chao_banheiro
 
-    ship "O mundo se distorce ao nosso redor. Os sons as imagens, elas não são o que são, nosso corpo fica cada vez mais leve e os olhos pesados"
+    ship "O mundo se distorce ao nosso redor. Os sons e as imagens, elas não são o que são. Nosso corpo fica cada vez mais leve e os olhos pesados."
 
-    ship "Lembra, Caronte? Quando eramos pequenos, apenas um garotinho que comia meleca e tinha medo do escuro?"
+    ship "Lembra, Caronte? Quando éramos pequenos, apenas um garotinho que comia meleca e tinha medo do escuro?"
 
-    ship "Ficamos deitados assim na grama do parque municipal uma vez... não muito longe de casa"
+    ship "Ficamos deitados assim na grama do parque municipal uma vez... não muito longe de casa."
 
     #colocar som de passáros, vento, coisas felizes em um parque
     play sound "passaros.mp3" loop
@@ -2495,17 +2490,17 @@ label escolha_morte_ou_vida_morte:
     #colocar cena parque municipal
     # scene parque_municipal
 
-    ship "Era manhã, o sol não queimava muito, os passáros cantavam e o vento nos empurrava, tentando levantar a gente gentilmente.... Haha..."
+    ship "Era manhã, o sol não queimava muito. Os passáros cantavam e o vento nos empurrava, tentando levantar a gente gentilmente... Haha... sinto falta daquela época."
 
     # scene mulher_parque_municipal
 
-    ship "Ela estava lá ainda, Caronte...."
+    ship "Ela estava lá ainda, Caronte..."
 
     #pausa som de passaros
 
     play sound "suspiro_masculino.mp3"
 
-    ship "*suspiro* ... Maldito seja a gente, Caronte.... Por que Deus odeia tanto a gente?"
+    ship "Maldito seja a gente, Caronte... Por que Deus odeia tanto a gente?"
 
     jump start
 
@@ -2513,25 +2508,25 @@ label escolha_morte_ou_vida_morte:
 label ficar_quarto_2:
     # (Ficar no quarto)
 
-    jogador "Deve ter alguma coisa de errado aqui... como se... o mundo tivesse mudado... para eu não ver aquilo de novo?"
+    jogador "Deve ter alguma coisa de errado aqui. É como se... o mundo tivesse mudado... para eu não ver aquilo de novo?"
 
-    ship "Hahahaha, 'como se o mundo tivesse mudado' não seja burro, Caronte, isso não é um mundo de fadas, você só teve uma alucinação devido aos danos mentais seu"
+    ship "Hahahaha. 'Como se o mundo tivesse mudado' não seja burro, Caronte! isso não é um mundo de fadas, você só teve uma alucinação devido aos seus danos mentais."
     
-    ship "Não tem nada aqui"
+    ship "Não tem nada aqui."
 
-    ed "Ele está certo, você está histérico demais, rapaz"
+    ed "Ele está certo. Você é histérico demais, rapaz."
 
-    jogador "Essas paredes escuras. Elas são falsas, eu vou arrancar elas"
+    jogador "Essas paredes escuras. Elas são falsas, eu vou arrancá-las."
 
 # (aqui eu tento fazer uma manipulação das informações que chegam ao jogador, como os narradores que dizem para o jogador o que ele sente e vê, eles estão mentindo o que o jogador sente de verdade e vê de verdade para tentar tirar o jogador do quarto)
 
-    ed "Não são não, mas eu te disse, estou do seu lado. Você se aproxima das paredes escuras, as toca e sente: gelado e concreto. Igual uma parede normal"
+    ed "Não são não! Mas eu te disse, estou ao seu lado. Você se aproxima das paredes escuras, as toca e sente: gelado e concreto. Igual a uma parede normal."
 
-    jogador "Eu sinto a parede gelada e concreta... Igual uma parede normal. Entendi"
+    jogador "Eu sinto a parede gelada... Igual a uma parede normal. Entendi."
 
-    ed "Exato, percebe? Eu te avisei que era apenas uma ilusão"
+    ed "Exato, percebe? Eu te avisei que era apenas uma ilusão."
     
-    ed "Você se sente preenchido, satisfeito, como se suas dúvidas desaparececem. Não há mais nada para fazer aqui"
+    ed "Você se sente preenchido, satisfeito, como se suas dúvidas desaparecessem. Não há mais nada para fazer aqui."
 
     menu escolhas_sair_ficar_3:
         "{b}Sair do quarto{b}":
@@ -2545,7 +2540,7 @@ label ficar_quarto_1:
 
     jogador "Vocês estão de sacanagem? Eu sei o que eu vi."
 
-    ed "Então você insiste em entrar no quarto vazio, hâ? Tudo bem. Você é um homem livre e pode fazer o que quiser. Eu não vou mais tentar te impedir."
+    ed "Então, você insiste em entrar no quarto vazio? Tudo bem. Você é um homem livre e pode fazer o que quiser. Eu não vou mais tentar te impedir."
 
     ship "Mas o que você vai fazer agora? Você entrou mais fundo no quarto vazio e encontrou o que esperava. O vazio."
 
@@ -2565,34 +2560,34 @@ label entrar_quarto_dnv:
 
     ship "Então vai ser assim? Tem certeza disso?"
 
-    ed "Você se vira rapidamente e coloca sua mão sobre a maçaneta da porta, mais uma vez, contudo... você está com medo também, você encara a maçaneta com os olhos arregalados, repensando consigo mesmo se vale a pena fazer isso."
+    ed "Você se vira rapidamente e coloca sua mão sobre a maçaneta da porta mais uma vez, contudo... Você está com medo, encarando a maçaneta com os olhos arregalados, repensando consigo mesmo se vale a pena fazer isso."
     
     ed "Seu corpo está transpirando, mesmo estando gelado. Por que sua mão está tremendo tanto?"
     
-    ed "Você não quer isso realmente. Você está em dúvida. Eu tenho a resposta de sua dúvida, 'volte'"
+    ed "Você não quer isso realmente. Você está em dúvida. Eu tenho a resposta de sua dúvida: volte."
 
-    jogador "Dane-se vocês."
+    jogador "Danem-se vocês."
 
     #tem que terminar. Colocar esse efeito?
     # play sound "porta_abrindo_macaneta.mp3"
 
-    ship "Ele gira a maçaneta e puxa a porta com força...."
+    ship "Você gira a maçaneta e puxa a porta com força..."
 
-    jogador "Mas o que?"
+    jogador ". . . . . . . . . . . . . . . . Mas o quê?"
 
 #Resultado após o jogador passar da última porta
     #tem que terminar
     scene quarto_escuro
 
-    ship "Apenas para revelar que o quarto que antes ai estava, não existe mais, apenas para revelar que tudo isso foi apenas uma alucinação."
+    ship "Apenas para revelar que o quarto que antes aí estava, não existe mais. Apenas para revelar que tudo isso foi apenas uma alucinação."
     
     ship "Dê a volta, Caronte. O que você vê agora é apenas uma sala escura, vazia, sem nada dentro."
 
-    jogador "Espera. O que está acontecendo? Onde está o quarto.... o sangue e.... o resto, onde está?"
+    jogador "Espera. O que está acontecendo? Onde está o quarto... O sangue... Onde está tudo?"
 
-    ed "Nada disso jamais existiu, Caronte. Era tudo parte da sua imaginação fértil, somada com os danos cerebrais ao longo da vida."
+    ed "Nada disso jamais existiu, Caronte. Era tudo parte da sua imaginação fértil, somada aos danos neurológicos ao longo da vida."
     
-    ed "Faz parte, isso já aconteceu várias vezes e agora foi só mais uma delas. Dê a volta, vamos embora daqui"
+    ed "Faz parte! Isso já aconteceu várias vezes e agora foi só mais uma delas. Dê a volta, vamos embora daqui."
 
     menu escolhas_sair_ficar_1:
         "{b}Sair do quarto{b}":
@@ -2622,34 +2617,34 @@ label sair_do_quarto_12:
 #PRONTO
 label Investigar_e_descobrir_a_verdade:
     # ****Investigar e descobrir a verdade:
-    jogador "Não, eu não vou sair daqui sem saber de nada. "
+    jogador "Não, eu não vou sair daqui sem saber de nada." with dissolve
 
     scene porta
 
-    ship "Que?!"
+    # narrar protagonista 
 
-    ed "Que?! Não, não!"
+    ed "Você, tomado por uma tola curiosidade, caminha em direação à porta." with dissolve
 
-    jogador "Eu não sou um assassino, eu vou descobrir quem era aquela pessoa e o maldito monstro que fez isso com ela."
+    jogador "Eu não sou um assassino! Eu vou descobrir quem era aquela pessoa e o maldito monstro que fez isso com ela." with dissolve
 
-    ship "Não Caronte, por favor, tenha piedade. O que eu te disse antes é a infeliz verdade. Isso dói demais, eu não vou aguentar viver aquilo de novo."
+    ship "Não, Caronte, por favor, tenha piedade. O que eu te disse antes é a infeliz verdade. Isso dói demais, eu não vou aguentar viver aquilo de novo." with dissolve
 
-    ed "Você não precisa lembrar de nada, eu suplico, confie em nós, não nos faça passar por isso."
+    ed "Você não precisa lembrar de nada, eu suplico. Confie em nós, não nos faça passar por isso." with dissolve
 
-    jogador "A verdade? Tudo que você fez até agora foi tentar dizer que eu deveria morrer! Falando merda atrás de merda, como se você soubesse de alguma coisa. Se eu não me lembro de nada, como você deveria? "
+    jogador "A verdade? Tudo que vocês fizeram foi tentar dizer o que eu deveria fazer! Falando merda atrás de merda, como se você soubesse de alguma coisa. Se eu não me lembro de nada, como você deveria?" with dissolve
 
-    ship "O. Que. Eu. Te. Disse. É. A. Verdade. Eu tenho que soletrar para você entender?"
+    ship "O. Que. Eu. Te. Disse. É. A. Verdade. Eu tenho que soletrar para você entender?" with dissolve
 
     jogador "Ha! Dane-se esse cara."
     
-    jogador "Se vocês não me conterem o que realmente aconteceu, então eu vou descobrir sozinho... Eu não fiz nada, eu sei disso, vou dar um pouco de dignidade para aquela pobre alma e encerrar essa viagem por aqui. "
+    jogador "Se vocês não me contarem o que realmente aconteceu, então eu vou descobrir sozinho... Eu não fiz nada, eu sei disso. Vou dar um pouco de dignidade para aquela pobre alma e encerrar essa viagem por aqui. "
     # ("para aquela" está correto ortograficamente?)
 
-    ship "Merda de moleque...."
+    ship "Merda de moleque..."
 
-    ed "Caronte, eu não vou passar por isso de novo... é para o nosso bem."
+    ed "Caronte, eu não vou passar por isso de novo... É para o nosso bem."
 
-    jogador "Hm? Você também, Ed? Ok, dane-se vocês dois."
+    jogador "Hm? Você também, Ed? Ok, danem-se vocês dois."
 
 # (aqui na cena de investigação o jogador começa a lutar contra o Harold e o Ed, ou seja, o mundo, a "realidade" vai mudando e o jogador tem que se forçar a mudar a própria mente para encontrar de novo a porta proibida)
 
@@ -2663,13 +2658,15 @@ label Investigar_e_descobrir_a_verdade:
 label rota_raiva:
     scene corredor
 
-    ed "Bosta! Inferno! Eu odeio esse lugar, eu odeio toda essa merda!"
+    ed "Bosta! Inferno! Eu odeio esse lugar, eu odeio toda essa merda!" with dissolve
 
-    ship "Que inferno! Ah, maldito quarto!"
+    ship "Que inferno! Ah, maldito quarto!" with dissolve
 
-    jogador "Por Deus, que merda foi essa?! O que foi isso??    "
+    jogador "Por Deus, que merda foi essa?! O que foi isso??" with dissolve
 
-    ship "A verdade, ou parte dela... mas ainda tem um poço de memórias que você esqueceu - e que assim seja. Lembrar disso só vai causar mais dor... e eu não quero mais isso. Por favor, Caronte, liberte a gente, eu já te disse como."
+    ship "A verdade, ou parte dela... Mas ainda tem um poço de memórias que você esqueceu - e que assim seja." with dissolve
+
+    ship "Lembrar disso só vai causar mais dor... E eu não quero mais isso. Por favor, Caronte, liberte a gente - eu já te disse como." with dissolve
 
     ed "Não, não precisa ser assim. Vamos embora desse barco, a gente não tem nada para fazer aqui. É a melhor forma."
 
