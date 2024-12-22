@@ -25,6 +25,8 @@ define config.check_conflicting_properties = True
 ##
 ## As cores do texto na interface.
 
+
+
 ## Uma cor de destaque usada em toda a interface para rotular e destacar o
 ## texto.
 define gui.accent_color = '#0066cc'
@@ -140,7 +142,7 @@ define gui.dialogue_xpos = 402
 define gui.dialogue_ypos = 75
 
 ## A largura máxima do texto da caixa de diálogo, em pixels.
-define gui.dialogue_width = 1116
+define gui.dialogue_width = 1050
 
 ## O alinhamento horizontal do texto da caixa de diálogo. Pode ser 0,0 para
 ## alinhado à esquerda, 0,5 para centralizado e 1,0 para alinhado à direita.

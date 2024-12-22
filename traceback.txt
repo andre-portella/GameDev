@@ -1,30 +1,40 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 861, in script
-    menu menu_escolhas_zoom_in_item:
-  File "game/script.rpy", line 865, in <module>
-    "{b}Pegar item{b}" if item_desperdicado == False and item_pego == False:
-NameError: name 'item_desperdicado' is not defined
+After initialization, but before game start.
+  File "renpy/common/00start.rpy", line 83, in _init_language
+    renpy.change_language(language)
+  File "game/screens.rpy", line 164, in <module>
+    maximum gui.dialogue_max_width
+AttributeError: 'StoreModule' object has no attribute 'dialogue_max_width'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 861, in script
-    menu menu_escolhas_zoom_in_item:
-  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\ast.py", line 1619, in execute
-    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
-  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\exports\menuexports.py", line 100, in menu
-    condition = renpy.python.py_eval(condition)
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\bootstrap.py", line 359, in bootstrap
+    renpy.main.main()
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\main.py", line 652, in main
+    run(restart)
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\main.py", line 75, in run
+    renpy.translation.init_translation()
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\translation\__init__.py", line 702, in init_translation
+    renpy.store._init_language() # type: ignore
+  File "renpy/common/00start.rpy", line 83, in _init_language
+    renpy.change_language(language)
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\translation\__init__.py", line 796, in change_language
+    new_change_language(tl, language)
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\translation\__init__.py", line 748, in new_change_language
+    i.apply()
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\ast.py", line 2800, in apply
+    value = renpy.python.py_eval(expr)
   File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\python.py", line 1209, in py_eval
     return py_eval_bytecode(code, globals, locals)
   File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\python.py", line 1202, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 865, in <module>
-    "{b}Pegar item{b}" if item_desperdicado == False and item_pego == False:
-NameError: name 'item_desperdicado' is not defined
+  File "game/screens.rpy", line 164, in <module>
+    maximum gui.dialogue_max_width
+AttributeError: 'StoreModule' object has no attribute 'dialogue_max_width'
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.3.3.24111502
 projetoX 1.0
-Sat Dec 21 17:51:42 2024
+Sun Dec 22 15:24:49 2024

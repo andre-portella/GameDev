@@ -1455,6 +1455,8 @@ label rota_tristeza_desperdicio:
 
     jogador "Eu sinto muito, Ed…"
 
+    play sound "agua_splash.mp3"
+
     ship "O corpo dele já se encontra nas águas. E as preocupações que tanto nos assombraram foram esquecidas."
 
 
