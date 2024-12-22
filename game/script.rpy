@@ -211,6 +211,9 @@ transform zoom_out_far:
     ease 0.5 zoom 0.95
 
 
+
+
+
 # Remover e inserir em 'screens.rpy'
 init python:
     item_desperdicado = False #variavel para o trigger de quando o item eh desperdicado
@@ -223,12 +226,20 @@ init python:
 
     contador_esperanca = 0
 
+    entrar_quarto = False
+
     #Não entrar no quarto proibido ate o jogador decidir se abre a porta ou não
     porta_trancada = True #//%Variavel que define quando a porta esta trancada ou nao. Ela fica trancada ate o jogador desperdicar o item, isso eh feito para corrigir um erro
     # do roteiro, faltava uma possibilidade de evento e fazer isso corrige o probelma
     style.my_custom_window = Style(style.window)
     style.my_custom_window.background = Frame("gui/textbox.png", 12, 12)
 
+init 2 python:  # A prioridade '2' garante que o estilo padrão esteja carregado
+    # Baseado no estilo padrão da namebox
+    style.my_namebox_style = Style(style.default)  
+    style.my_namebox_style.xalign = 1.0           # Alinha horizontalmente à direita
+    style.my_namebox_style.margin = (0, 0, 465, 0) # Adiciona margem para afastar da borda direita
+    style.my_namebox_style.padding = (10, 5)      # Ajusta o espaçamento interno
 
 
 transform blur_image:
@@ -238,9 +249,11 @@ transform blur_image:
 define fade_out = Fade(0.5, 0, 0.5)
 define fade_in = Fade(0.5, 0, 1.5, color="#000000")
 
-define jogador = Character("Jogador", window_style="my_custom_window")
-define ship = Character("Shipman Harold",  color="#FF0000", window_style="my_custom_window")
-define ed = Character("Ed Newgate", color="#0000FF", window_style="my_custom_window")
+define jogador = Character("Caronte", window_style="my_custom_window",  what_slow_cps=40)
+define ship = Character("Shipman Harold",  color="#FF0000", window_style="my_custom_window",  what_slow_cps=40)
+define ed = Character("Ed Newgate", color="#0000FF", window_style="my_custom_window",  what_slow_cps=40, namebox_style="my_namebox_style")
+
+
 
 define unk = Character(" ", color="#FFFFFF", window_style="my_custom_window")
 define maria = Character("Maria", color="#FFC0CB", window_style="my_custom_window")
@@ -270,7 +283,7 @@ image vermelho = "img_vermelho_1.jpg"
 #-----------------------------------------------
 
 image corredor = 'corredor.png'
-
+define fade = Fade(0.5, 1.0, 0.0, color="#000")
 
 image quarto_distorcido = im.Blur('quarto.png', 3)
 image porta_blur = im.Blur('porta.png', 5)
@@ -295,11 +308,28 @@ define auxiliar = Character(" ", color="#FFFFFF", window_style="my_custom_window
 #     repeat
 
 # The game starts here.
+
+
+
 label start:
 
-    scene conves_distortion with fade_in
 
-    jump rota_esperanca
+    $ item_desperdicado = False #variavel para o trigger de quando o item eh desperdicado
+    $ item_pego = False
+    $ janela_consertada = False
+
+    $ olhou_retrato_mulher = False
+
+    $ max_tentativas = 3
+
+    $ contador_esperanca = 0
+
+    $ entrar_quarto = False
+
+    #Não entrar no quarto proibido ate o jogador decidir se abre a porta ou não
+    $ porta_trancada = True #//%Variavel que define quando a porta esta trancada ou nao. Ela fica trancada ate o jogador desperdicar o item, isso eh feito para corrigir um erro
+
+    scene black with fade_in
 
     # pause 0.5 #pausa a leitura dos códigos por 0.5 segundos
 
@@ -315,14 +345,19 @@ label start:
     ed "Você se encontra deitado em um pequeno barco, balançando suavemente nas águas escuras em um mar desconhecido.\
         Você pisca, tentando orientar seus olhos na claridade repentina. As suas mãos se contorcem de dor, os músculos \
         contraídos e as articulações inchadas, você não pode continuar dormindo nesse estado, pode?" with dissolve
-
+    
+    scene conves_distortion with fade_in
 
     ed "Agora, nesse barco à deriva, o som insistente de algo sendo preenchido ecoa do fundo da embarcação e um sentimento\
-        de urgência te preenche. Você levanta abruptamente, olhando ao redor, com os sentidos em alerta máximo. Você escuta\
+        de urgência te preenche." with dissolve
+
+    ed "Você levanta abruptamente, olhando ao redor, com os sentidos em alerta máximo. Você escuta\
         um som distante de um barril sendo preenchido, um ruído incômodo e persistente." with dissolve
 
     ship "As suas mãos latejam, uma lembrança dolorosa do que você fez. Talvez seja melhor você se deitar novamente, tentar\
-        esquecer o que aconteceu. Não há sentido em investigar esse som estranho, é apenas mais um problema esperando por você.\
+        esquecer o que aconteceu. " with dissolve
+    
+    ship "Não há sentido em investigar esse som estranho, é apenas mais um problema esperando por você.\
         É melhor que você simplesmente feche os olhos e tente esquecer. Deixe que o sono o leve, deixe que as águas escuras o acalmem." with dissolve
 
 # Definindo a variável persistente como False no início do jogo
@@ -350,18 +385,21 @@ label explorar:
 ############################################################
 label op_exp1:
 
-    jogador "Estou completamente perdido. O que está acontecendo? quem são vocês?" with dissolve
+    jogador "Estou completamente perdido. O que está acontecendo? Quem são vocês?" with dissolve
 
     ed "Sabemos que pode ser desconcertante sentir-se perdido nesse mar de incertezas. Mas estamos aqui para ser seus guias." with dissolve
 
     ship "Você está envolto numa escuridão, olhe ao redor e veja por si mesmo. Certamente, o céu poderia trazer alguma iluminação\
-        mesmo à noite, mas não há sinal da Lua, nem mesmo das estrelas. Suas mãos doem, suas mãos pedem por alívio, e um som perturbador\
-        ecoa. Um barril sendo preenchido é certamente algum tipo de mal presságio." with dissolve
+        mesmo à noite, mas não há sinal da Lua, nem mesmo das estrelas." with dissolve
+
+    ship "Um som perturbador ecoa, como se um barril fosse preenchido - o que é certamente algum tipo de mau presságio." with dissolve
 
     jogador "Isso é estranho... Não me lembro de como vim parar aqui. E esse som... O que poderia ser?" with dissolve
 
     ed "A memória é uma faca de dois gumes. Às vezes, é melhor deixar as lembranças adormecidas, pois podem revelar verdades que preferimos deixar\
-        enterradas. Quanto ao som, você está prestes a descobrir. Siga o som, será quase como algo instintivo, como algo que você já fez antes." with dissolve
+        enterradas." with dissolve
+    
+    ed "Quanto ao som, você está prestes a descobrir. Siga o som, será quase como algo instintivo, como algo que você já fez antes." with dissolve
 
     jump explorar
 
@@ -374,7 +412,7 @@ label op_exp2:
     ed "Não se assuste, o que temos é uma espécie de conexão empática contigo. Nós sentimos suas emoções, suas dores e suas\
         incertezas. Estamos aqui para ajudá-lo." with dissolve
 
-    jogador "Ainda assim, é estranho... Como se eu estivesse sendo observado de dentro da minha própria mente." with dissolve
+    jogador "Ainda assim, é estranho... É como se eu estivesse sendo observado de dentro da minha própria mente." with dissolve
 
     ship "Dito isso, você parece exausto. Talvez seja hora de permitir que o sono o envolva novamente. Feche os olhos e poderá esquecer isso tudo." with dissolve
 
@@ -402,14 +440,13 @@ label voltar_dormir:
     ed "Não!! Essa é uma pés..." with dissolve
 
     ship "Olha, eu sei que tudo parece muito enigmático e está tudo bem… Você sabe no que essa escolha vai levar, certo?\
-        Já podemos escutar um ruído de algo sendo preenchido lá embaixo... Confie em mim, essa é a melhor escolha e, na\
-        verdade, sua única. Afinal, não há nada a ser feito." with dissolve
+        Já podemos escutar um ruído de algo sendo preenchido lá embaixo..." with dissolve
 
-    ship "Seus olhos estão pesados e a sua alma, bastante abalada, pede por descanso." with dissolve
+    ship "Confie em mim, essa é a melhor escolha e, na verdade, sua única. Afinal, não há nada a ser feito." with dissolve
+
+    ship "Seus olhos estão pesados, eles pedem por descanso." with dissolve
 
     jogador "hmmm... Tudo bem, tanto faz... estou meio cansado de qualquer forma." with dissolve
-
-    ship "Seus olhos estão pesados e a escuridão parece convidativa…" with dissolve
 
     ship "Um pouco de paz, finalmente…" with dissolve
 
@@ -422,7 +459,7 @@ label voltar_dormir:
         peça de mobília é uma cama simples, manchada de vermelho e coberta por lençóis ensanguentados. Ao lado da cama, uma faca\
         repousa com sua lâmina reluzindo." with dissolve
 
-    ship "Você reconhece essa faca. Já a utilizou algumas vezes.\n\nVai precisar dela para fazer o que é preciso." with dissolve
+    ship "Você reconhece essa faca. Já a utilizou algumas vezes. \nVai precisar dela para fazer o que é preciso." with dissolve
 
     label examinar_faca:
 
@@ -437,11 +474,11 @@ label voltar_dormir:
     label prosseguir:
 
         #jogador pega a faca
-        ship "Alguns tentam se iludir, mas você não. A morte é, e deve ser, a sua única saída." with dissolve
+        ship "Alguns tentam se iludir, mas você não. Poderíamos apenas seguir pelo caminho mais fácil." with dissolve
 
         jogador "O que eu fiz? Por que estou aqui?" with dissolve
 
-        ship "Você sabe o que fez. E eu já lhe disse que essa faca é familiar. Quer mesmo relembrar todas as suas tragédias?" with dissolve
+        ship "Você sabe o que fez. E eu já lhe disse que essa faca é familiar. Quer mesmo relembrar o seu passado?" with dissolve
 
         ship "Por favor, vamos poupar explicações... Aliás, por que questiona o seu destino? Tudo aqui se deve a suas próprias decisões." with dissolve
 
@@ -449,8 +486,7 @@ label voltar_dormir:
 
         jogador "Não há outra opção? O que vai acontecer comigo?" with dissolve
 
-        ship "O seu tempo já se esgotou. Você teve toda uma vida para refletir. Em nenhum momento mostrou arrependimento \
-            e agora pergunta sobre suas opções?" with dissolve
+        ship "O seu tempo já se esgotou. Você teve toda uma vida para refletir. Em nenhum momento mostrou arrependimento e agora pergunta sobre suas opções?" with dissolve
 
         ship "Vamos logo! Estamos apenas adiando o irrevogável!" with dissolve
 
@@ -487,20 +523,30 @@ label descobrir_barulho:
 
 
 
-    ed "Determinado a descobrir a origem do som, você se levanta com dificuldade, ignorando a dor latejante nas suas mãos. O som do vazamento torna-se mais alto e mais insistente, guiando-o para um corredor estreito que se estende a sua frente. A inclinação causada pelas ondas do mar dificulta ainda mais o caminhar." with dissolve
+    ed "Determinado a descobrir a origem do som, você se levanta com dificuldade, ignorando a dor latejante nas suas mãos." with dissolve
+    
+    ed "O som do vazamento torna-se mais alto e mais insistente, guiando-o para um corredor estreito que se estende a sua frente. A inclinação causada pelas ondas do mar dificulta ainda mais o caminhar." with dissolve
 
     ship "Um cheiro de madeira molhada e sal preenche o ar. O corredor, com suas portas distribuídas pelos dois lados, se apresenta iluminado apenas por uma luz que atravessa algumas janelas espalhadas ao longo das paredes." with dissolve
 
-    ship "No canto do corredor, você percebe uma poça de água crescente, acumulando-se devido a uma rachadura visível em uma das janelas. O som que te despertou vem precisamente dessa rachadura, onde a água do mar está se infiltrando lentamente, ameaçando encher o corredor por completo." with dissolve
+    ship "No canto do corredor, você percebe uma poça de água crescente, acumulando-se devido a uma rachadura visível em uma das janelas." with dissolve
 
-    ed "No canto oposto ao vazamento, algo chama sua atenção. Uma pequena quantidade de resina, provavelmente usada para reparos, está convenientemente armazenada em um recipiente. A resina parece ser a sua melhor chance de vedar a rachadura e impedir que mais água entre." with dissolve
+    ship "O som que te despertou vem precisamente dessa rachadura, onde a água do mar está se infiltrando lentamente, ameaçando encher o corredor por completo." with dissolve
 
-    ed "A situação exige uma ação rápida. Você sente a urgência de agir enquanto observa o corredor inclinado, a água subindo lentamente e o som do vazamento continuando incessante. Você sabe que precisa usar a resina para selar a rachadura antes que seja tarde demais." with dissolve
+    ed "No canto oposto ao vazamento, algo chama sua atenção. Uma pequena quantidade de resina, provavelmente usada para reparos, está convenientemente armazenada em um recipiente." with dissolve 
+
+    ed "A resina parece ser a sua melhor chance de vedar a rachadura e impedir que mais água entre." with dissolve
+
+    ed "A situação exige uma ação rápida. Você sente a urgência de agir enquanto observa o corredor inclinado, a água subindo lentamente e o som do vazamento continuando incessante." with dissolve
+    
+    ed "Você sabe que precisa usar a resina para selar a rachadura antes que seja tarde demais." with dissolve
 
     jogador "Essa situação é bem estranha, porque me manipula a fazer algo que é óbvio que deve ser feito?" with dissolve
 
 
-    ship "Apesar do sentimento de urgência, você se encontra indeciso. Certamente passa pela sua mente como o corredor se mantém inclinado de um lado, apesar dos movimentos constantes da maré sobre o barco. Você também questiona a origem desse vazamento, que deve ser recente, dado o volume de água presente. Entretanto, você não está sozinho?" with dissolve
+    ship "Apesar do sentimento de urgência, você se encontra indeciso. Certamente passa pela sua mente como o corredor se mantém inclinado de um lado, apesar dos movimentos constantes da maré sobre o barco." with dissolve
+    
+    ship "Você também questiona a origem desse vazamento, que deve ser recente, dado o volume de água presente. Entretanto, você não está sozinho?" with dissolve
 
 
     menu menu_descobrir_barulho:
@@ -616,7 +662,7 @@ label desistir_conserto:
 label aproximar_porta_item_desperdicado:
     scene porta_midwarp with fade_in
 
-    jogador "Olhando em volta, noto uma porta que os narradores não mencionaram. Ela está meio escondida na penumbra, diferente das outras. Algo sobre ela parece... importante. Dou um passo em direção a ela." with dissolve
+    jogador "Olhando em volta, noto uma porta que os narradores não mencionaram. Ela está meio escondida na penumbra, diferente das outras. Algo sobre ela parece... importante. Dou um passo em  sua direção." with dissolve
 
     ed "Espere! Há outras prioridades agora. A gente precisa sair daqui antes que o barco se encha de água. Concentre-se no  vazamento!" with dissolve
 
@@ -640,13 +686,22 @@ label aproximar_porta_item_desperdicado:
 
     ship "Na verdade, do outro lado dessa porta se esconde  toda..." with dissolve
 
-    ed "Quieto! Agora! Não tem nada atrás dessa porta, não escute ele! Você lembra dessa angústia! Por que fazer algo tão estúpido agora? Hã ?!" with dissolve 
+    ed "QUIETO! AGORA! Não tem nada atrás dessa porta, não escute ele! Você conhece a dor, você lembra dela, por que fazer algo tão estúpido? HÃ?!" with dissolve
 
     ship "Ok, de fato, você está certo. Talvez seja uma ideia ruim." with dissolve
 
     jogador "Você iria dizer o que sobre a porta? O que ela esconde? Eu quero  saber." with dissolve
 
-    ed "Nada, não tem nada aí. A porta com certeza está emperrada. Não vale a pena o esforço de tentar entrar aí, acredite, vamos para outro lugar…" with dissolve
+    ship "Hmmm... Que situação lastimosa, não é" with dissolve
+
+    jogador "Que?" with dissolve
+
+    ship "Hmmm... Que situação lastimosa, não é" with dissolve
+
+    ship "Hmmm... Que situação lastimosa, não é" with dissolve
+
+
+    ed "Nada, não tem nada aí. A porta com certeza está emperrada. Não vale a pena o esforço de tentar entrar aí, acredite. Vamos para outro lugar…" with dissolve
     
     jump menu_aproximar_porta
 
@@ -714,7 +769,7 @@ label op_exp_ouvir_porta:
 
     ship "Hmm, são..." with dissolve
 
-    ed "Bom, tal ceticismo e audição são louváveis, contudo, creio que há coisas mais importantes para fazer no barco..." with dissolve
+    ed "Bom, tal ceticismo e audição são louváveis. Contudo, creio que há coisas mais importantes para fazer no barco..." with dissolve
 
     jogador "Estranho... está fazendo um... bzzz..." with dissolve
 
@@ -737,11 +792,11 @@ label corredor:
 label Entrar_quarto_proibido:
     jogador "Consequências piores do que deixar o barco afundar? Vamos descobrir." with dissolve
     if porta_trancada == False:
-        ship "Determinado, você nos ignora e estende a mão para a maçaneta da porta. Com a mão na maçaneta, você levemente abre a porta, preparado para o que vier." with dissolve
+        ship "Determinado, você nos ignora e estende a mão para a maçaneta da porta. Com a mão nela, você lentamente abre a porta, preparado-se para o que vier." with dissolve
 
-        ed "Não! De novo isso, outra decisão terrível, Caronte?!" with dissolve
+        ed "Não, de novo isso! Outra decisão terrível, Caronte?!" with dissolve
 
-        ship " Quer saber, o Caronte está certo. Ela esconde a verdade, ela esconde toda a verdade. Ela esconde o fato de você ser uma aberração que deveria morrer!" with dissolve
+        ship "Quer saber, o Caronte está certo. Ela esconde a verdade, ela esconde toda a verdade. Ela esconde o fato de você ser uma aberração que deveria morrer!" with dissolve
 
         ship "Lentamente a porta se abre, rangendo enquanto cede ao impulso de sua mão até se abrir completamente." with dissolve
 
@@ -762,7 +817,7 @@ label Entrar_quarto_proibido:
 
         jogador "Que porra é essa! Que porra aconteceu aqui?!" with dissolve
 
-        ed "Não! Não! Por favor, não! me tira daqui!" with dissolve
+        ed "Não! Não! Por favor, não! Me tira daqui!" with dissolve
 
         ship "Sim! Sim! Eu tenho que saber, a gente quer saber, a gente quer lembrar, né? Então, olha no canto do quarto, o que a gente vê?!" with dissolve
 
@@ -803,6 +858,8 @@ label Entrar_quarto_proibido:
 
         jogador "Hmm... Certo..."
 
+        $ entrar_quarto = True
+
         jump corredor
 
 # label voltar_corredor_c:
@@ -811,9 +868,9 @@ label Entrar_quarto_proibido:
 
 #Diálogo exploratório:
 label zoom_in_item:
-    ed "Veja, é isso que usaremos para consertar a rachadura no vidro, pegue-o, passe a pasta na rachadura e problema resolvido, poderemos pensar em como sair daqui finalmente." with dissolve
+    ed "Veja, é isso que usaremos para consertar a rachadura no vidro. Pegue, passe a pasta na rachadura e problema resolvido. Poderemos pensar em como sair daqui finalmente." with dissolve
 
-    ship "Não teria tanta certeza, como uma pasta iria segurar um vazamento? Esta coisa provavelmente é inútil. Seria melhor continuar procurando algo que faça sentido, não temos tempo para desperdiçar com soluções inválidas." with dissolve
+    ship "Não teria tanta certeza. Como uma pasta iria segurar um vazamento? Esta coisa provavelmente é inútil. Seria melhor continuar procurando algo que faça sentido. Não temos tempo para desperdiçar com idiotices." with dissolve
 
     jogador "É isso? Não dá para ler a embalagem, está tudo apagado." with dissolve
 
@@ -831,58 +888,62 @@ label zoom_in_item:
 label op_exp_quanto_tempo_falta:
     jogador "Espera, tenho tempo de procurar outra coisa ou não?" with dissolve
 
-    ed "Não, essa pasta vai funcionar, ela é feita para isso." with dissolve
+    ed "Não! Essa pasta vai funcionar, ela é feita para isso." with dissolve
 
-    ship "Escuta, Caronte, a resina vai dissolver quando entrar em contato com a água, joga isso fora, não tem utilidade." with dissolve
+    ship "Escuta, Caronte, a resina vai dissolver quando entrar em contato com a água. Joga isso fora, não tem utilidade." with dissolve
 
     ed "Não, não vai. Se a embalagem não estivesse tão danificada daria para ler que ela é feita para isso. Caronte, me escute, eu lembro de quando compramos isso, confie em mim." with dissolve
 
     jump menu_escolhas_zoom_in_item
     
 label pegar_item_correto:
-    ed "Excelente escolha, vamos usar isso para fechar essa rachadura e descobrir como sair desse lugar." with dissolve
+    ed "Excelente escolha! Vamos usar isso para fechar essa rachadura e descobrir como sair desse lugar." with dissolve
 
-    ship "Bem, se quiser tentar não sou contra, mas acho que isso vai ser um desperdício precioso do nosso tempo." with dissolve
+    ship "Bem, se quiser tentar, não sou contra. Mas acho que isso vai ser um desperdício precioso do nosso tempo." with dissolve
 
     $ item_pego = True
 
     jump menu_escolhas_zoom_in_item
 
 label desperdicar_item:
-    jogador "Eu não ligo, vou ver o quão longe consigo arremessar essa resina no mar." with dissolve
+    jogador "Eu não ligo. Vou ver o quão longe consigo arremessar essa resina no mar." with dissolve
 
     ed "Quê?!" with dissolve
 
     ship "Quê?!" with dissolve
 
-    jogador "Estou indo para o convés vou ter uma visão melhor de lá." with dissolve
+    jogador "Estou indo para o convés, vou ter uma visão melhor de lá." with dissolve
 
-    ed "Não. Caronte? O que...?" with dissolve
+    ed "Não! Caronte? O que...?" with dissolve
 
-    ship "Desafio você fazer essa resina sumir de vista enquanto ela estiver no ar." with dissolve
+    ship "Desafio você a arremesar essa resina tão longe, a ponto de ela sumir antes de cair no mar." with dissolve
 
-    ed "Não, Caronte, não faz isso. Essa é a única solução, não tem como arrumar o vidro sem isso, vamos todos morrer!" with dissolve
+    ed "Não, Caronte, não faz isso. Essa é a única solução, não tem como arrumar a rachadura sem isso. Vamos todos morrer!" with dissolve
 
-    ship "Não acredito que seja a única. Nem olhamos o barco todo ainda e temos bastante tempo ainda. A água está entrando bem devagar." with dissolve
+    ship "Não acredito que seja a única. Nem olhamos o barco todo e temos bastante tempo ainda. A água está entrando bem devagar." with dissolve
 
     scene conves
 
-    jogador "Aqui estamos e aqui vamos." with dissolve
+    jogador "Aqui estamos." with dissolve
 
     ed "Caronte, não!" with dissolve
 
     #colocar uma cena que mostra o Caronte olhando para o mar.
     scene barco_mar
 
-    ship "Vemos claramente que não conseguimos ver nada daqui de cima, o céu, a água, está tudo bem escuro. O cheiro salgado do mar, as ondas se batendo... Excelente clima para um arremesso." with dissolve
+    ship "Vemos claramente que não conseguimos ver nada daqui de cima. O céu, a água, tudo está muito escuro. O cheiro salgado do mar, as ondas batendo... Excelente clima para um arremesso." with dissolve
 
     jogador "Você me desafiou, então aqui vai." with dissolve
 
-    ship "Seu braço direito está um pouco dolorido, impedindo de carregá-los para muito atrás das costas. Você gira o tronco, sentindo uma leve dor na região das costelas." with dissolve
+    ship "Seu braço direito está um pouco dolorido, principalmente a mão, impedindo de levá-lo para muito atrás das costas. Você gira o tronco, sentindo uma leve dor na região das costelas." with dissolve
 
-    ship "Ao colocar o pé esquerdo para frente, garantindo um melhor arremesso, você percebe que seu corpo está muito pesado e, de repente, você está realmente cansado e notou isso melhor agora." with dissolve
+    ship "Ao colocar o pé esquerdo para frente, garantindo um melhor arremesso, você percebe que seu corpo está muito pesado. De repente, você está realmente cansado e notou isso melhor agora." with dissolve
 
-    ship "Ao se girar o tronco novamente e carregar o braço para frente com todo o resto de força que tem, escuta-se um barulho estridente 'VUFF', a resina quebra o vento tão rápido que é difícil não escutar o barulho, em menos de 2 segundo o composto branco se perde na escuridão  para muito, muito  longe, enquanto está no ar." with dissolve
+    ship "Ao girar o tronco e carregar o braço para frente com o restante de força que ainda tem, você escuta um barulho estridente: " with dissolve
+
+    unk 'VUFF' with dissolve
+
+    ship "A resina quebra o vento tão rápido que é difícil não escutar o barulho. Em menos de dois segundos o composto branco se perde na escuridão para muito, muito longe." with dissolve
 
     ship "Você fica surpreso com o próprio desempenho físico." with dissolve
 
@@ -891,16 +952,16 @@ label desperdicar_item:
 
     jogador "WOW! Não esperava por isso. Eu sou bem forte." with dissolve
 
-    ship "Oh, Caronte, você não faz ideia. Forte como um urso, o suficiente para levantar um motor de um avião ou até destruir o crânio de um adulto bem desenvolvido." with dissolve
+    ship "Oh, Caronte, você não faz ideia. Forte para destruir o crânio de um adulto." with dissolve
 
-    jogador "Hm? Não acho que eu consiga fazer qualquer um dessas coisas." with dissolve
+    jogador "Hm? Não acho que eu seja capaz de fazer algo assim." with dissolve
 
     ship "Eu meio que estava exagerando, não se preocupe." with dissolve
 
     # obs. "talvez colocar mais indignação nessa fala do Ed."
-    ed "É... lá se vai nossa solução... Ok, talvez tenha alguma outra solução em algum lugar." with dissolve
+    ed "É... lá se vai nossa solução... Ok, talvez tenha uma alternativa em algum lugar." with dissolve
 
-    jogador "Ok, vamos voltar lá para baixo." with dissolve
+    ed "Sentindo a leva brisa do mar, você fica determinado a procurar uma outra solução. Então, volta em direção ao corredor." with dissolve
 
     #linhas auxiliares para resolver aquele problema do roteiro
 
@@ -912,8 +973,12 @@ label desperdicar_item:
     $ porta_trancada = False
 
     #volta para o corredor sem dizerem nada.
-    jump rota_tristeza_desperdicio
 
+    if (item_desperdicado and entrar_quarto == False):
+        jump rota_tristeza_desperdicio
+
+    else:
+        jump corredor
 
 
 ##################### INICIO ROTA ESPERANÇA FELIPE ############################################################
@@ -921,13 +986,15 @@ label rota_esperanca:
 
     scene rachadura
 
-    ship "Você se ajoelha próximo à rachadura, resina em mãos. Seus dedos tremem enquanto tenta aplicá-la. A água que continua a entrar, fria, zomba dos seus esforços. Tanta pressa, tanto zelo... Será que, no fundo, você acredita que isso fará diferença?"
+    ship "Você se ajoelha próximo à rachadura, resina em mãos. Seus dedos tremem enquanto tenta aplicá-la. A água que continua a entrar, fria, zomba dos seus esforços. Tanta pressa, tanto zelo... Será que, no fundo, você acredita que isso fará diferença?" with dissolve
 
-    jogador" Claro que faz! Se eu não vedar isso, o barco vai afundar!"
+    jogador" Claro que faz! Se eu não vedar isso, o barco vai afundar!" with dissolve
 
     # (Efeito sonoro)
 
-    ship "Ouviu isso? O som do inevitável. Mesmo que vede essa rachadura, quem garante que o barco inteiro não está prestes a ceder? Ao concluir o reparo e perceber que o vazamento persiste, você percebe a água entrando por outras fissuras menores ao redor."
+    ship "Ouviu isso? O som do inevitável. Mesmo que vede essa rachadura, quem garante que o barco inteiro não está prestes a ceder"
+    
+    ship "Ao concluir o reparo e perceber que o vazamento persiste, você percebe a água entrando por outras fissuras menores ao redor."
 
     jogador" Não pode ser... Acabei de consertar isso!"
 
@@ -935,25 +1002,31 @@ label rota_esperanca:
 
     ship "Veja como a água continua entrando. É engraçado, não é? O barco sempre esteve contra você."
 
-    jogador" Vocês me guiaram até aqui, prometeram que tudo isso acabaria se eu fechasse essa rachadura. Mentirosos!"
+    jogador "Vocês me guiaram até aqui, prometeram que tudo isso acabaria se eu fechasse essa rachadura. Mentirosos!"
 
-    ship "A água começa a alcançar seus pés. O som do vazamento torna-se um rugido que preenche todo o ambiente. Você está parado diante da rachadura na parede. O som da água que antes parecia um sussurro distante agora cresce, reverberando nas paredes como um rugido vivo. A rachadura então pulsa como se tivesse vida própria, e através dela você vê algo brilhando – um reflexo? Uma memória?"
+    ship "A água começa a alcançar seus pés. O som do vazamento torna-se um rugido que preenche todo o ambiente. Você está parado diante da rachadura na parede. O som da água que antes parecia um sussurro distante agora cresce, reverberando nas paredes como um rugido vivo." 
+    
+    ship "A rachadura então pulsa como se tivesse vida própria, e através dela você vê algo brilhando – um reflexo? Uma memória?"
 
-    ed "Ao seu redor, o cenário parece se distorcer; sombras oscilam, e você sente como se estivesse sendo observado. Nós, muito além de narrar pensamentos, surgimos refletidos da rachadura. Nossas vozes agora emanam diretamente de nossas figuras, que parecem um reflexo de você mesmo."
+    ed "Ao seu redor, o cenário parece se distorcer; sombras oscilam, e você sente como se estivesse sendo observado. Nós, muito além de narrar pensamentos, surgimos refletidos na rachadura. Nossas vozes agora emanam diretamente de nossas figuras, que parecem um reflexo de você mesmo."
 
-    ship "Você sabe que este barco não afunda pela rachadura, não sabe? Ele sempre afundará, seja pela água ou pelo peso que carrega."
+    ship "Você sabe que este barco não afunda apenas pela rachadura, não sabe? Ele sempre afundará, seja pela água ou pelo peso que carrega."
 
-    ed "Sempre tento ajudar em todas as escolhas, mas ainda sou tido como mentiroso não? De qualquer forma parece que não há muita solução aqui, não é mesmo? Afinal, você fez tudo que sugeri mas nada mudou. Talvez seja mais produtivo parar de pensar numa solução e só aceitar as coisas do jeito que elas são. Afinal, nesse exato momento a água começa a alcançar seus joelhos."
+    ed "Sempre tento ajudar em todas as escolhas, mas ainda sou tido como mentiroso, não? De qualquer forma parece que não há muita solução aqui, não é mesmo? Afinal, você fez tudo que sugeri, mas nada mudou." 
+
+    ed "Talvez seja mais produtivo parar de pensar numa solução e só aceitar as coisas do jeito que elas são. Afinal, nesse exato momento a água começa a alcançar seus joelhos."
 
     ship "Interessante como ele encara essa rachadura como se fosse a origem de todos os problemas. E se, no fundo, ela for apenas mais um reflexo do desastre que ele carrega?"
 
-    ed "Harold, meu caro, deixe-o decidir. A rachadura é um caminho, sim. Toque-a. Ela pode te mostrar algo que realmente importa."
+    ed "Harold, deixe-o decidir. A rachadura é um caminho, sim. Toque-a. Ela pode te mostrar algo que realmente importa."
 
-    jogador" Você quer que eu toque nela? Depois de tudo isso? Suas palavras nunca ajudaram! Não confio em você."
+    jogador "Você quer que eu toque nela? Depois de tudo isso? Suas palavras nunca ajudaram! Não confio em você."
 
     ed "Ah, desconfiança... justo. Mas diga-me, o que você realmente tem a perder? A água já tomou o navio, e, francamente, correr não parece uma saída muito convincente."
 
-    ship "Você pode tentar tocar a rachadura, sim, mas onde isso te levará? Você sempre faz isso, não faz? Toca, tenta corrigir, mas nada muda. Sempre o mesmo ciclo... Uma tentativa desesperada de se enganar. A água, os sons, a rachadura... tudo apenas parte de uma grande farsa. Por favor, ignore esse charlatão. Ele adora vender respostas fáceis, mas não há atalhos para o inevitável. Corra para seu quarto. Lá, pelo menos, você pode encontrar algum controle – uma pequena ilusão de escolha."
+    ship "Você pode tentar tocar a rachadura, sim, mas onde isso te levará? Você sempre faz isso, não faz? Toca, tenta corrigir, mas nada muda. Sempre o mesmo ciclo... Uma tentativa desesperada de se enganar."
+
+    ship "A água, os sons, a rachadura... tudo apenas parte de uma grande farsa. Por favor, ignore esse charlatão. Ele adora vender respostas fáceis, mas não há atalhos para o inevitável. Corra para seu quarto. Lá, pelo menos, você pode encontrar algum controle – uma pequena ilusão de escolha."
 
 #    menu menu_escolhas_zoom_in_item:
 #         "{b}Quanto tempo falta?\[Opção Exploratória\]{b}":
@@ -983,23 +1056,33 @@ label acabou_tempo_esperanca:
     jump start
 
 label tocar_rachadura:
-    ed "Sabia que você faria isso. Às vezes, a tentação de encarar a verdade é maior que a dor de viver na mentira. O ambiente à sua volta pulsa, e a rachadura parece chamá-lo, como uma promessa de algo maior ou talvez mais perturbador. Você estende a mão, hesitante, e o reflexo de Edte empurrar para frente."
+    ed "Sabia que você faria isso. Às vezes, a tentação de encarar a verdade é maior que a dor de viver na mentira. O ambiente a sua volta pulsa, e a rachadura parece chamá-lo, como uma promessa de algo maior ou talvez perturbador. Você estende a mão, hesitante, e o reflexo de Ed te empurra para frente."
 
-    ship "Mas será que a verdade vai te salvar? Olhe para você. Você já está perdido, marinheiro. O que você acha que encontrará tocando isso? De qualquer forma, seu dedo toca a rachadura, e ela imediatamente se expande, engolindo sua mão. O som da água se torna um rugido ensurdecedor, e você é puxado para dentro. Em um instante, tudo se distorce ao seu redor."
+    ship "Mas será que a verdade vai te salvar? Olhe para você. Você já está perdido, marinheiro. O que você acha que encontrará tocando isso?"
+
+    ship "De qualquer forma, seu dedo toca a rachadura, e ela imediatamente se expande, engolindo sua mão. O som da água se torna um rugido ensurdecedor, e você é puxado para dentro. Em um instante, tudo se distorce ao seu redor."
 
     scene quarto_probido_entrada
 
-    ed "E aqui estamos. Você é lançado de volta à seu quarto. Nada parece ter mudado, mas, assim que entra, algo estranho acontece. As paredes estão molhadas, os móveis são os mesmos, mas há uma sensação de repetição no ar. Você sente como se já tivesse estado ali antes, como se cada movimento fosse uma repetição de algo que já aconteceu, mesmo que tenha escolhido ignorar seu quarto completamente."
+    ed "E aqui estamos. Você é lançado de volta ao seu quarto. Nada parece ter mudado, mas, assim que entra, algo estranho acontece. As paredes estão molhadas, os móveis são os mesmos, mas há uma sensação de repetição no ar."
 
-    ship "Ah, a velha ilusão de que algo pode ser diferente. O que você achou que encontraria tocando aquela rachadura? A verdade? Ela sempre esteve aqui. Apenas você não quis enxergar"
+    ed "Você sente como se já tivesse estado ali antes. Como se cada movimento fosse uma repetição de algo que já aconteceu, mesmo que tenha escolhido ignorar seu quarto completamente."
+
+    ship "Ah, a velha ilusão de que algo pode ser diferente. O que você achou que encontraria tocando aquela rachadura? A verdade? Ela sempre esteve aqui. Apenas você não quis enxergar."
 
     # Continuação a partir da escolha 1:
 
-    ed "Você está de volta ao quarto. O espaço é o mesmo de antes, mas algo mudou. Os detalhes chamam sua atenção, como se o próprio quarto tivesse algo a dizer. A luz fraca da janela circular projeta um brilho sobre os móveis destruídos. Uma cadeira caída e uma cama ensanguentada dominam o centro da sala. As paredes molhadas parecem absorver o som, tornando o ambiente pesado e claustrofóbico. Na parede esquerda, um retrato emoldurado o encara, mesmo que o rosto pintado esteja indistinguível. Na parede oposta, uma segunda moldura apresenta uma família. A imagem está manchada, mas parece transmitir algo... como um apelo mudo."
+    ed "Você está de volta ao quarto. O espaço é o mesmo de antes, mas algo mudou. Os detalhes chamam sua atenção, como se o próprio quarto tivesse algo a dizer."
 
-    ship "Isso não é um quarto. É uma cova, construída lentamente pela sua própria mente. Mas vá em frente, inspecione cada canto. Talvez você encontre o que procura. Ou, mais provavelmente, encontrará não encontrará nada. Você percebe que, embora o quarto pareça se repetir, há algo diferente agora: detalhes antes ignorados clamam pela sua atenção."
+    ed "A luz fraca da janela circular projeta um brilho sobre os móveis destruídos. Uma cadeira caída e uma cama ensanguentada dominam o centro da sala. As paredes molhadas parecem absorver o som, tornando o ambiente pesado e claustrofóbico."
 
-    jogador" Sinto uma estranha sensação tomando conta de mim. Pela primeira vez estou livre do determinismo dos Narradores, e os cômodos do navio passam por minha mente como opções em um cardápio. As escolhas se alinham diante de mim:"
+    ed "Na parede esquerda, um retrato emoldurado o encara, mesmo que o rosto pintado esteja indistinguível. Na parede oposta, uma segunda moldura apresenta uma família. A imagem está manchada, mas parece transmitir algo... como um apelo mudo."
+
+    ship "Isso não é um quarto. É uma cova, construída lentamente pela sua própria mente. Mas vá em frente, inspecione cada canto. Talvez você encontre o que procura. Ou, mais provavelmente, não encontrará nada." 
+    
+    ship "Você percebe que, embora o quarto pareça se repetir, há algo diferente agora: detalhes antes ignorados clamam pela sua atenção."
+
+    jogador "Sinto uma estranha sensação tomando conta de mim. Pela primeira vez estou livre do determinismo dos narradores e os cômodos do navio passam por minha mente como opções em um cardápio. As escolhas se alinham diante de mim:"
 
     # ------------------------------------------------------------------------------------------
     menu minigame_esperanca:
@@ -1128,7 +1211,7 @@ label conves_esperanca:
             if contador_esperanca == max_tentativas:
                 jump acabou_tempo_esperanca
 
-            unk "Você olha para o horizonte e percebe algo estranho: ele não se move. Não importa o quanto o navio balance, o horizonte permanece fixo, como uma pintura malfeita. Sua mente começa a vagar, e uma vertigem toma conta de você."
+            unk "Você olha para o horizonte e percebe algo estranho: ele não se move. Não importa o quanto o navio balance, o horizonte permanece fixo, como uma pintura malfeita. Sua mente começa a vagar e uma vertigem toma conta de você."
             
             unk "Não é o que você procura."
 
@@ -1159,7 +1242,7 @@ label cabine_esperanca:
 
             scene cabine_sem_figura with fade_in
             
-            unk "O som reverbera pela sala antes de ela desaparecer como poeira ao vento."
+            unk "O som reverbera pela sala antes da estátua desaparecer como poeira ao vento."
 
             unk "Não é o que você procura."
 
@@ -1187,7 +1270,7 @@ label cabine_esperanca:
     
             jump escolhas_cabine_esperanca
 
-        "{b}Voltar para o Corredor{b}":
+        "{b}Voltar para o Convés{b}":
             jump conves_esperanca
 
     # ----------------------------------------------------------------------------------------- Obs: se contador bater cena de body horror e game over
@@ -1197,19 +1280,31 @@ label olhar_retrato_mulher_2_vez:
 
     jogador "Algo naquele retrato... Não consigo tirar da cabeça. Preciso vê-lo novamente."
 
-    ed "Você se aproxima do retrato à esquerda mais uma vez. Desta vez, a sensação é diferente. A moldura parece pulsar suavemente, e o olhar da mulher não é mais vazio. Há algo mais profundo ali, algo que te chama."
+    ed "Você se aproxima do retrato à esquerda mais uma vez. Desta vez, a sensação é diferente. A moldura parece pulsar suavemente e o olhar da mulher não é mais vazio. Há algo mais profundo ali, algo que te chama."
 
-    ship "Ah, de volta ao mesmo lugar. Você achou que um olhar mais atento revelaria algo novo? Você é previsível. Sempre voltando às suas culpas. Você toca a moldura do retrato, e imediatamente sente uma onda de calor percorrer sua mão. A superfície do quadro parece se dissolver, e uma visão toma conta de sua mente."
+    ship "Ah, de volta ao mesmo lugar. Você achou que um olhar mais atento revelaria algo novo? Você é previsível. Sempre voltando às suas culpas. Você toca a moldura do retrato e imediatamente sente uma onda de calor percorrer sua mão. A superfície do quadro parece se dissolver e uma visão toma conta de sua mente."
 
-    ed "Não há mais o que fazer. Tenha cuidado, porque a verdade nunca vem sem um preço. O que você vê agora é o que você sempre soube... e sempre temeu. Você está parado no convés. Enquanto uma tempestade cai, diante de você se apresenta a mulher do retrato, seus olhos cheios de lágrimas e medo. Ela grita algo, mas o som é abafado pelo vento. Você sente o peso do metal em sua mão – um objeto que só pode ser descrito como um instrumento de morte."
+    ed "Não há mais o que fazer. Tenha cuidado, porque a verdade nunca vem sem um preço. O que você vê agora é o que você sempre soube... e sempre temeu."
 
-    ship "Você lembra agora, não é? Foi você que a trouxe aqui, você que segurou a arma, você que decidiu seu destino. Você vê a si mesmo empurrando a mulher para trás. Ela tropeça, seu corpo batendo contra o convés. A tempestade consome tudo, mas você ouve o som claro de algo quebrando. Você grita – não por arrependimento, mas por raiva. O momento congela, e o cenário se desfaz como vidro estilhaçado. De volta ao retrato, você percebe que ele agora está vazio. A mulher se foi, deixando apenas um pedaço de papel dobrado na moldura. Você o pega."
+    ed "Você está parado no convés. Enquanto uma tempestade cai, diante de você se apresenta a mulher do retrato, seus olhos cheios de lágrimas e medo."
 
-    ed "Ah, então você encontrou um fragmento da realidade. Um fragmento que confirma aquilo que você já sabia, mas fingiu esquecer. O sangue naquele convés, o silêncio neste navio... tudo isso é sua criação. O papel tem apenas três palavras escritas: 'Eu perdoo você.' Mas, ao ler, o papel desintegra-se em pó, como se nunca tivesse existido."
+    ed "Ela grita algo, mas o som é abafado pelo vento. Você sente o peso do metal em sua mão – um objeto que só pode ser descrito como um instrumento de morte."
+
+    ship "Você lembra agora, não é? Foi você que a trouxe aqui, você que segurou a arma e decidiu seu destino. Você vê a si mesmo empurrando a mulher para trás. Ela tropeça, seu corpo batendo contra o convés."
+
+    ship "A tempestade consome tudo, mas você ouve o som claro de algo quebrando. Você grita – não por arrependimento, mas por raiva. O momento congela, e o cenário se desfaz como vidro estilhaçado."
+
+    ship "De volta ao retrato, você percebe que ele agora está vazio. A mulher se foi, deixando apenas um pedaço de papel dobrado na moldura. Você o pega."
+
+    ed "Ah, então você encontrou um fragmento da realidade. Um fragmento que confirma aquilo que você já sabia, mas fingiu esquecer. O sangue naquele convés, o silêncio neste navio... tudo isso é sua criação."
+
+    ed "O papel tem apenas três palavras escritas: 'Eu perdoo você.' Mas, ao ler, o papel desintegra-se em pó, como se nunca tivesse existido."
 
     ed "Ah, ele começa a entender. Mas será que já percebeu quem realmente está conduzindo esse ciclo?"
 
-    ed "E aí está você. As escolhas que você tanto procura... sempre foi uma ilusão. O que você não entende é que o navio já está afundando desde o começo. Tudo o que você fez, todas as tentativas, levaram você de volta ao mesmo ponto. A rachadura, a mulher, o barco afundando... Não há saída, nunca houve. Você nunca quis saber quem quebrou a janela? Quem deixou a água entrar? Mas, ei, talvez isso não importe mais. Afinal, o barco afundará, com ou sem rachaduras."
+    ed "E aí está você. As escolhas que você tanto procura... sempre foi uma ilusão. O que você não entende é que o navio já está afundando desde o começo. Tudo o que você fez, todas as tentativas, levaram você de volta ao mesmo ponto."
+
+    ed "A rachadura, a mulher, o barco afundando... Não há saída, nunca houve. Você nunca quis saber quem quebrou a janela? Quem deixou a água entrar? Mas, ei, talvez isso não importe mais. Afinal, o barco afundará, com ou sem rachaduras."
 
     ship "Pobre Ed. Sempre tentando levar os outros ao 'entendimento'. Mas é engraçado... o ciclo não é escolha dele, nem sua. É escolha de algo maior. Talvez você descubra isso... na próxima vez."
 
@@ -1266,7 +1361,7 @@ label rota_tristeza_desperdicio:
 
     scene barco_mar at blur_image with dissolve
 
-    jogador "O que podemos fazer agora? Algum outro item pelo barco?"
+    jogador "O que podemos fazer agora? Tem algum outro item pelo barco?"
 
     ed "Devo dizer que não há."
 
@@ -1274,84 +1369,82 @@ label rota_tristeza_desperdicio:
 
     ed "\Caronte, você não deveria ter feito isso, mas está tudo bem. Poderemos resolver isso. Acho que tem uma canoa em algum lugar por aqui. Podemos usar ela para fugir desse barco, apesar de ser arriscado."
 
-    ship "Fugir para quê? Sabemos que isso não é a solução dos seus problemas, Caronte, eu já te disse isso antes."
+    ship "Fugir para quê? Sabemos que isso não é a solução dos seus problemas, Caronte. Eu já te disse isso antes."
 
     ed "Não escute ele, Caronte. Confie em mim, você tem uma vida maravilhosa pela frente! Na verdade, eu vou fazer melhor, vou te mostrar."
 
     ed "Surge a imagem de uma linda moça na sua frente. Pele morena, cabelos escuros. O coração palpita forte."
 
-    ed "Você vê sua família, vocês estão... em uma igreja. Seus pais, tios e tias estão ali, todos te olhando, sorrindo, te amandoR tanto que você não consegue imaginar. A moça bonita está do seu lado, ela sorri timidamente."
+    ed "Você vê sua família, vocês estão... em uma igreja. Seus pais, tios e tias estão ali, todos te olhando, sorrindo, te amando tanto que você não consegue imaginar. A moça bonita está ao seu lado, ela sorri timidamente."
 
-    ed "Você está feliz, você sorri imaginando esta cena junto de mim. Não é amável, Caronte? Não é um futuro perfeito? O que mais um homem poderia querer."
-
-    jogador "Sim! Hahah"
+    ed "Você está feliz! Você sorri imaginando esta cena junto de mim. Não é amável, Caronte? Não é um futuro perfeito? O que mais um homem poderia querer?"
 
     ship "Isso não existe! Uma vida feliz para você?"
 
     ship "Estamos condenados nesse barco por um motivo. E pode ter certeza que não é por uma vida maravilhosa que você levava."
     #(uma sombra preta toma a cena ou rabiscos pretos em toda parte)"
 
-    ship "A verdade é esta: você está jogado em uma sarjeta, enquanto vômito escorre pelas suas calças. Você é uma figura asquerosa que definha esperando a morte,  como um vira-lata que foi atropelado e esquecido para morrer. Esta é a verdade, isso é o que aconteceu com você antes."
+    ship "A verdade é: você está jogado em uma sarjeta, com vômito escorrendo pelas suas calças. É uma figura asquerosa que definha, como um vira-lata atropelado e esquecido para morrer. Esta é a verdade, isso é o que aconteceu com você."
 
     jogador "Que?! Que merda é essa? Por que diabos você está falando isso?"
 
-    ed "Não, não escute ele, Caronte, ele está apenas distorcendo o que aconteceu. Tentando te manipular!"
+    ed "Não, não escute ele, Caronte. Ele está apenas distorcendo o que aconteceu. Tentando te manipular!"
 
-    ship "Eu? É ele quem está mentindo, ocultado a realidade para parecer algo belo. Você é um viciado, Caronte. Você tem problemas graves e não tem nada que possa te ajudar. É por isso que você deve morrer."
+    ship "Eu? É ele quem está mentindo, ocultado a realidade para parecer algo belo. Você é um viciado, Caronte. Você tem problemas graves e não tem nada que possa te ajudar. É por isso que deve morrer."
 
-    ship "Mais tarde, sua esposa, esta “morena bonita de cabelos escuros” te encontra e começa a chorar. Você fica se sentindo um lixo! E eu não quero passar por isso de novo! Eu não vou passar por isso de novo!"
+    ship "Mais tarde, sua esposa, esta “morena bonita de cabelos escuros” te encontra e começa a chorar. Você fica profundamente perturbado! E eu não quero passar por isso de novo! Eu não vou passar por isso de novo!"
 
-    ed "\Caronte, ele está mentindo, deixa eu te mostrar outra coisa."
+    ed "\Caronte, ele está mentindo. Deixa eu te mostrar outra..."
 
-    ship "Não, eu ainda não terminei! Depois disso, ela tentou te levantar, te levar para casa e cuidar de você. Ela tentou enxergar em você uma pessoa digna. Mas não conseguia, ela não tinha força para te levantar e você mal se aguentava em pé."
+    ship "Não, eu ainda não terminei! Depois disso, ela tentou te levantar, te levar para casa e cuidar de você. Ela tentou enxergar em você uma pessoa digna, mas não conseguia. Ela não tinha força para te levantar e você mal se aguentava em pé."
 
-    ship "Ela chorava não só por ver o amor dela nessa situação lastimável, mas também por que você quebrou a promessa que vocês fizeram. Você prometeu, porra, a gente prometeu que não iria fazer mais essa merda e, no fim, a gente fez! E fizemos de novo, e de novo!.... Nenhum ser humano em sã consciência aguentaria essa tortura, Caronte… Confie em mim, eu não estou mentindo!"
+    ship "Ela chorava não só por ver o amor dela nessa situação lastimável, mas também porque você quebrou a promessa que fizeram. Você prometeu, porra, a gente prometeu que não iria fazer mais essa merda e, no fim, a gente fez!" with dissolve
 
-    ed "Esquece isso! Pense neste outro caso, esta outra possibilidade."
+    ship "E fizemos de novo, e de novo... Nenhum ser humano em sã consciência aguentaria essa tortura, Caronte… Confie em mim, eu não estou mentindo!" with dissolve
 
-    jogador "O quê? Eu… eu realmente fiz isso? Por…"
+    ed "Esquece isso! Pense neste outro caso, esta outra possibilidade." with dissolve
 
-    ed "Esqueça isso, Caronte. Me escute, pense nos seus filhos!"
+    jogador "O quê? Eu… eu realmente fiz isso? Por…" with dissolve
 
-    ed "Você está sentado em uma cadeira, segurando a mão da moça bonita, na sua frente um menino e uma menina correm e brincam nas areias cristalinas da praia. O mar está no mais perfeito tom de azul, com o Sol aquecendo-o tão suavemente."
+    ed "Esqueça isso, Caronte. Me escute, pense nos seus filhos!" with dissolve
 
-    ed "A vida parece tão calma, com uma leve brisa passando pelas árvores e as fazendo ressoar. Mais distante, pássaros tomam o horizonte, colorindo o céu."
+    ed "Você está sentado em uma cadeira, segurando a mão da moça bonita. Na sua frente um menino e uma menina correm e brincam nas areias cristalinas da praia. O mar está no mais perfeito tom de azul, com o Sol aquecendo-o tão suavemente." with dissolve
 
-    jogador "Sim, tudo isso parece tão bom! Por que minha vida não pode ser assim?"
+    ed "A vida parece tão calma, com uma leve brisa passando pelas árvores e as fazendo ressoar. Mais distante, pássaros tomam o horizonte, colorindo o céu." with dissolve
 
-    ship "Por que você foi condenado por Deus a ser essa criatura repugnante!"
+    jogador "Sim, tudo isso parece tão bom! Por que minha vida não pode ser assim?" with dissolve
 
-    ship "Mentiras e mais mentiras! Isso nunca aconteceu, você tratava os seus filhos como se fossem lixo, Caronte!"
+    ship "Porque você foi condenado por Deus a ser essa criatura repugnante!" with dissolve
 
-    jogador "Espera, eu tenho filhos?"
+    ship "Mentiras e mais mentiras! Isso nunca aconteceu, você tratava os seus filhos como se fossem lixo!" with dissolve
 
-    ship "Você NUNCA deu um pingo de amor para eles! Não ouse tentar se convencer de que, em algum momento da sua vida, você foi bom ou deu qualquer tipo de alegria para aquelas crianças!"
+    jogador "Espera, eu tenho filhos?" with dissolve
 
-    jogador "Crianças? Mas co…"
+    ship "Você NUNCA deu um pingo de amor para eles! Não ouse tentar se convencer de que, em algum momento da sua vida, você foi bom ou deu qualquer tipo de alegria para aquelas crianças!" with dissolve
 
-    ship "Tudo que você sabia fazer com aquelas crianças era gritar e xingar. Toda vez que elas te pediam alguma coisa, toda vez que elas te pediam qualquer forma de carinho ou amor, você as assustava. Isso quando não batia nelas!"
+    jogador "Crianças? Mas co…" with dissolve
 
-    jogador "Meu Deus! Eu não fiz isso! Eu não lembro de nada."
+    ship "Tudo que você sabia fazer com aquelas crianças era gritar e xingar. Toda vez que elas te pediam alguma coisa, toda vez que elas te pediam qualquer forma de carinho ou amor, você as assustava. Isso quando não batia nelas!" with dissolve
 
-    ship "Até quando elas estavam tendo problemas nas escolas com os outros meninos, você nunca, nunca ajudou! Seu miserável!"
+    jogador "Meu Deus! Eu não fiz isso! Eu não lembro de nada." with dissolve
 
-    ship "Então, não ouse acreditar nas mentiras que o Ed te conta."
+    ship "Até quando elas estavam tendo problemas nas escolas com os outros meninos, você nunca, nunca ajudou! Seu miserável!" with dissolve
 
-    jogador "…"
+    ship "Então, não ouse acreditar nas mentiras que o Ed te conta." with dissolve
 
-    ed "\Caronte, não acredite no que ele diz! É tudo mentira, você não é assim, você tem chance de mudar, chance de ser uma pessoa melhor. Acredite em mim, por favor. Acredite em nós dois."
+    ed "Caronte, não acredite no que ele diz! É tudo mentira, você não é assim, você tem chance de mudar, chance de ser uma pessoa melhor. Acredite em mim, por favor. Acredite em nós dois." with dissolve
 
-    jogador "Não… Eu acho que… eu entendo agora…"
+    jogador "Não… Eu acho que… eu entendo agora…" with dissolve
 
-    jogador "Esse peso no meu corpo, essa desolação em minha cabeça, como se… algo muito ruim estivesse guardado aqui dentro… na verdade… eu acho que tudo faz sentido na realidade… Eu sou de fato uma criatura horrível, não sou?"
+    jogador "Esse peso no meu corpo, essa desolação em minha cabeça, como se… algo muito ruim estivesse guardado aqui dentro… na verdade… eu acho que tudo faz sentido na realidade… Eu sou de fato horrível, não sou?" with dissolve
 
-    ed "Não, \Caronte. Você não é, você…"
+    ed "Não, Caronte. Você não é, você…" with dissolve
 
-    ship "Sim! você é!"
+    ship "Sim! você é!" with dissolve
 
-    jogador "Entendo… Realmente sou um maldito que apenas inferniza e destrói a vida das pessoas ao meu redor…."
+    jogador "Entendo… Realmente sou um maldito que apenas inferniza e destrói a vida das pessoas ao meu redor…." with dissolve
 
-    ship "Você está ficando ainda mais cansado, Caronte. Você sente algo sumindo do seu corpo… você sente sua esperança se esvaindo."
+    ship "Você está ficando ainda mais cansado, Caronte. Você sente algo sumindo do seu corpo… Sua esperança se esvaindo." with dissolve
 
     #Ed Newgate desaparecendo
     jogador "Ed, não resta muito para nós aqui."
@@ -1363,6 +1456,8 @@ label rota_tristeza_desperdicio:
     jogador "Eu sinto muito, Ed…"
 
     ship "O corpo dele já se encontra nas águas. E as preocupações que tanto nos assombraram foram esquecidas."
+
+
 
     jump start
 
@@ -2566,17 +2661,17 @@ label Investigar_e_descobrir_a_verdade:
 label rota_raiva:
     scene corredor
 
-    ed "Bosta! inferno! Eu odeio esse lugar, eu odeio toda essa merda!"
+    ed "Bosta! Inferno! Eu odeio esse lugar, eu odeio toda essa merda!"
 
-    ship "Que inferno! Ahr, maldito quarto!"
+    ship "Que inferno! Ah, maldito quarto!"
 
     jogador "Por Deus, que merda foi essa?! O que foi isso??    "
 
-    ship "A verdade... ou a face dela, mas ainda tem um poço de memórias que você esqueceu e que assim seja. Lembrar disso só vai causar mais dor... e eu não quero mais isso. Por favor, Caronte, liberte a gente, eu já te disse como."
+    ship "A verdade, ou parte dela... mas ainda tem um poço de memórias que você esqueceu - e que assim seja. Lembrar disso só vai causar mais dor... e eu não quero mais isso. Por favor, Caronte, liberte a gente, eu já te disse como."
 
-    ed "Não, não precisa ser assim, vamos embora desse barco, a gente não tem nada para fazer aqui, é a melhor forma."
+    ed "Não, não precisa ser assim. Vamos embora desse barco, a gente não tem nada para fazer aqui. É a melhor forma."
 
-    ship "Isso não vai funcionar, Ed, a gente sabe disso."
+    ship "Isso não vai funcionar, Ed. A gente sabe disso."
 
     menu escolhas_principais_raiva:
         "{b}Investigar o quarto{b}":
@@ -2592,38 +2687,38 @@ label rota_raiva:
 #Falta imagem escadaria e melhorar texto
 label fugir_do_navio_raiva:
     # ****Fugir do Navio:
-    jogador "Esquece essa merda, esquece toda essa merda, eu vou sair daqui logo, eu não aguento mais esse maldito lugar!"
+    jogador "Esquece essa merda, esquece toda essa merda! Eu vou sair daqui logo, eu não aguento mais esse maldito lugar!" with dissolve
 
-    ed "Isso! Perfeito, vamos recomeçar e esquecer de tudo de uma vez por todas"
+    ed "Isso, perfeito! Vamos recomeçar e esquecer de tudo de uma vez por todas." with dissolve
 
-    ship "Hum. Não, não é assim tão fácil. Não dá para esquecer o que a gente é, a verdade volta para cuspir na nossa cara de uma forma ou de outra."
+    ship "Hum. Não, não é assim tão fácil. Não dá para esquecer o que nós somos. A verdade sempre volta para cuspir na nossa cara de uma forma ou de outra."
     
     ship "Não dá para fugir! Pelo amor de Deus, me escuta!!"
 
-    jogador "Que se foda, que merda você sabe sobre isso? Que merda tem de errado com você? Eu cansei desse lugar, nunca mais eu volto aqui!"
+    jogador "Que se foda. Que merda você sabe sobre isso? Que merda tem de errado com você? Eu cansei desse lugar, nunca mais eu volto aqui!"
 
-    ship "Me escuta, a gente já viveu isso! Um milhão de vezes, não dá! Simples assim, NÃO DÁ!"
+    ship "Me escuta, a gente já viveu isso um milhão de vezes. Não dá! Simples assim, NÃO DÁ!"
 
-    ed "Por Cristo, cala essa maldita boca uma vez na sua vida. Ele tomou a decisão dele, não tem mais volta"
+    ed "Por Cristo, cala essa maldita boca uma vez na sua vida. Ele tomou sua decisão, não tem mais volta."
 
-    ed "Agora, finalmente, de uma vez por todas, a gente vai sair desse inferno e ter uma vida digna"
+    ed "Agora, finalmente, de uma vez por todas, a gente vai sair desse inferno e ter uma vida digna."
 
-    ship "E voltar aqui"
+    ship "E voltar aqui..."
 
-    ed "E nunca mais voltar aqui. NUNCA. MAIS"
+    ed "E nunca mais voltar aqui. NUNCA. MAIS."
 
-    ed "Rapidamente, vamos em direção as escadas, podemos sair daqui por um barquinho que irá ter na lateral do convés e navegar até terra firme, não é muito longe daqui"
+    ed "Vamos em direção às escadas. Podemos sair daqui por um barquinho na lateral do convés e navegar até terra firme. Não é muito longe daqui."
 
     #melhorar a morte do Harold, queria que ficasse discreta, mas sinistra ao mesmo tempo. Talvez colocar um efeito sonoro ou uma imagem bem rápida?
     ship "Hm... então aqui vamos nós de novo.... mais uma vez.... de novo e de novo...."
 
-    ed "Ao caminhar, você sente uma energia em você Caronte, algo... sumindo... algo ruim está indo embora, um encosto que não irá mais te assombrar, não se preocupe, ele vai morrer daqui a pouco"
+    ed "Ao caminhar, você sente uma energia em você Caronte, algo... sumindo... algo ruim está indo embora, um encosto que não irá mais te assombrar. Não se preocupe, ele vai morrer daqui a pouco."
 
-    ed "Me certificarei disso, haha"
+    ed "Me certificarei disso."
 
-    ed "Ao mesmo tempo, você olha para os lados mais detalhadamente, tudo está inundando uma água estranha, preta está entrando, afundando tudo que aqui existe, mas conseguiremos sair se nos apressarmos"
+    ed "Ao mesmo tempo, você olha para os lados mais detalhadamente, tudo está inundando. Uma água estranha, preta, está entrando, afundando tudo que aqui existe, mas conseguiremos sair se nos apressarmos."
 
-    ed "Ao chegar na ponta da escada, você olha para cima... Estranho, você nunca presotu muita atenção nisso, mas essa escadaria é realmente longa, não?"
+    ed "Ao chegar na ponta da escada, você olha para cima... Estranho, você nunca prestou muita atenção nisso, mas essa escadaria é realmente longa, não?"
 
     #scene escadaria_super_longa
 
@@ -2632,7 +2727,7 @@ label fugir_do_navio_raiva:
     #audio de madeira sendo pisada
     play sound "steps-on-wooden-stairs.mp3"
 
-    ed "Subimos as escadas, passo a passo, as escadas gritam sob seus passos..."
+    ed "Subimos as escadas, passo a passo. Cada degrau grita sob seus passos..."
     
     #colocar flashes, gritos e som de coisas batendo em uma pessoa (o som de uma briga com flashes vermelhos) a ideia é que o som das escadas "gritando" lembram a briga que ele teve com a mãe dele
     # o cérebro dele tenta lembrar, mas o ed não deixa.
@@ -2659,9 +2754,9 @@ label fugir_do_navio_raiva:
 
     ################
 
-    ed "Não se preocupe, isso não te lembra de nada. Está tudo bem Caronte." 
+    ed "Não se preocupe, isso não te lembra de nada. Está tudo bem, Caronte." 
     
-    ed "No fim dessas escadas, vemos algo... tem algo ali.... uma... luz? Sim! Isso, é claro... é claro"
+    ed "No fim dessas escadas, vemos algo... tem algo ali.... uma... luz? Sim! Isso, é claro... é claro!"
 
     ed "É assim, Caronte, que encerrmos uma passagem para começar outra completamente diferente. É assim que inicia o começo da nossa felicidade eterna, HAHAHA."
 
@@ -2675,17 +2770,17 @@ label encerrar_sofrimento:
 
     ed "Hm?!"
 
-    jogador "Meu corpo está chorando por descanso, minha cabeça está implorando por paz... e eu nem sei o porquê disso, mas... é como se o mundo estivesse me dizendo... só... para."
+    jogador "Meu corpo está chorando por descanso, minha cabeça está implorando por paz... e eu nem sei o porquê disso, mas... é como se o mundo estivesse me dizendo...'só... para'."
 
     ed "Não, NÃO, Caronte! Não-"
 
-    ship "SIM!! Você está escutando, Caronte! Você sente! É como se estivesse alguma coisa adormecida dentro da nossa mente, tão horrível que mesmo selada ainda nos corrói, ainda nos faz sangrar, perder a respiração e as energias."
+    ship "SIM!! Você está escutando, Caronte! Você sente! É como se estivesse alguma coisa adormecida dentro da nossa mente. Algo tão horrível que mesmo selado ainda nos corrói, ainda nos faz sangrar, perder a respiração e as energias."
     
-    ship "É uma eterna luta, Caronte, uma luta sem descanso... uma luta que nunca poderemos ganhar..."
+    ship "É uma eterna luta, Caronte. Uma luta sem descanso... uma luta que nunca poderemos ganhar..."
 
-    ed "Não, não escuta ele, a gente ainda tem esperança, Caronte. Dane-se o que o mundo ou esse cara te diz, a gente consegue sair dessa situação, eu consigo te salvar, eu prometo!!!"
+    ed "Não, não escuta ele, a gente ainda tem esperança, Caronte. Dane-se o que o mundo ou esse cara te diz. A gente consegue sair dessa situação, eu consigo te salvar, eu prometo!!!"
 
-    jogador "... Não... me desculpa, Ed... mas eu não... quero mais seguir..., nem ser salvo... De alguma forma, eu sei que não tem outro jeito"
+    jogador "... Não... me desculpa, Ed... mas eu não... quero mais seguir..., nem ser salvo... De alguma forma, eu sei que não tem outro jeito."
 
     ship "Você sente alguma coisa mudando dentro de você, Caronte. Como se algo estivesse sumindo."
 
@@ -2693,19 +2788,19 @@ label encerrar_sofrimento:
 
     ship "Vamos logo com isso... Hoje vai ser o dia mais feliz que a gente teve desde aquilo... e o último."
 
-    jogador "Certo... Vamos"
+    jogador "Certo... Vamos."
 
     ed "Não, o qu  eu p ecis  dizer para você mu ar de ideia?"
 
     ship "Você sente algo mudando em você, como se uma parte sua estivesse sumindo."
     
-    ship "Caminhamos para aonde tudo começou e, no caminho, você sente suas orelhas saindo algum tipo de líquido. Sangue... e, de certa forma, não é o seu."
+    ship "Caminhamos para onde tudo começou e, no caminho, você sente que de suas orelhas sai algum líquido vermelho: sangue... e, de certa forma, não é o seu."
 
     scene conves_distortion
 
-    ed "Car  te! C  ont! M   SC TA! P R FAV R! A GENTE AINDA TEM UMA CHANCE, ENTÃO SE ESCUTA, PORRA!"
+    ed "Car  te! C  ont! M   SC TA! P R FAV R! A GENTE AINDA TEM UMA CHANCE. ENTÃO ME ESCUTA!"
 
-    ship "O sangramento parou"
+    ship "O sangramento parou."
 
     menu continuar_escolha_menu:
         "{b}Continuar com sua escolha{b}":
@@ -2715,63 +2810,65 @@ label encerrar_sofrimento:
 
 #Falta terminar
 label fugir_navio_encerrar_sofrimento:
-    jogador "Merda. Desculpa, Ed. Eu não quero morrer, meu Deus, me perdoa"
+    jogador "Merda. Desculpa, Ed. Eu não quero morrer. Meu Deus, me perdoa." with dissolve
 
-    ship "Hm..."
+    ship "Hm..." with dissolve
 
-    ed "Isso!!! Eu estou vivo, porra!!"
+    ed "Isso!!! Eu estou vivo, porra!!" with dissolve
 
-    ed "Já ele, nem tanto, né? Ha. Ele nunca mais vai aparecer aqui"
+    ed "Já ele, nem tanto, né?. Ele nunca mais vai aparecer aqui" with dissolve
 
-    ed "Droga, você me asusstou, Caronte, o que foi aquilo?"
+    ed "Droga, você me asusstou, Caronte, o que foi aquilo?" with dissolve
 
-    jogador "Desculpa, é que.... Estou tão cansado... tão cansado...."
+    jogador "Desculpa, é que.... Estou tão cansado... tão cansado...." with dissolve
 
-    ed "Entendo, as coisas não tem sido fácil para a gente... nunca forma na verdade... no nascimento Deus nos abandonou e deixou que o mundo fizesse o que queria com nós"
+    ed "Entendo, as coisas não tem sido fácil para a gente... nunca foram na verdade... no nascimento Deus nos abandonou e deixou que o mundo fizesse o que queria com nós." with dissolve
 
-    ed "Mas eu não sou Deus ou qualquer outra dessas entidades, eu não vou te abandonar, Caronte. Eu vou te ajudar a sair dessa merda de uma vez por todas"
+    ed "Mas eu não sou Deus ou qualquer outra dessas entidades. Eu não vou te abandonar, Caronte. Eu vou te ajudar a sair dessa merda de uma vez por todas." with dissolve
 
-    jogador "Como? O que eu posso fazer para sair daqui? Estou preso nesse lugar.... de novo?"
+    jogador "Como? O que eu posso fazer para sair daqui? Estou preso nesse lugar.... de novo?" with dissolve
 
-    ed "Preso nesse lugar?"
+    ed "Preso nesse lugar?" with dissolve
 
-    ed "Hm..."
+    ed "Hm..." with dissolve
 
-    jogador "Tudo fica parado por um tempo... Estou aqui, neste convés. Ao redor, o mar.... alguns segundos passam"
+    # es
 
-    ed "E se... você nos matasse para sempre?"
+    jogador "Tudo parece mais lento... eu, aqui, neste convés. Ao redor, o mar... com as ondas pouco a pouco se distanciando." with dissolve
 
-    jogador "O que?"
+    ed "E se... você nos matasse para sempre?" with dissolve
 
-    ed "Eu tive uma idéia, Caronte... mas não sei se vai dar certo"
+    jogador "O quê?"
 
-    ed "A gente precisa ser rápido, tem uma canoa aqui em algum lugar, desça ela e vamos para terra firme logo. RÁPIDO!!"
+    ed "Eu tive uma ideia, Caronte... mas não sei se vai dar certo."
+
+    ed "A gente precisa ser rápido. Tem uma canoa aqui em algum lugar. Solte-a na água e vamos para terra firme logo. RÁPIDO!!"
 
     jogador "Hm, ok. Entendi. Mas qual é o seu plano?"
 
-    ed "Arruma as coisas enquanto vou te explicando."
+    ed "Arrume as coisas enquanto vou te explicando."
 
-    jogador "Ok"
+    jogador "Ok."
 
-    jogador "Eu saio procurando este bote, não sei onde está, mas se o Ed falou que ele está aqui, deve estar certo"
+    jogador "Eu saio procurando este bote, mas não sei onde está. Se o Ed falou que está por aqui, deve estar certo."
 
-    ed "Sim, esotu certo. A explicação é que eu e o ship estamos na sua cabeça tem muito tempo, adormecidos ou ativos, estamos aqui"
+    ed "Sim, estou certo. A explicação é que eu e o Harold estamos na sua cabeça tem muito tempo. Adormecidos ou ativos, estamos aqui."
 
-    jogador "Espera, o que?"
+    jogador "Espera, o quê?"
 
     ed "E, talvez, só talvez, a gente seja a causa de tudo isso... ou o resultado do efeito que te causa isso. Entende?"
 
-    ed "Se a gente morrer, talvez o seu problema desapareça e você finalemente fique a salvo"
+    ed "Se a gente morrer, talvez o seu problema desapareça e você finalmente fique a salvo."
 
-    jogador "Matar vocês? Essas vozes? Espera, achei!"
+    jogador "Matar vocês? Essas vozes?\nEspera, achei o bote!"
 
     ed "Perfeito, desça o bote e reme até as docas, após isso..."
 
-    ed "Vamos para um manicomio nos internar a força!"
+    ed "Vamos para um manicômio nos internar à força!"
 
-    jogador "Espera, o que?! Que merda de ideia é essa?"
+    jogador "Espera, o quê?! Que merda de ideia é essa?"
 
-    ed "Não pare, vamos logo, não sei por quanto tempo a gente vai continuar aqui"
+    ed "Não pare, vamos logo. Não sei por quanto tempo a gente vai continuar aqui."
 
     jogador "Do que você está falando? Como assim? Me internar? Tempo?"
 
@@ -2780,37 +2877,37 @@ label fugir_navio_encerrar_sofrimento:
 
     scene black
 
-    ed "Eu sei que sempre te prometi que viveriamos uma vida feliz e alegre, mas tenho que deixar esse objetivo para forçar você a receber um tratamento logo."
+    ed "Eu sei que sempre te prometi que viveríamos uma vida feliz e alegre, mas preciso que você receba um tratamento logo."
 
-    ed "Somos doentes, Caronte, precisamos de ajuda..."
-
-    jogador "...."
-
-    jogador "Merda... porra... Entendi"
-
-    ed "Sim... eu sei... mas é assim que as coisas são... é assim que a gente foi feito, eu acho. Me desculpa"
+    ed "Somos doentes, Caronte. Precisamos de ajuda..." with dissolve
 
     jogador "...."
 
-    jogador "Edward"
+    jogador "Merda... porra... Entendi." with dissolve
 
-    ed "Sim?"
+    ed "Sim... eu sei... mas é assim que as coisas são... é assim que a gente foi feito, eu acho. Me desculpa." with dissolve
 
-    jogador "Obrigado"
+    jogador "...." with dissolve
+
+    jogador "Edward." with dissolve
+
+    ed "Sim?" with dissolve
+
+    jogador "Obrigado." with dissolve
 
     play sound "mar.mp3"
 
-    jogador "Me internar?"
+    jogador "Me internar?" with dissolve
 
-    jogador "É isso que eu sou? Uma pessoa debilitada, doente, ferida"
+    jogador "É isso que eu sou? Uma pessoa debilitada, doente, ferida?" with dissolve
 
-    jogador "Onde eu estou?"
+    jogador "Onde eu estou?" with dissolve
 
-    jogador "Por que não lembro de nada?"
+    jogador "Por que não lembro de nada?" with dissolve
 
     jogador "O Ed não está mais aqui, né?"
 
-    jogador "Ele nunca esteve na verdade"
+    jogador "Ele nunca esteve na verdade."
 
     scene manicomio
 
@@ -2856,9 +2953,9 @@ label continuar_escolha:
 
     scene conves_distortion
 
-    ship "Nossas orelhas estouram em sangue e você agora não ouve mais nada. Somo apenas um. A outra parte sua está morta... completamente."
+    ship "Nossas orelhas estouram em sangue e você agora não ouve mais nada. Somos apenas um. A outra parte sua está morta... completamente."
 
-    jogador "Ao chegar no destino onde acordamos, adequadamente se encontra uma faca no chão, eu a pego e me ajoelho no chão. Com a duas mãos eu a encosto contra minha barriga."
+    jogador "Ao acordar, noto convenientemente uma faca no chão, eu me ajoelho e a pego. Com a duas mãos eu a encosto contra minha barriga."
     
     scene estrelas
 

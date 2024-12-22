@@ -1,24 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1097, in script
-    figura "Você sou eu &UUU&uuQ&**&QYO&######@@@@@%%%"
-ValueError: incomplete format
+  File "game/script.rpy", line 861, in script
+    menu menu_escolhas_zoom_in_item:
+  File "game/script.rpy", line 865, in <module>
+    "{b}Pegar item{b}" if item_desperdicado == False and item_pego == False:
+NameError: name 'item_desperdicado' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1097, in script
-    figura "Você sou eu &UUU&uuQ&**&QYO&######@@@@@%%%"
-  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 2560, in execute
-    Say.execute(self)
-  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 615, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "C:\Users\Wilker Ribeiro\Downloads\renpy-8.2.2-sdk\renpy\exports.py", line 1483, in say
-    what = what % tag_quoting_dict
-ValueError: incomplete format
+  File "game/script.rpy", line 861, in script
+    menu menu_escolhas_zoom_in_item:
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\ast.py", line 1619, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\exports\menuexports.py", line 100, in menu
+    condition = renpy.python.py_eval(condition)
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\python.py", line 1209, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\python.py", line 1202, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 865, in <module>
+    "{b}Pegar item{b}" if item_desperdicado == False and item_pego == False:
+NameError: name 'item_desperdicado' is not defined
 
 Windows-10-10.0.22621 AMD64
-Ren'Py 8.2.2.24061201
+Ren'Py 8.3.3.24111502
 projetoX 1.0
-Thu Dec 12 19:52:20 2024
+Sat Dec 21 17:51:42 2024

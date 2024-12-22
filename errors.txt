@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1108: end of line expected.
-    unk "Você olha para os mapas, mas eles não fazem sentido. Os traços parecem formar rotas impossíveis, que terminam em círculos ou espirais. Alguns pontos marcados com "X" parecem se mover enquanto você observa."
-                                                                                                                                                                            ^
+File "game/script.rpy", line 2898: expected end of line
+    play sound "mar.mp3" with dissolve
+                         ^
 
-Ren'Py Version: Ren'Py 8.2.2.24061201
-Thu Dec 12 02:24:53 2024
+Ren'Py Version: Ren'Py 8.3.3.24111502
+Sat Dec 21 22:33:03 2024
