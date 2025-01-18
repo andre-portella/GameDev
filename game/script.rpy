@@ -216,6 +216,9 @@ transform zoom_out_far:
 
 # Remover e inserir em 'screens.rpy'
 init python:
+    #canal de audio criado
+    # renpy.music.register_channel("layer1", "sfx", synchro_start=True)
+
     item_desperdicado = False #variavel para o trigger de quando o item eh desperdicado
     item_pego = False
     janela_consertada = False
@@ -313,6 +316,21 @@ define auxiliar = Character(" ", color="#FFFFFF", window_style="my_custom_window
 
 label start:
 
+<<<<<<< HEAD
+    play music "<from 10.0>rough-sea-mar-bravo-23670.mp3"
+
+    jump ficar_minigame1
+
+    scene black
+
+    pause 2.0
+
+    scene conves_distortion with fade_in
+
+    # jump rota_esperanca
+
+    # jump rota_raiva
+=======
 
     $ item_desperdicado = False #variavel para o trigger de quando o item eh desperdicado
     $ item_pego = False
@@ -330,6 +348,7 @@ label start:
     $ porta_trancada = True #//%Variavel que define quando a porta esta trancada ou nao. Ela fica trancada ate o jogador desperdicar o item, isso eh feito para corrigir um erro
 
     scene black with fade_in
+>>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     # pause 0.5 #pausa a leitura dos códigos por 0.5 segundos
 
@@ -451,6 +470,8 @@ label voltar_dormir:
     ship "Um pouco de paz, finalmente…" with dissolve
 
     # Continuação após o escurecimento
+
+    stop music
 
     scene quarto_distorcido with fade_out and fade_in
 
@@ -628,6 +649,7 @@ label desistir_conserto:
     ship "As névoas tomam conta do seu destino, nada mais parece manter a forma. O ar é denso, como se cada respiração fosse um mergulho em águas turvas. Você tateia o espaço ao seu redor, mas os contornos se desvanecem, com tudo escapando entre seus dedos." with dissolve
 
     scene corredor at blur_image with dissolve
+
     menu menu_desistir_conserto:
         "{b}O que está acontecendo? \[Opção Exploratória\]{b}":
             jump op_exp5
@@ -645,6 +667,10 @@ label desistir_conserto:
 
 
     label op_exp5:
+
+        play audio "<from 38.0 to 42.0>zumbido_orelha.mp3"
+
+        # play audio "<from 38.0 to 42.0>zumbido_orelha.mp3"
 
         jogador "Por que está tudo tão distorcido? Não estou entendendo nada… são alucinações?" with dissolve
         
@@ -805,6 +831,12 @@ label Entrar_quarto_proibido:
 
         #fazer a frase aparecer mais devagar
         jogador "{cps=2}Qu-{/cps} {cps=13}QuE POrrA É EsSa?!!{/cps}"
+
+        play sound "moscas_quarto.mp3" volume 1.5
+    # dead-zone-166005
+        play music "dead-zone-166005.mp3" volume 0.4
+    # the-hourglass-24435
+
 
         #(mostra a cena do quarto cheio de sangue)
         scene quarto_probido_entrada with fade_in
@@ -2032,7 +2064,13 @@ label minigame_porta1:
     #o ship e o ed irão dar a dica para escolher a porta errada, qualquer uma das outras duas portas leva para o lugar certo
     
 label ficar_minigame1:
+<<<<<<< HEAD
+    play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 2.0
+    
+    jogador "Na verdade, prefiro vir por aqui"
+=======
     jogador "Na verdade, prefiro vir por aqui."
+>>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ed "Hm? Por quê? Estamos no corredor de novo, Caronte."
 
@@ -2053,7 +2091,13 @@ label ficar_minigame1:
         #     jump ficar_minigame1
 
 label ficar_minigame2:
+<<<<<<< HEAD
+    play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 2.0
+    
+    ship "Você passa pela porta e volta para o corredor, de novo"
+=======
     ship "Você passa pela porta e volta para o corredor, de novo."
+>>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ed "Caronte? Você está tendo algum problema com a gente?"
 
@@ -2092,6 +2136,8 @@ label ficar_minigame2:
         #     jump ficar_minigame1    
 
 label ficar_minigame3:
+    play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 3.0
+
     ed "Agora você escolhe a primeira porta?"
 
     ship "Que droga, Caronte, qual é o seu problema?"
@@ -2123,6 +2169,8 @@ label ficar_minigame3:
         #     jump ficar_minigame1    
 
 label ficar_minigame4:
+    play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 3.0
+
     ed "Agora ele escolhe a porta que a gente mandou..."
 
     ship "Chega dessa merda, qual seu problema, Caronte? Escolhe a maldita porta certa e entra nesse maldito quarto."
@@ -2154,7 +2202,13 @@ label ficar_minigame4:
             jump ficar_minigame5
 
 label ficar_minigame5:
+<<<<<<< HEAD
+    play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 3.0
+
+    ship "Maldita criança inútil"
+=======
     ship "Maldita criança inútil!"
+>>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ed "Chega disso. A gente não vai chegar a lugar nenhum e o barco ainda está afundando." with dissolve
 
@@ -2169,7 +2223,13 @@ label ficar_minigame5:
     jump parte_da_dor_fim_minigame_volta_para_quarto_escuro
 
 label parte_da_dor_fim_minigame_volta_para_quarto_escuro:
+<<<<<<< HEAD
+    play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 3.0
+
+    ship "Feliz, agora, garoto? Estamos todos irritados e de volta nesse quarto"
+=======
     ship "Feliz, agora, garoto? Estamos todos irritados e de volta nesse quarto." with dissolve
+>>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ed "Já chega, Harold... Estamos aqui, querendo ou não." with dissolve
 
@@ -2575,6 +2635,12 @@ label entrar_quarto_dnv:
 
     jogador ". . . . . . . . . . . . . . . . Mas o quê?"
 
+
+    # pausar musica ou colocar musica de vazio?
+    # play music "vazio.mp3"
+
+    pause music
+
 #Resultado após o jogador passar da última porta
     #tem que terminar
     scene quarto_escuro
@@ -2656,13 +2722,20 @@ label Investigar_e_descobrir_a_verdade:
 
 
 label rota_raiva:
+
+    play music "<from 10.0>rough-sea-mar-bravo-23670.mp3"
+
     scene corredor
 
     ed "Bosta! Inferno! Eu odeio esse lugar, eu odeio toda essa merda!" with dissolve
 
     ship "Que inferno! Ah, maldito quarto!" with dissolve
 
+<<<<<<< HEAD
+    jogador "Por Deus, que merda foi essa?! O que foi isso?"
+=======
     jogador "Por Deus, que merda foi essa?! O que foi isso??" with dissolve
+>>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ship "A verdade, ou parte dela... Mas ainda tem um poço de memórias que você esqueceu - e que assim seja." with dissolve
 
@@ -2688,7 +2761,11 @@ label fugir_do_navio_raiva:
     # ****Fugir do Navio:
     jogador "Esquece essa merda, esquece toda essa merda! Eu vou sair daqui logo, eu não aguento mais esse maldito lugar!" with dissolve
 
+<<<<<<< HEAD
+    ed "Isso! Perfeito, vamos recomeçar e esquecer de tudo de uma vez por todas."
+=======
     ed "Isso, perfeito! Vamos recomeçar e esquecer de tudo de uma vez por todas." with dissolve
+>>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ship "Hum. Não, não é assim tão fácil. Não dá para esquecer o que nós somos. A verdade sempre volta para cuspir na nossa cara de uma forma ou de outra."
     
@@ -2698,6 +2775,17 @@ label fugir_do_navio_raiva:
 
     ship "Me escuta, a gente já viveu isso um milhão de vezes. Não dá! Simples assim, NÃO DÁ!"
 
+<<<<<<< HEAD
+    ed "Por Cristo, cala essa maldita boca uma vez na sua vida. Ele tomou a decisão dele, não tem mais volta."
+
+    ed "Agora, finalmente, de uma vez por todas, a gente vai sair desse inferno e ter uma vida digna."
+
+    ship "E voltar aqui."
+
+    ed "E nunca mais voltar aqui. NUNCA. MAIS."
+
+    ed "Rapidamente, vamos em direção as escadas, podemos sair daqui por um barquinho que irá ter na lateral do convés e navegar até terra firme, não é muito longe daqui."
+=======
     ed "Por Cristo, cala essa maldita boca uma vez na sua vida. Ele tomou sua decisão, não tem mais volta."
 
     ed "Agora, finalmente, de uma vez por todas, a gente vai sair desse inferno e ter uma vida digna."
@@ -2707,30 +2795,46 @@ label fugir_do_navio_raiva:
     ed "E nunca mais voltar aqui. NUNCA. MAIS."
 
     ed "Vamos em direção às escadas. Podemos sair daqui por um barquinho na lateral do convés e navegar até terra firme. Não é muito longe daqui."
+>>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     #melhorar a morte do Harold, queria que ficasse discreta, mas sinistra ao mesmo tempo. Talvez colocar um efeito sonoro ou uma imagem bem rápida?
     ship "Hm... então aqui vamos nós de novo.... mais uma vez.... de novo e de novo...."
 
+<<<<<<< HEAD
+    ed "Ao caminhar, você sente uma energia em você Caronte, algo... sumindo... algo ruim está indo embora, um encosto que não irá mais te assombrar, não se preocupe, ele vai morrer daqui a pouco."
+
+    ed "Me certificarei disso, haha."
+
+    ed "Ao mesmo tempo, você olha para os lados mais detalhadamente, tudo está inundando. Uma água estranha, preta está entrando, afundando tudo que aqui existe, mas conseguiremos sair se nos apressarmos."
+=======
     ed "Ao caminhar, você sente uma energia em você Caronte, algo... sumindo... algo ruim está indo embora, um encosto que não irá mais te assombrar. Não se preocupe, ele vai morrer daqui a pouco."
 
     ed "Me certificarei disso."
 
     ed "Ao mesmo tempo, você olha para os lados mais detalhadamente, tudo está inundando. Uma água estranha, preta, está entrando, afundando tudo que aqui existe, mas conseguiremos sair se nos apressarmos."
+>>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ed "Ao chegar na ponta da escada, você olha para cima... Estranho, você nunca prestou muita atenção nisso, mas essa escadaria é realmente longa, não?"
 
     #scene escadaria_super_longa
 
-    ed "E escura também.... Caminhamos por ela"
+    ed "E escura também.... Caminhamos por ela."
 
     #audio de madeira sendo pisada
-    play sound "steps-on-wooden-stairs.mp3"
+    play sound "<from 3.0 to 6.0>steps-on-wooden-stairs.mp3"
 
     ed "Subimos as escadas, passo a passo. Cada degrau grita sob seus passos..."
     
     #colocar flashes, gritos e som de coisas batendo em uma pessoa (o som de uma briga com flashes vermelhos) a ideia é que o som das escadas "gritando" lembram a briga que ele teve com a mãe dele
     # o cérebro dele tenta lembrar, mas o ed não deixa.
     ########## flashes e gritos ###########
+    # renpy.music.play("soco_sangue_1_edit.mp3", channel="layer1")
+    # renpy.music.play("mulher_gritando_1_edit_2.mp3", channel="layer1")
+    # renpy.music.play("mulher_gritando_1_edit_2.mp3", channel="layer1")
+    # renpy.music.play("choro_mulher_1_edit.mp3", channel="layer1")
+
+    # ed "pause"
+
     scene vermelho #imagem vermelha (sangue)
     #aumentar volume das coisas?
     play audio "soco_sangue_1_edit.mp3"
@@ -2750,12 +2854,20 @@ label fugir_do_navio_raiva:
     #trocar scene corredor por escadaria longa
     scene corredor
     # scene escadaria_super_longa
+    pause 0.3
+    stop audio
 
     ################
 
     ed "Não se preocupe, isso não te lembra de nada. Está tudo bem, Caronte." 
     
+<<<<<<< HEAD
+    stop audio
+
+    ed "No fim dessas escadas, vemos algo... tem algo ali.... uma... luz? Sim! Isso, é claro... é claro"
+=======
     ed "No fim dessas escadas, vemos algo... tem algo ali.... uma... luz? Sim! Isso, é claro... é claro!"
+>>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ed "É assim, Caronte, que encerrmos uma passagem para começar outra completamente diferente. É assim que inicia o começo da nossa felicidade eterna, HAHAHA."
 
