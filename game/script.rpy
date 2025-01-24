@@ -316,10 +316,9 @@ define auxiliar = Character(" ", color="#FFFFFF", window_style="my_custom_window
 
 label start:
 
-<<<<<<< HEAD
     play music "<from 10.0>rough-sea-mar-bravo-23670.mp3"
 
-    jump ficar_minigame1
+    jump escolha_morte_ou_vida_vida
 
     scene black
 
@@ -330,25 +329,23 @@ label start:
     # jump rota_esperanca
 
     # jump rota_raiva
-=======
 
-    $ item_desperdicado = False #variavel para o trigger de quando o item eh desperdicado
-    $ item_pego = False
-    $ janela_consertada = False
+    # $ item_desperdicado = False #variavel para o trigger de quando o item eh desperdicado
+    # $ item_pego = False
+    # $ janela_consertada = False
 
-    $ olhou_retrato_mulher = False
+    # $ olhou_retrato_mulher = False
 
-    $ max_tentativas = 3
+    # $ max_tentativas = 3
 
-    $ contador_esperanca = 0
+    # $ contador_esperanca = 0
 
-    $ entrar_quarto = False
+    # $ entrar_quarto = False
 
-    #Não entrar no quarto proibido ate o jogador decidir se abre a porta ou não
-    $ porta_trancada = True #//%Variavel que define quando a porta esta trancada ou nao. Ela fica trancada ate o jogador desperdicar o item, isso eh feito para corrigir um erro
+    # #Não entrar no quarto proibido ate o jogador decidir se abre a porta ou não
+    # $ porta_trancada = True #//%Variavel que define quando a porta esta trancada ou nao. Ela fica trancada ate o jogador desperdicar o item, isso eh feito para corrigir um erro
 
-    scene black with fade_in
->>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
+    # scene black with fade_in
 
     # pause 0.5 #pausa a leitura dos códigos por 0.5 segundos
 
@@ -2064,13 +2061,9 @@ label minigame_porta1:
     #o ship e o ed irão dar a dica para escolher a porta errada, qualquer uma das outras duas portas leva para o lugar certo
     
 label ficar_minigame1:
-<<<<<<< HEAD
     play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 2.0
     
     jogador "Na verdade, prefiro vir por aqui"
-=======
-    jogador "Na verdade, prefiro vir por aqui."
->>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ed "Hm? Por quê? Estamos no corredor de novo, Caronte."
 
@@ -2091,13 +2084,9 @@ label ficar_minigame1:
         #     jump ficar_minigame1
 
 label ficar_minigame2:
-<<<<<<< HEAD
     play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 2.0
     
     ship "Você passa pela porta e volta para o corredor, de novo"
-=======
-    ship "Você passa pela porta e volta para o corredor, de novo."
->>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ed "Caronte? Você está tendo algum problema com a gente?"
 
@@ -2202,13 +2191,9 @@ label ficar_minigame4:
             jump ficar_minigame5
 
 label ficar_minigame5:
-<<<<<<< HEAD
     play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 3.0
 
     ship "Maldita criança inútil"
-=======
-    ship "Maldita criança inútil!"
->>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ed "Chega disso. A gente não vai chegar a lugar nenhum e o barco ainda está afundando." with dissolve
 
@@ -2223,13 +2208,9 @@ label ficar_minigame5:
     jump parte_da_dor_fim_minigame_volta_para_quarto_escuro
 
 label parte_da_dor_fim_minigame_volta_para_quarto_escuro:
-<<<<<<< HEAD
     play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 3.0
 
     ship "Feliz, agora, garoto? Estamos todos irritados e de volta nesse quarto"
-=======
-    ship "Feliz, agora, garoto? Estamos todos irritados e de volta nesse quarto." with dissolve
->>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ed "Já chega, Harold... Estamos aqui, querendo ou não." with dissolve
 
@@ -2428,12 +2409,17 @@ label escolha_morte_ou_vida_vida:
     # play music "musica_balada.mp3"
 
     #teto quarto
+
+    # label aqui
+
     scene teto_balada with fade_in
 
+    voice "maria_oi.mp3"
     maria "Oi."
 
     jogador "...."
 
+    play audio "maria-oi-td-bem2.mp3"
     maria "Oi? Tudo bem?"
 
     jogador "Hm?"
@@ -2442,36 +2428,44 @@ label escolha_morte_ou_vida_vida:
 
     jogador "Ahn, oi. Tudo bem?"
 
+    play audio "maria-haha-luzes3.mp3"
     maria "Haha, ficou encantado com a luzes, é?"
 
     jogador "Hm, é... na verdade... Onde estou?"
 
+    play audio "maria-wow-alguem-bebeu4.mp3"
     maria "Wow! Hahaha, acho que alguém bebeu mais do que deveria, não?"
 
     ed "Caronte, estamos numa balada, bar ou sei lá o quê. Só não estraga as coisas."
 
     jogador "Que? Ah, não, não se preocupe, estou bem. Só... meio tonto..."
 
+    play audio "maria-hahah-engracado5.mp3"
     maria "Haha, é, eu imagino. Você é engraçado, gostei."
 
     jogador "É... obrigado, me chamo Caronte."
 
+    play audio "maria-prazer-conhecer-viaj6.mp3"
     maria "Me chamo Maria, prazer te conhecer viajante."
 
     jogador "Viajante? Ah, sim, haha, por causa da mitologia, né?"
 
+    play audio "maria-caronte-o-barqueiro7.mp3"
     maria "Uai, seu nome não é por causa do 'Caronte, o barqueiro'? O cara que fica vagando entre os mundos em um barco, levando as pessoas para o inferno.. meio que em um limbo, não?"
 
+    play audio "maria-n-lembro-da-historia8.mp3"
     maria "Não sei, acho que é algo assim. Não lembro da história direito."
 
     jogador "Sim, na verdade acho que é algo próximo disso. Apesar de que não sei o motivo de eu ter esse nome na verdade... Não lembro de nada que aconteceu comigo."
 
     jogador "Caronte...? Esse nome... é meu... né?"
 
+    play audio "maria-parar-de-beber9.mp3"
     maria "Cara, você está muito mal, ahahha. Você precisa parar de beber urgente."
 
     jogador "Haha, acho que sim..."
 
+    play audio "maria-beber-em-outro-lugar10.mp3"
     maria "Ou então a gente pode continuar a beber em outro lugar, não acha?"
 
     ed "Se você falar que não, eu te mato."
@@ -2731,11 +2725,7 @@ label rota_raiva:
 
     ship "Que inferno! Ah, maldito quarto!" with dissolve
 
-<<<<<<< HEAD
     jogador "Por Deus, que merda foi essa?! O que foi isso?"
-=======
-    jogador "Por Deus, que merda foi essa?! O que foi isso??" with dissolve
->>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ship "A verdade, ou parte dela... Mas ainda tem um poço de memórias que você esqueceu - e que assim seja." with dissolve
 
@@ -2761,11 +2751,7 @@ label fugir_do_navio_raiva:
     # ****Fugir do Navio:
     jogador "Esquece essa merda, esquece toda essa merda! Eu vou sair daqui logo, eu não aguento mais esse maldito lugar!" with dissolve
 
-<<<<<<< HEAD
     ed "Isso! Perfeito, vamos recomeçar e esquecer de tudo de uma vez por todas."
-=======
-    ed "Isso, perfeito! Vamos recomeçar e esquecer de tudo de uma vez por todas." with dissolve
->>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ship "Hum. Não, não é assim tão fácil. Não dá para esquecer o que nós somos. A verdade sempre volta para cuspir na nossa cara de uma forma ou de outra."
     
@@ -2775,18 +2761,7 @@ label fugir_do_navio_raiva:
 
     ship "Me escuta, a gente já viveu isso um milhão de vezes. Não dá! Simples assim, NÃO DÁ!"
 
-<<<<<<< HEAD
     ed "Por Cristo, cala essa maldita boca uma vez na sua vida. Ele tomou a decisão dele, não tem mais volta."
-
-    ed "Agora, finalmente, de uma vez por todas, a gente vai sair desse inferno e ter uma vida digna."
-
-    ship "E voltar aqui."
-
-    ed "E nunca mais voltar aqui. NUNCA. MAIS."
-
-    ed "Rapidamente, vamos em direção as escadas, podemos sair daqui por um barquinho que irá ter na lateral do convés e navegar até terra firme, não é muito longe daqui."
-=======
-    ed "Por Cristo, cala essa maldita boca uma vez na sua vida. Ele tomou sua decisão, não tem mais volta."
 
     ed "Agora, finalmente, de uma vez por todas, a gente vai sair desse inferno e ter uma vida digna."
 
@@ -2795,24 +2770,15 @@ label fugir_do_navio_raiva:
     ed "E nunca mais voltar aqui. NUNCA. MAIS."
 
     ed "Vamos em direção às escadas. Podemos sair daqui por um barquinho na lateral do convés e navegar até terra firme. Não é muito longe daqui."
->>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     #melhorar a morte do Harold, queria que ficasse discreta, mas sinistra ao mesmo tempo. Talvez colocar um efeito sonoro ou uma imagem bem rápida?
     ship "Hm... então aqui vamos nós de novo.... mais uma vez.... de novo e de novo...."
 
-<<<<<<< HEAD
-    ed "Ao caminhar, você sente uma energia em você Caronte, algo... sumindo... algo ruim está indo embora, um encosto que não irá mais te assombrar, não se preocupe, ele vai morrer daqui a pouco."
-
-    ed "Me certificarei disso, haha."
-
-    ed "Ao mesmo tempo, você olha para os lados mais detalhadamente, tudo está inundando. Uma água estranha, preta está entrando, afundando tudo que aqui existe, mas conseguiremos sair se nos apressarmos."
-=======
     ed "Ao caminhar, você sente uma energia em você Caronte, algo... sumindo... algo ruim está indo embora, um encosto que não irá mais te assombrar. Não se preocupe, ele vai morrer daqui a pouco."
 
     ed "Me certificarei disso."
 
     ed "Ao mesmo tempo, você olha para os lados mais detalhadamente, tudo está inundando. Uma água estranha, preta, está entrando, afundando tudo que aqui existe, mas conseguiremos sair se nos apressarmos."
->>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ed "Ao chegar na ponta da escada, você olha para cima... Estranho, você nunca prestou muita atenção nisso, mas essa escadaria é realmente longa, não?"
 
@@ -2861,13 +2827,9 @@ label fugir_do_navio_raiva:
 
     ed "Não se preocupe, isso não te lembra de nada. Está tudo bem, Caronte." 
     
-<<<<<<< HEAD
     stop audio
 
     ed "No fim dessas escadas, vemos algo... tem algo ali.... uma... luz? Sim! Isso, é claro... é claro"
-=======
-    ed "No fim dessas escadas, vemos algo... tem algo ali.... uma... luz? Sim! Isso, é claro... é claro!"
->>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
 
     ed "É assim, Caronte, que encerrmos uma passagem para começar outra completamente diferente. É assim que inicia o começo da nossa felicidade eterna, HAHAHA."
 
