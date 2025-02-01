@@ -216,6 +216,8 @@ transform zoom_out_far:
 
 # Remover e inserir em 'screens.rpy'
 init python:
+    renpy.music.register_channel("sfx2", "sfx", loop=False)
+
     #canal de audio criado
     # renpy.music.register_channel("layer1", "sfx", synchro_start=True)
 
@@ -258,11 +260,11 @@ define ed = Character("Ed Newgate", color="#0000FF", window_style="my_custom_win
 
 
 
-define unk = Character(" ", color="#FFFFFF", window_style="my_custom_window")
-define maria = Character("Maria", color="#FFC0CB", window_style="my_custom_window")
+define unk = Character(" ", color="#FFFFFF", what_slow_cps=40, window_style="my_custom_window")
+define maria = Character("Maria", color="#FFC0CB", what_slow_cps=40, window_style="my_custom_window")
 
 #mudar a cor do texto da fala para vermelho dps
-define figura = Character(" ", color="#FFFFFF", window_style="my_custom_window")
+define figura = Character(" ", color="#FFFFFF", what_slow_cps=40, window_style="my_custom_window")
 
 image porta = "porta.png"
 image rachadura = "rachadura.png"
@@ -272,6 +274,11 @@ image barco_mar = "barco_mar.png"
 image corredor = 'corredor.png'
 image banheiro = 'banero.png'
 image banheiro_remedio = 'baneroaber.png'
+image maria_morta = 'baneromorto.png'
+image maria_balada = 'Bar.png'
+image escadaria_super_longa = 'escada.png'
+image silhueta2 = 'Silhueta2.png'
+image silhueta3 = 'Silhueta3.png'
 # image tres_portas
 
 image black = "black.png"
@@ -406,7 +413,7 @@ label op_exp1:
     ed "Sabemos que pode ser desconcertante sentir-se perdido nesse mar de incertezas. Mas estamos aqui para ser seus guias." with dissolve
 
     ship "Você está envolto numa escuridão, olhe ao redor e veja por si mesmo. Certamente, o céu poderia trazer alguma iluminação\
-        mesmo à noite, mas não há sinal da Lua, nem mesmo das estrelas." with dissolve
+        mesmo à noite, mas não há muito o que se ver." with dissolve
 
     ship "Um som perturbador ecoa, como se um barril fosse preenchido - o que é certamente algum tipo de mau presságio." with dissolve
 
@@ -453,7 +460,7 @@ label voltar_dormir:
 
     ship "Você fez a melhor escolha!" with dissolve
 
-    ed "Não!! Essa é uma pés..." with dissolve
+    ed "Não! Essa é uma pés-" with dissolve
 
     ship "Olha, eu sei que tudo parece muito enigmático e está tudo bem… Você sabe no que essa escolha vai levar, certo?\
         Já podemos escutar um ruído de algo sendo preenchido lá embaixo..." with dissolve
@@ -462,7 +469,7 @@ label voltar_dormir:
 
     ship "Seus olhos estão pesados, eles pedem por descanso." with dissolve
 
-    jogador "hmmm... Tudo bem, tanto faz... estou meio cansado de qualquer forma." with dissolve
+    jogador "Hmmm... Tudo bem, tanto faz... estou meio cansado de qualquer forma." with dissolve
 
     ship "Um pouco de paz, finalmente…" with dissolve
 
@@ -569,10 +576,10 @@ label descobrir_barulho:
 
     menu menu_descobrir_barulho:
 
-        "{b}Zoom-in do item\[Opção Exploratória\]{b}":
+        "{b}Olhar item\[Opção Exploratória\]{b}":
             jump zoom_in_item
 
-        "{b}Zoom-in da rachadura\[Opção Exploratória\]{b}":
+        "{b}Olhar rachadura\[Opção Exploratória\]{b}":
             jump zoom_in_rachadura
 
         "{b}Ir em direção à porta?{b}":
@@ -819,9 +826,9 @@ label Entrar_quarto_proibido:
 
         ed "Não, de novo isso! Outra decisão terrível, Caronte?!" with dissolve
 
-        ship "Quer saber, o Caronte está certo. Ela esconde a verdade, ela esconde toda a verdade. Ela esconde o fato de você ser uma aberração que deveria morrer!" with dissolve
+        ship "Quer saber, o Caronte está certo. Ela esconde a verdade. Ela esconde o fato de você ser uma completa aberração, Caronte!" with dissolve
 
-        ship "Lentamente a porta se abre, rangendo enquanto cede ao impulso de sua mão até se abrir completamente." with dissolve
+        ship "Lentamente, a porta se abre, rangendo enquanto cede ao impulso de sua mão até se abrir completamente." with dissolve
 
         # (mostra uma tela preta ou alguma coisa que crie um suspense, talvez até a imagem da porta semi aberta tampando a visão de dentro)
         scene black
@@ -838,23 +845,24 @@ label Entrar_quarto_proibido:
         #(mostra a cena do quarto cheio de sangue)
         scene quarto_probido_entrada with fade_in
 
-        ship "Contemple a sua obra, aberração! Veja esse sangue, as paredes, a cama, o chão, cada centímetro desse inferno coberto com sangue." with dissolve
+        ship "Veja, Caronte, contemple a sua desgraça! Veja esse sangue, as paredes, a cama, o chão, cada centímetro desse inferno coberto com sangue." with dissolve
 
+        #Voz tremendo, quase chorando
         ed "Não! Não! Eu não quero lembrar. Por favor, feche essa porta, ainda dá tempo!" with dissolve
 
-        ship "Não fecha! Olha o que você fez! Lembra do que fez? Esse maldito cheiro de carne apodrecendo (podre) ainda me enoja. Esse cheiro de ferro, do sangue, me enoja. Você me enoja." with dissolve
+        ship "Não fecha! Olha o que você fez! Lembra do que fez? Esse maldito cheiro de carne podre ainda me enoja. Esse cheiro de ferro, do sangue, me enoja. Você me enoja." with dissolve
 
-        jogador "Que porra é essa! Que porra aconteceu aqui?!" with dissolve
+        jogador "Que merda é essa! Que porra aconteceu aqui?!" with dissolve
 
         ed "Não! Não! Por favor, não! Me tira daqui!" with dissolve
 
-        ship "Sim! Sim! Eu tenho que saber, a gente quer saber, a gente quer lembrar, né? Então, olha no canto do quarto, o que a gente vê?!" with dissolve
+        ship "Sim! Sim! Eu tenho que saber, a gente quer saber, a gente quer lembrar, não é? Então, olhe no canto do quarto, o que a gente vê?!" with dissolve
 
         scene corpo_mulher_morta
 
-        jogador "Que porra é essa? Quem é aquela pessoa? Que porra tá acontecendo aqui? Eu não vou mais ficar aqui!" with dissolve
+        jogador "Quem é aquela pessoa? Que porra tá acontecendo aqui? Eu não vou mais ficar aqui!" with dissolve
 
-        ship "Consternado, você nada pode fazer perante essa situação. Mesmo desejando, o reconhecimento do que fez lhe mantém paralisado. Você olha meticulosamente para o corpo, e percebe quem você matou, seu psicótico desgraçado." with dissolve
+        ship "Consternado, você nada pode fazer perante essa situação. Mesmo desejando, o reconhecimento do que fez lhe mantém paralisado. Você olha meticulosamente para o corpo e percebe quem você matou." with dissolve
 
         jogador "Quê? Por que...? Por que... parece comigo? Eu... matei uma pessoa? O que eu fiz?" with dissolve
 
@@ -917,11 +925,11 @@ label zoom_in_item:
 label op_exp_quanto_tempo_falta:
     jogador "Espera, tenho tempo de procurar outra coisa ou não?" with dissolve
 
-    ed "Não! Essa pasta vai funcionar, ela é feita para isso." with dissolve
+    ed "Não! Essa pasta vai funcionar. Ela é feita para isso." with dissolve
 
-    ship "Escuta, Caronte, a resina vai dissolver quando entrar em contato com a água. Joga isso fora, não tem utilidade." with dissolve
+    ship "Escute Caronte, a resina vai dissolver quando entrar em contato com a água. Jogue isso fora, não tem utilidade." with dissolve
 
-    ed "Não, não vai. Se a embalagem não estivesse tão danificada daria para ler que ela é feita para isso. Caronte, me escute, eu lembro de quando compramos isso, confie em mim." with dissolve
+    ed "Não, não vai. Se a embalagem não estivesse tão danificada, daria para ler que ela é feita para isso. Caronte, me escute, eu lembro de quando compramos isso, confie em mim." with dissolve
 
     jump menu_escolhas_zoom_in_item
     
@@ -947,7 +955,7 @@ label desperdicar_item:
 
     ship "Desafio você a arremesar essa resina tão longe, a ponto de ela sumir antes de cair no mar." with dissolve
 
-    ed "Não, Caronte, não faz isso. Essa é a única solução, não tem como arrumar a rachadura sem isso. Vamos todos morrer!" with dissolve
+    ed "Não Caronte, não faz isso. Essa é a única solução, não tem como arrumar a rachadura sem isso. Vamos todos morrer!" with dissolve
 
     ship "Não acredito que seja a única. Nem olhamos o barco todo e temos bastante tempo ainda. A água está entrando bem devagar." with dissolve
 
@@ -981,11 +989,11 @@ label desperdicar_item:
 
     jogador "WOW! Não esperava por isso. Eu sou bem forte." with dissolve
 
-    ship "Oh, Caronte, você não faz ideia. Forte para destruir o crânio de um adulto." with dissolve
+    ship "Oh, Caronte, você não faz ideia." with dissolve
 
-    jogador "Hm? Não acho que eu seja capaz de fazer algo assim." with dissolve
+    # jogador "Hm? Não acho que eu seja capaz de fazer algo assim." with dissolve
 
-    ship "Eu meio que estava exagerando, não se preocupe." with dissolve
+    # ship "Eu meio que estava exagerando, não se preocupe." with dissolve
 
     # obs. "talvez colocar mais indignação nessa fala do Ed."
     ed "É... lá se vai nossa solução... Ok, talvez tenha uma alternativa em algum lugar." with dissolve
@@ -994,6 +1002,7 @@ label desperdicar_item:
 
     #linhas auxiliares para resolver aquele problema do roteiro
 
+    play sound "<from 0.2 to 0.8>destranca_porta.mp3"
     auxiliar "Trec..." with dissolve
 
     jogador "Hm? Eu ouvi algo? Tipo uma trava...?" with dissolve
@@ -1427,7 +1436,7 @@ label rota_tristeza_desperdicio:
 
     ship "Não, eu ainda não terminei! Depois disso, ela tentou te levantar, te levar para casa e cuidar de você. Ela tentou enxergar em você uma pessoa digna, mas não conseguia. Ela não tinha força para te levantar e você mal se aguentava em pé."
 
-    ship "Ela chorava não só por ver o amor dela nessa situação lastimável, mas também porque você quebrou a promessa que fizeram. Você prometeu, porra, a gente prometeu que não iria fazer mais essa merda e, no fim, a gente fez!" with dissolve
+    ship "Ela chorava não só por ver o amor dela nessa situação lastimável, mas também porque você quebrou a promessa que fizeram. Você prometeu, a gente prometeu que não iria fazer mais essa merda mas, no fim, a gente fez!" with dissolve
 
     ship "E fizemos de novo, e de novo... Nenhum ser humano em sã consciência aguentaria essa tortura, Caronte… Confie em mim, eu não estou mentindo!" with dissolve
 
@@ -1531,7 +1540,7 @@ label encerrar_vida_raiva:
 
     ship "Esta é a melhor escolha, Caronte."
 
-    ship "Você se levanta e sair do quarto. Sentindo-se aliviado, como se tivesse se livrado de um pesadelo horrível. Ao sair, você escuta um estrondo atrás de você. A porta se fecha para nunca mais abrir... nunca mais"
+    ship "Você se levanta e sai do quarto. Sentindo-se aliviado, como se tivesse se livrado de um pesadelo horrível. Ao sair, você escuta um estrondo atrás de você. A porta se fecha para nunca mais abrir... nunca mais"
 
     ship "Você caminha pelo navio uma última vez... mas não dura muito tempo, você quer se livrar logo destas emoções ruins e ser, portanto, verdadeiramente livre. Logo, corre para o início de tudo, para o local em que acordou."
 
@@ -1617,15 +1626,15 @@ label ficar_quarto_final:
 
     ed "Merda, Porra, Porraa!!! Que MERDA você fez seu maníaco?!"
 
-    ship "Por Deus que merda de idéia é essa? Meu Deus do céu como dói!!! Ahhhr"
+    ship "Por Deus que droga de idéia é essa? Meu Deus do céu como dói!!! Ahhhr"
 
     jogador "Vai logo, tem alguma porra de sedativo nessa merda desse quarto?"
 
     ship "Que merda você tem na cabeça?! O que você acha que vai acontecer agora, hã?"
 
-    jogador "O que? Você sabe muito bem, ou a gente para essa merda agora ou eu vou ferrar ainda mais com vocês, entendeu?"
+    jogador "O que? Você sabe muito bem: ou a gente para com isso agora ou vamos sentir ainda mais dor, entendeu?"
 
-    ed "Não, caronte, não é assim, na verdade, tem alguma coisa de estranha, no seu corpo. Você está deixando de se sentir, está ficando leve. Algo de errado está acontecendo, voc...."
+    ed "Não, Caronte, não é assim, na verdade, tem alguma coisa de estranha, no seu corpo. Você está deixando de se sentir, está ficando leve. Algo de errado está acontecendo, voc...."
 
     jogador "Eu largo a mão esquerda da faca e enfio no corte e pressiono os buracos que ficavam meus dentes."
 
@@ -2362,7 +2371,7 @@ label escolha_morte_ou_vida_vida:
 
     jogador "Então, meu caro. O que iremos fazer agora? Sair do barco, certo? Tudo bem deve ter algum outro jeito." with dissolve
 
-    ed "Sim! Claro... Enfim, vamos, vamos sair dessa droga de lugar de uma vez, por Cristo... Estamos a sós agora." with dissolve
+    ed "Sim! Claro... Enfim, vamos... vamos sair dessa droga de lugar de uma vez, por Cristo... Estamos a sós agora." with dissolve
 
     jogador "Hm? Perfeito, meu amigo. Huhu. Eu caminho para fora desse quarto feio." with dissolve
 
@@ -2388,11 +2397,11 @@ label escolha_morte_ou_vida_vida:
 
     scene black
 
-    ed "Descemos o bote, entramos nele e remamos até terra firme. Não é a forma mais segura, contudo não vai acontecer nada com a gente, acredite."
+    ed "Descemos o bote, entramos nele e remamos até terra firme. Não é a forma mais segura, contudo, não vai acontecer nada com a gente, acredite."
 
     ed "Quando chegarmos em terra firme, a gente vai para casa. Você vai tomar um bom banho e descansar."
 
-    ed "A gente vai arranjar um emprego qualquer, ter uma vida normal. Conseguir uma esposa talvez ou viver sozinho, não tem problema."
+    ed "A gente vai arranjar um emprego qualquer, ter uma vida normal. Iremos conseguir uma esposa, talvez, ou viver sozinho, não tem problema."
 
     ed "Aproveitaremos a vida como deve ser feito. Revisitaremos nossos familiares, eles com certeza estão com saudade de nós."
 
@@ -2402,72 +2411,86 @@ label escolha_morte_ou_vida_vida:
 
     ed "Finalmente, Caronte, finalmente acabamos com esse ciclo maldito. Esse é o nosso verdadeiro final!"
 
-    # scene estrelas
+    scene estrelas
 
-    # pause 2.0
+    pause 2.0
 
-    # play music "musica_balada.mp3"
-
-    #teto quarto
+    #começa a tocar a musica originalmente aqui
+    # play music "musica_feliz_violao_mais_outras_coisas.mp3" volume 0.7
+    # teto quarto
 
     # label aqui
 
     scene teto_balada with fade_in
 
-    voice "maria_oi.mp3"
+    play music "musica_feliz_violao_mais_outras_coisas.mp3" volume 0.7
+
+
+    voice "<from 0.8>maria_oi.mp3"
     maria "Oi."
 
+    stop audio
     jogador "...."
 
-    play audio "maria-oi-td-bem2.mp3"
+    play audio "<from 0.6>maria-oi-td-bem2.mp3"
     maria "Oi? Tudo bem?"
 
+    stop audio
     jogador "Hm?"
 
-    scene maria_balada
+    scene maria_balada 
 
     jogador "Ahn, oi. Tudo bem?"
 
-    play audio "maria-haha-luzes3.mp3"
+    play audio "<from 0.8>maria-haha-luzes3.mp3"
     maria "Haha, ficou encantado com a luzes, é?"
 
+    stop audio
     jogador "Hm, é... na verdade... Onde estou?"
 
-    play audio "maria-wow-alguem-bebeu4.mp3"
+    play audio "<from 0.9>maria-wow-alguem-bebeu4.mp3"
     maria "Wow! Hahaha, acho que alguém bebeu mais do que deveria, não?"
 
-    ed "Caronte, estamos numa balada, bar ou sei lá o quê. Só não estraga as coisas."
+    stop audio
+    ed "Caronte, estamos numa balada, bar ou sei lá o quê. Só não estraga as coisas, ok?"
 
     jogador "Que? Ah, não, não se preocupe, estou bem. Só... meio tonto..."
 
     play audio "maria-hahah-engracado5.mp3"
     maria "Haha, é, eu imagino. Você é engraçado, gostei."
 
+    stop audio
     jogador "É... obrigado, me chamo Caronte."
 
     play audio "maria-prazer-conhecer-viaj6.mp3"
     maria "Me chamo Maria, prazer te conhecer viajante."
 
-    jogador "Viajante? Ah, sim, haha, por causa da mitologia, né?"
+    stop audio
+    jogador "Viajante? Ah, sim, haha, por causa das histórias mitologicas, né?"
 
     play audio "maria-caronte-o-barqueiro7.mp3"
-    maria "Uai, seu nome não é por causa do 'Caronte, o barqueiro'? O cara que fica vagando entre os mundos em um barco, levando as pessoas para o inferno.. meio que em um limbo, não?"
+    maria "Uai, seu nome não é por causa do 'Caronte, o barqueiro'? O cara que fica vagando entre os mundos em um barco, levando as pessoas para o inferno?"
 
+    stop audio
     play audio "maria-n-lembro-da-historia8.mp3"
     maria "Não sei, acho que é algo assim. Não lembro da história direito."
 
+    stop audio
     jogador "Sim, na verdade acho que é algo próximo disso. Apesar de que não sei o motivo de eu ter esse nome na verdade... Não lembro de nada que aconteceu comigo."
 
+    stop audio
     jogador "Caronte...? Esse nome... é meu... né?"
 
     play audio "maria-parar-de-beber9.mp3"
     maria "Cara, você está muito mal, ahahha. Você precisa parar de beber urgente."
 
+    stop audio
     jogador "Haha, acho que sim..."
 
     play audio "maria-beber-em-outro-lugar10.mp3"
-    maria "Ou então a gente pode continuar a beber em outro lugar, não acha?"
+    maria "Ou então... a gente pode continuar a beber em outro lugar, não acha?"
 
+    stop audio
     ed "Se você falar que não, eu te mato."
     
     jogador "Hm, claro, por que não."
@@ -2478,11 +2501,23 @@ label escolha_morte_ou_vida_vida:
 
     ed "E é assim que começa a nossa nova vida, haha."
 
+    # pause music "musica_feliz_violao_mais_outras_coisas.mp3"
+
     scene black with fade_in
 
-    unk "..."
+    #tirar musica da balada e colocar silêncio
 
-    unk "... não ..."
+    stop music
+
+    # coracao_batendo_tensao_terror_maria.mp3
+    # terror_percepcao_maria_morta.mp3
+    # musica_feliz_violao_mais_outras_coisas.mp3
+    # musica_bizarra_terror_maria_morta.mp3
+
+
+    unk ". . . . . . . . . . . . . . . . . . . . . . . . . ."
+
+    unk ". . . . . não . . . . . . . . . "
 
     #OBS.: Os efeitos estão muito estranhos, principalmente o da policia
 
@@ -2497,19 +2532,39 @@ label escolha_morte_ou_vida_vida:
     # play sound em outra faixa "zumbido.mp3"
     #Com isso vai ficar os tres sons ao mesmo tempo
 
+    #colocar musica tensa, horripilante
 
-    # scene maria_morta
+    jogador "Que..."
+
+    pause 2.0
+
+    #colocar som de BOM
+
+    window hide
+
+    play sound "<from 1.7>terror_percepcao_maria_morta.mp3"
+
+    #Colocar ou não essa ficta?
+    # play sfx2 "coracao_batendo_tensao_terror_maria.mp3"
+
+    scene maria_morta
+
+    play music "musica_bizarra_terror_maria_morta.mp3"
 
     #colocar um som de zumbido, tipo, atordoado?
+
+    pause 7.0
+
+    window show
 
     jogador "Qu- porra...?"
 
     ed "Não! Não! Não! Não! Não! Não!"
 
-    play sound "sirene_policia.mp3"
+    # play sound "sirene_policia.mp3"
 
     #Trocar frase? "Você entendeu agora, né?"
-    ship "Você realmente achou que era real?"
+    ship "Aberração..."
 
     stop sound
 
@@ -2782,7 +2837,7 @@ label fugir_do_navio_raiva:
 
     ed "Ao chegar na ponta da escada, você olha para cima... Estranho, você nunca prestou muita atenção nisso, mas essa escadaria é realmente longa, não?"
 
-    #scene escadaria_super_longa
+    scene escadaria_super_longa
 
     ed "E escura também.... Caminhamos por ela."
 
@@ -2887,7 +2942,7 @@ label fugir_navio_encerrar_sofrimento:
 
     ship "Hm..." with dissolve
 
-    ed "Isso!!! Eu estou vivo, porra!!" with dissolve
+    ed "Isso!!! Eu estou vivo!!" with dissolve
 
     ed "Já ele, nem tanto, né?. Ele nunca mais vai aparecer aqui" with dissolve
 
@@ -2956,7 +3011,7 @@ label fugir_navio_encerrar_sofrimento:
 
     jogador "...."
 
-    jogador "Merda... porra... Entendi." with dissolve
+    jogador "Merda... Entendi." with dissolve
 
     ed "Sim... eu sei... mas é assim que as coisas são... é assim que a gente foi feito, eu acho. Me desculpa." with dissolve
 
@@ -3014,7 +3069,7 @@ label fugir_navio_encerrar_sofrimento:
 label continuar_escolha:
     # Continuar Escolha:
     # ou colocar frase?
-    jogador "Eu já te disse, Ed... Eu estou cansado dessa merda."
+    jogador "Eu já te disse, Ed... Eu estou cansado disso."
 
     play sound "sangue_caindo.mp3"
 
