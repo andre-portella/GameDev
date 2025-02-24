@@ -117,6 +117,8 @@ screen say(who, what):
         add SideImage() xalign 0.0 yalign 1.0
 
 
+
+
 ## Disponibilize a caixa de nome para estilização por meio do objeto Character.
 init python:
     config.character_id_prefixes.append('namebox')
@@ -1660,3 +1662,19 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
+
+
+
+# Definindo o estilo do título
+style titulo_jogo:
+    size 80
+    color "#FFFFFF"
+    slow_cps 5
+    text_align 0.5
+
+# Definindo a tela de título
+screen titulo_jogo():
+    tag menu
+
+    add "black"  # Fundo preto
+    text "Estige" style "titulo_jogo" at truecenter

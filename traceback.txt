@@ -1,40 +1,20 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-After initialization, but before game start.
-  File "renpy/common/00start.rpy", line 83, in _init_language
-    renpy.change_language(language)
-  File "game/screens.rpy", line 164, in <module>
-    maximum gui.dialogue_max_width
-AttributeError: 'StoreModule' object has no attribute 'dialogue_max_width'
+While running game code:
+  File "game/script.rpy", line 333, in script
+    play music "<from 10.0>rough-sea-mar-bravo-23670.mp3"
+Exception: Possible infinite loop.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\bootstrap.py", line 359, in bootstrap
-    renpy.main.main()
-  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\main.py", line 652, in main
-    run(restart)
-  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\main.py", line 75, in run
-    renpy.translation.init_translation()
-  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\translation\__init__.py", line 702, in init_translation
-    renpy.store._init_language() # type: ignore
-  File "renpy/common/00start.rpy", line 83, in _init_language
-    renpy.change_language(language)
-  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\translation\__init__.py", line 796, in change_language
-    new_change_language(tl, language)
-  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\translation\__init__.py", line 748, in new_change_language
-    i.apply()
-  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\ast.py", line 2800, in apply
-    value = renpy.python.py_eval(expr)
-  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\python.py", line 1209, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\python.py", line 1202, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/screens.rpy", line 164, in <module>
-    maximum gui.dialogue_max_width
-AttributeError: 'StoreModule' object has no attribute 'dialogue_max_width'
+  File "game/script.rpy", line 333, in script
+    play music "<from 10.0>rough-sea-mar-bravo-23670.mp3"
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\execution.py", line 61, in check_infinite_loop
+    raise Exception("Possible infinite loop.")
+Exception: Possible infinite loop.
 
-Windows-10-10.0.22621 AMD64
+Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.3.24111502
 projetoX 1.0
-Sun Dec 22 15:24:49 2024
+Sun Feb 23 19:43:38 2025

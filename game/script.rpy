@@ -233,6 +233,8 @@ init python:
 
     entrar_quarto = False
 
+    inicio = True
+
     #Não entrar no quarto proibido ate o jogador decidir se abre a porta ou não
     porta_trancada = True #//%Variavel que define quando a porta esta trancada ou nao. Ela fica trancada ate o jogador desperdicar o item, isso eh feito para corrigir um erro
     # do roteiro, faltava uma possibilidade de evento e fazer isso corrige o probelma
@@ -303,6 +305,9 @@ image conves_distortion = At("conves.png", distortion)
 
 image porta_strongwarp = At("porta.png", strongwarp)
 
+
+define text_cps_sound = "typewriter.wav"
+
 # ---------- Variaveis Auxiliares ----------------#
 # Variaveis que definem coisas auxiliares como qual trigger para a rota foi acionado ou desacionado, variaveis para dar efeito de alguma coisa etc.
 define auxiliar = Character(" ", color="#FFFFFF", window_style="my_custom_window")
@@ -319,67 +324,41 @@ define auxiliar = Character(" ", color="#FFFFFF", window_style="my_custom_window
 
 # The game starts here.
 
+label tela_inicial:
 
+    show screen titulo_jogo  # Exibe a tela do título
 
 label start:
-
     play music "<from 10.0>rough-sea-mar-bravo-23670.mp3"
 
-    jump escolha_morte_ou_vida_vida
+    show screen titulo_jogo  # Exibe a tela do título    
 
-    scene black
+    # Aguarda 2 segundos para esconder a tela de título
+    $ renpy.pause(2.0)
 
-    pause 2.0
+
+    hide screen titulo_jogo  # Garante que a tela de título seja escondida antes de prosseguir
 
     scene conves_distortion with fade_in
 
-    # jump rota_esperanca
-
-    # jump rota_raiva
-
-    # $ item_desperdicado = False #variavel para o trigger de quando o item eh desperdicado
-    # $ item_pego = False
-    # $ janela_consertada = False
-
-    # $ olhou_retrato_mulher = False
-
-    # $ max_tentativas = 3
-
-    # $ contador_esperanca = 0
-
-    # $ entrar_quarto = False
-
-    # #Não entrar no quarto proibido ate o jogador decidir se abre a porta ou não
-    # $ porta_trancada = True #//%Variavel que define quando a porta esta trancada ou nao. Ela fica trancada ate o jogador desperdicar o item, isso eh feito para corrigir um erro
-
-    # scene black with fade_in
-
-    # pause 0.5 #pausa a leitura dos códigos por 0.5 segundos
-
-    # play sound "door-slam-172171.mp3"
-
-    # scene corredor
-
-    # pause 0.5
-
-    # scene quarto_probido_entrada
-
+    jump escolha_morte_ou_vida_vida
 
     ed "Você se encontra deitado em um pequeno barco, balançando suavemente nas águas escuras em um mar desconhecido.\
         Você pisca, tentando orientar seus olhos na claridade repentina. As suas mãos se contorcem de dor, os músculos \
         contraídos e as articulações inchadas, você não pode continuar dormindo nesse estado, pode?" with dissolve
     
-    scene conves_distortion with fade_in
-
     ed "Agora, nesse barco à deriva, o som insistente de algo sendo preenchido ecoa do fundo da embarcação e um sentimento\
         de urgência te preenche." with dissolve
 
     ed "Você levanta abruptamente, olhando ao redor, com os sentidos em alerta máximo. Você escuta\
         um som distante de um barril sendo preenchido, um ruído incômodo e persistente." with dissolve
 
+
+    voice "start/ship_label_start1.mp3"
     ship "As suas mãos latejam, uma lembrança dolorosa do que você fez. Talvez seja melhor você se deitar novamente, tentar\
         esquecer o que aconteceu. " with dissolve
-    
+
+    voice "start/ship_label_start2.mp3"
     ship "Não há sentido em investigar esse som estranho, é apenas mais um problema esperando por você.\
         É melhor que você simplesmente feche os olhos e tente esquecer. Deixe que o sono o leve, deixe que as águas escuras o acalmem." with dissolve
 
@@ -412,9 +391,11 @@ label op_exp1:
 
     ed "Sabemos que pode ser desconcertante sentir-se perdido nesse mar de incertezas. Mas estamos aqui para ser seus guias." with dissolve
 
+    voice "exploratorias/ship_label_op_exp1.mp3"
     ship "Você está envolto numa escuridão, olhe ao redor e veja por si mesmo. Certamente, o céu poderia trazer alguma iluminação\
-        mesmo à noite, mas não há muito o que se ver." with dissolve
+        mesmo à noite, mas não há sinal da Lua, nem mesmo das estrelas." with dissolve
 
+    voice "exploratorias/ship_label_op_exp1_2.mp3"
     ship "Um som perturbador ecoa, como se um barril fosse preenchido - o que é certamente algum tipo de mau presságio." with dissolve
 
     jogador "Isso é estranho... Não me lembro de como vim parar aqui. E esse som... O que poderia ser?" with dissolve
@@ -437,6 +418,7 @@ label op_exp2:
 
     jogador "Ainda assim, é estranho... É como se eu estivesse sendo observado de dentro da minha própria mente." with dissolve
 
+    voice "exploratorias/ship_label_op_exp2.mp3"
     ship "Dito isso, você parece exausto. Talvez seja hora de permitir que o sono o envolva novamente. Feche os olhos e poderá esquecer isso tudo." with dissolve
 
     jump explorar
@@ -449,6 +431,7 @@ label op_exp3:
     ed "É compreensível que você possa sentir uma familiaridade\
         estranha conosco, mas é só uma coincidência. Não se preocupe, concentre-se no que está diante de você agora." with dissolve
 
+    voice "exploratorias/ship_label_op_exp3.mp3"
     ship "Sim, concordo, talvez seja apenas uma sensação passageira. Uma ilusão de uma mente confusa e cansada." with dissolve
 
     jump explorar
@@ -458,19 +441,24 @@ label op_exp3:
 
 label voltar_dormir:
 
+    voice "voltar_dormir/ship_label_voltar_dormir.mp3"
     ship "Você fez a melhor escolha!" with dissolve
 
     ed "Não! Essa é uma pés-" with dissolve
 
+    voice "voltar_dormir/ship_label_voltar_dormir_2.mp3"
     ship "Olha, eu sei que tudo parece muito enigmático e está tudo bem… Você sabe no que essa escolha vai levar, certo?\
         Já podemos escutar um ruído de algo sendo preenchido lá embaixo..." with dissolve
 
+    voice "voltar_dormir/ship_label_voltar_dormir_3.mp3"
     ship "Confie em mim, essa é a melhor escolha e, na verdade, sua única. Afinal, não há nada a ser feito." with dissolve
 
+    voice "voltar_dormir/ship_label_voltar_dormir_4.mp3"
     ship "Seus olhos estão pesados, eles pedem por descanso." with dissolve
 
     jogador "Hmmm... Tudo bem, tanto faz... estou meio cansado de qualquer forma." with dissolve
 
+    voice "voltar_dormir/ship_label_voltar_dormir_5.mp3"
     ship "Um pouco de paz, finalmente…" with dissolve
 
     # Continuação após o escurecimento
@@ -480,10 +468,14 @@ label voltar_dormir:
     scene quarto_distorcido with fade_out and fade_in
 
     # Continuação
+
+    voice "voltar_dormir/ship_label_voltar_dormir_6.mp3"
     ship "O interior do quarto está quase vazio. O ar é pesado e tanto o chão quanto as paredes estão manchados de sangue. A única\
         peça de mobília é uma cama simples, manchada de vermelho e coberta por lençóis ensanguentados. Ao lado da cama, uma faca\
         repousa com sua lâmina reluzindo." with dissolve
 
+
+    voice "voltar_dormir/ship_label_voltar_dormir_7.mp3"
     ship "Você reconhece essa faca. Já a utilizou algumas vezes. \nVai precisar dela para fazer o que é preciso." with dissolve
 
     label examinar_faca:
@@ -499,22 +491,30 @@ label voltar_dormir:
     label prosseguir:
 
         #jogador pega a faca
-        ship "Alguns tentam se iludir, mas você não. Poderíamos apenas seguir pelo caminho mais fácil." with dissolve
 
+        voice "prosseguir/ship_label_prosseguir.mp3"
+        ship "Alguns tentam se iludir, mas você não. Poderíamos apenas seguir pelo caminho mais fácil." with dissolve
+        
         jogador "O que eu fiz? Por que estou aqui?" with dissolve
 
+        voice "prosseguir/ship_label_prosseguir_2.mp3"
         ship "Você sabe o que fez. E eu já lhe disse que essa faca é familiar. Quer mesmo relembrar o seu passado?" with dissolve
 
+        voice "prosseguir/ship_label_prosseguir_3.mp3"
         ship "Por favor, vamos poupar explicações... Aliás, por que questiona o seu destino? Tudo aqui se deve a suas próprias decisões." with dissolve
 
+        voice "prosseguir/ship_label_prosseguir_4.mp3"
         ship "Você precisa fazer o que é preciso." with dissolve
 
         jogador "Não há outra opção? O que vai acontecer comigo?" with dissolve
 
+        voice "prosseguir/ship_label_prosseguir_5.mp3"
         ship "O seu tempo já se esgotou. Você teve toda uma vida para refletir. Em nenhum momento mostrou arrependimento e agora pergunta sobre suas opções?" with dissolve
 
+        voice "prosseguir/ship_label_prosseguir_6.mp3"
         ship "Vamos logo! Estamos apenas adiando o irrevogável!" with dissolve
 
+        voice "prosseguir/ship_label_prosseguir_7.mp3"
         ship "Você empunha a faca e aponta para o pescoço..." with dissolve
 
 
@@ -2423,8 +2423,7 @@ label escolha_morte_ou_vida_vida:
 
     scene teto_balada with fade_in
 
-    play music "musica_feliz_violao_mais_outras_coisas.mp3" volume 0.7
-
+    play music "musica_feliz_violao_mais_outras_coisas.mp3" volume 0.1
 
     voice "<from 0.8>maria_oi.mp3"
     maria "Oi."
@@ -2432,65 +2431,55 @@ label escolha_morte_ou_vida_vida:
     stop audio
     jogador "...."
 
-    play audio "<from 0.6>maria-oi-td-bem2.mp3"
+    voice "<from 0.6>maria-oi-td-bem2.mp3"
     maria "Oi? Tudo bem?"
 
-    stop audio
     jogador "Hm?"
 
     scene maria_balada 
 
     jogador "Ahn, oi. Tudo bem?"
 
-    play audio "<from 0.8>maria-haha-luzes3.mp3"
+    voice "<from 0.8>maria-haha-luzes3.mp3"
     maria "Haha, ficou encantado com a luzes, é?"
 
-    stop audio
     jogador "Hm, é... na verdade... Onde estou?"
 
-    play audio "<from 0.9>maria-wow-alguem-bebeu4.mp3"
+    voice "<from 0.9>maria-wow-alguem-bebeu4.mp3"
     maria "Wow! Hahaha, acho que alguém bebeu mais do que deveria, não?"
 
-    stop audio
     ed "Caronte, estamos numa balada, bar ou sei lá o quê. Só não estraga as coisas, ok?"
 
     jogador "Que? Ah, não, não se preocupe, estou bem. Só... meio tonto..."
 
-    play audio "maria-hahah-engracado5.mp3"
+    voice "maria-hahah-engracado5.mp3"
     maria "Haha, é, eu imagino. Você é engraçado, gostei."
 
-    stop audio
     jogador "É... obrigado, me chamo Caronte."
 
-    play audio "maria-prazer-conhecer-viaj6.mp3"
+    voice "maria-prazer-conhecer-viaj6.mp3"
     maria "Me chamo Maria, prazer te conhecer viajante."
 
-    stop audio
-    jogador "Viajante? Ah, sim, haha, por causa das histórias mitologicas, né?"
+    jogador "Viajante? Ah, sim, haha, por causa das histórias mitológicas, né?"
 
-    play audio "maria-caronte-o-barqueiro7.mp3"
+    voice "maria-caronte-o-barqueiro7.mp3"
     maria "Uai, seu nome não é por causa do 'Caronte, o barqueiro'? O cara que fica vagando entre os mundos em um barco, levando as pessoas para o inferno?"
 
-    stop audio
-    play audio "maria-n-lembro-da-historia8.mp3"
+    voice "maria-n-lembro-da-historia8.mp3"
     maria "Não sei, acho que é algo assim. Não lembro da história direito."
 
-    stop audio
     jogador "Sim, na verdade acho que é algo próximo disso. Apesar de que não sei o motivo de eu ter esse nome na verdade... Não lembro de nada que aconteceu comigo."
 
-    stop audio
     jogador "Caronte...? Esse nome... é meu... né?"
 
-    play audio "maria-parar-de-beber9.mp3"
+    voice "maria-parar-de-beber9.mp3"
     maria "Cara, você está muito mal, ahahha. Você precisa parar de beber urgente."
 
-    stop audio
     jogador "Haha, acho que sim..."
 
-    play audio "maria-beber-em-outro-lugar10.mp3"
+    voice "maria-beber-em-outro-lugar10.mp3"
     maria "Ou então... a gente pode continuar a beber em outro lugar, não acha?"
 
-    stop audio
     ed "Se você falar que não, eu te mato."
     
     jogador "Hm, claro, por que não."

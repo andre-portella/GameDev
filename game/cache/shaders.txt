@@ -1,19 +1,19 @@
->>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
-renpy.texture renpy.texture
-renpy.geometry renpy.solid
-renpy.blur renpy.geometry
-renpy.alpha renpy.geometry renpy.texture
->>>>>>> 63d159485e25c762804a9e87f1e50fc51a718bf1
-distortion_perlin renpy.geometry renpy.texture
-renpy.ftl
-renpy.solid
-renpy.texture -renpy.texture renpy.blur renpy.texture -renpy.texture renpy.blur
-renpy.geometry renpy.texture
-renpy.texture
-renpy.alpha renpy.texture
 >>>>>>> a4460394f971df02d4139715facc3f45cc9f8576
-<<<<<<< HEAD
 renpy.dissolve renpy.geometry
-renpy.dissolve renpy.dissolve
-=======
+<<<<<<< HEAD
 distortion_perlin renpy.texture
+renpy.dissolve renpy.dissolve
+renpy.alpha renpy.texture
+>>>>>>> 63d159485e25c762804a9e87f1e50fc51a718bf1
+renpy.alpha renpy.geometry renpy.texture
+renpy.texture -renpy.texture renpy.blur renpy.texture -renpy.texture renpy.blur
+renpy.geometry renpy.solid
+>>>>>>> 978c8aef873d38ad3bb94d04506a09f801cafa58
+distortion_perlin renpy.geometry renpy.texture
+renpy.geometry renpy.texture
+renpy.ftl
+renpy.texture
+=======
+renpy.texture renpy.texture
+renpy.blur renpy.geometry
+renpy.solid
