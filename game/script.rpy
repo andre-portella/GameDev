@@ -324,21 +324,16 @@ define auxiliar = Character(" ", color="#FFFFFF", window_style="my_custom_window
 
 # The game starts here.
 
-label tela_inicial:
-
-    show screen titulo_jogo  # Exibe a tela do título
-
 label start:
+
     play music "<from 10.0>rough-sea-mar-bravo-23670.mp3"
+    window hide
+    show screen titulo_jogo
+    $ renpy.pause()
 
-    show screen titulo_jogo  # Exibe a tela do título    
+label inicio:
 
-    # Aguarda 2 segundos para esconder a tela de título
-    $ renpy.pause(2.0)
-
-
-    hide screen titulo_jogo  # Garante que a tela de título seja escondida antes de prosseguir
-
+    hide screen titulo_jogo
     scene conves_distortion with fade_in
 
     ed "Você se encontra deitado em um pequeno barco, balançando suavemente nas águas escuras em um mar desconhecido.\
@@ -3100,3 +3095,13 @@ label continuar_escolha:
 #  musica da balada, musica morte da maria
 # FIM ROTA RAIVA #
 #---------------------------------------------------------------------------------------------------------------------------------
+
+label credits:
+    hide screen titulo_jogo
+    scene black
+    window hide
+
+    show text "Créditos\n\n Vozes:\nHarold Shipman: Ariel Sadetsky\nMaria: Beatriz Rogers" at Move((0.35, 1.5), (0.35, -0.5), 10.0)
+
+    $ renpy.pause(10.0)  # Tempo para a rolagem terminar
+    jump start

@@ -1664,7 +1664,6 @@ style slider_slider:
     xsize 900
 
 
-
 # Definindo o estilo do título
 style titulo_jogo:
     size 80
@@ -1676,5 +1675,19 @@ style titulo_jogo:
 screen titulo_jogo():
     tag menu
 
-    add "black"  # Fundo preto
-    text "Estige" style "titulo_jogo" at truecenter
+    add "black"
+
+    text "Estige" style "titulo_jogo":
+        xpos 0.43
+        ypos 0.4
+
+    hbox:
+        xpos 0.42
+        ypos 0.52
+        spacing 50
+
+        # Botão "Iniciar"
+        textbutton "Início" action Jump("inicio")
+
+        # Botão "Créditos"
+        textbutton "Créditos" action Jump("credits")
