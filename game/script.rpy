@@ -322,18 +322,17 @@ define auxiliar = Character(" ", color="#FFFFFF", window_style="my_custom_window
 
 # The game starts here.
 
-
-
 label start:
 
     play music "<from 10.0>rough-sea-mar-bravo-23670.mp3"
+    window hide
+    show screen titulo_jogo
+    $ renpy.pause()
 
-    jump rota_tristeza_desperdicio
 
-    scene black
+label inicio:
 
-    pause 2.0
-
+    hide screen titulo_jogo
     scene conves_distortion with fade_in
 
     # jump rota_esperanca
@@ -380,9 +379,11 @@ label start:
     ed "Você levanta abruptamente, olhando ao redor, com os sentidos em alerta máximo. Você escuta\
         um som distante de um barril sendo preenchido, um ruído incômodo e persistente." with dissolve
 
+    voice "inicio/ship_label_start1.mp3"
     ship "As suas mãos latejam, uma lembrança dolorosa do que você fez. Talvez seja melhor você se deitar novamente, tentar\
         esquecer o que aconteceu. " with dissolve
     
+    voice "inicio/ship_label_start2.mp3"
     ship "Não há sentido em investigar esse som estranho, é apenas mais um problema esperando por você.\
         É melhor que você simplesmente feche os olhos e tente esquecer. Deixe que o sono o leve, deixe que as águas escuras o acalmem." with dissolve
 
@@ -415,10 +416,13 @@ label op_exp1:
 
     ed "Sabemos que pode ser desconcertante sentir-se perdido nesse mar de incertezas. Mas estamos aqui para ser seus guias." with dissolve
 
+    voice "exploratorias/ship_label_op_exp1.mp3"
     ship "Você está envolto numa escuridão, olhe ao redor e veja por si mesmo. Certamente, o céu poderia trazer alguma iluminação\
-        mesmo à noite, mas não há muito o que se ver." with dissolve
+        mesmo à noite, mas não há sinal da Lua, nem mesmo das estrelas." with dissolve
 
+    voice "exploratorias/ship_label_op_exp1_2.mp3"
     ship "Um som perturbador ecoa, como se um barril fosse preenchido - o que é certamente algum tipo de mau presságio." with dissolve
+
 
     jogador "Isso é estranho... Não me lembro de como vim parar aqui. E esse som... O que poderia ser?" with dissolve
 
@@ -440,8 +444,8 @@ label op_exp2:
 
     jogador "Ainda assim, é estranho... É como se eu estivesse sendo observado de dentro da minha própria mente." with dissolve
 
+    voice "exploratorias/ship_label_op_exp2.mp3"
     ship "Dito isso, você parece exausto. Talvez seja hora de permitir que o sono o envolva novamente. Feche os olhos e poderá esquecer isso tudo." with dissolve
-
     jump explorar
 
 ############################################################
@@ -452,6 +456,7 @@ label op_exp3:
     ed "É compreensível que você possa sentir uma familiaridade\
         estranha conosco, mas é só uma coincidência. Não se preocupe, concentre-se no que está diante de você agora." with dissolve
 
+    voice "exploratorias/ship_label_op_exp3.mp3"
     ship "Sim, concordo, talvez seja apenas uma sensação passageira. Uma ilusão de uma mente confusa e cansada." with dissolve
 
     jump explorar
@@ -461,19 +466,24 @@ label op_exp3:
 
 label voltar_dormir:
 
+    voice "voltar_dormir/ship_label_voltar_dormir.mp3"
     ship "Você fez a melhor escolha!" with dissolve
 
     ed "Não! Essa é uma pés-" with dissolve
 
+    voice "voltar_dormir/ship_label_voltar_dormir_2.mp3"
     ship "Olha, eu sei que tudo parece muito enigmático e está tudo bem… Você sabe no que essa escolha vai levar, certo?\
         Já podemos escutar um ruído de algo sendo preenchido lá embaixo..." with dissolve
 
+    voice "voltar_dormir/ship_label_voltar_dormir_3.mp3"
     ship "Confie em mim, essa é a melhor escolha e, na verdade, sua única. Afinal, não há nada a ser feito." with dissolve
 
+    voice "voltar_dormir/ship_label_voltar_dormir_4.mp3"
     ship "Seus olhos estão pesados, eles pedem por descanso." with dissolve
 
     jogador "Hmmm... Tudo bem, tanto faz... estou meio cansado de qualquer forma." with dissolve
 
+    voice "voltar_dormir/ship_label_voltar_dormir_5.mp3"
     ship "Um pouco de paz, finalmente…" with dissolve
 
     # Continuação após o escurecimento
@@ -483,10 +493,12 @@ label voltar_dormir:
     scene quarto_distorcido with fade_out and fade_in
 
     # Continuação
+    voice "voltar_dormir/ship_label_voltar_dormir_6.mp3"
     ship "O interior do quarto está quase vazio. O ar é pesado e tanto o chão quanto as paredes estão manchados de sangue. A única\
         peça de mobília é uma cama simples, manchada de vermelho e coberta por lençóis ensanguentados. Ao lado da cama, uma faca\
         repousa com sua lâmina reluzindo." with dissolve
 
+    voice "voltar_dormir/ship_label_voltar_dormir_7.mp3"
     ship "Você reconhece essa faca. Já a utilizou algumas vezes. \nVai precisar dela para fazer o que é preciso." with dissolve
 
     label examinar_faca:
@@ -502,22 +514,29 @@ label voltar_dormir:
     label prosseguir:
 
         #jogador pega a faca
+        voice "prosseguir/ship_label_prosseguir.mp3"
         ship "Alguns tentam se iludir, mas você não. Poderíamos apenas seguir pelo caminho mais fácil." with dissolve
 
         jogador "O que eu fiz? Por que estou aqui?" with dissolve
-
+        
+        voice "prosseguir/ship_label_prosseguir_2.mp3"
         ship "Você sabe o que fez. E eu já lhe disse que essa faca é familiar. Quer mesmo relembrar o seu passado?" with dissolve
 
+        voice "prosseguir/ship_label_prosseguir_3.mp3"
         ship "Por favor, vamos poupar explicações... Aliás, por que questiona o seu destino? Tudo aqui se deve a suas próprias decisões." with dissolve
 
+        voice "prosseguir/ship_label_prosseguir_4.mp3"
         ship "Você precisa fazer o que é preciso." with dissolve
 
         jogador "Não há outra opção? O que vai acontecer comigo?" with dissolve
 
+        voice "prosseguir/ship_label_prosseguir_5.mp3"
         ship "O seu tempo já se esgotou. Você teve toda uma vida para refletir. Em nenhum momento mostrou arrependimento e agora pergunta sobre suas opções?" with dissolve
 
+        voice "prosseguir/ship_label_prosseguir_6.mp3"
         ship "Vamos logo! Estamos apenas adiando o irrevogável!" with dissolve
 
+        voice "prosseguir/ship_label_prosseguir_7.mp3"
         ship "Você empunha a faca e aponta para o pescoço..." with dissolve
 
 
@@ -2074,7 +2093,7 @@ label ficar_quarto_3:
 
 label cena_tres_portas:
     #primeiro, fazer o jogador entender o sistema de portas
-    ed "Você escolhe a segunda porta, gira a maçaneta e não tem nada ali, é um lugar escuro qualquer." with dissolve
+    ed "Você escolhe a segunda porta, gira a maçaneta e não tem nada ali. É um lugar escuro qualquer." with dissolve
 
     scene black
 
@@ -2086,7 +2105,7 @@ label cena_tres_portas:
 
     jogador "Espera, o quê? Que droga que está acontecendo nesse lugar?" with dissolve
 
-    ed "A gente não sabe, tente de novo se quiser." with dissolve
+    ed "A gente não sabe. Tente de novo se quiser." with dissolve
 
     ship "Ou só desista de uma vez e vamos embora daqui, não? Quanto mais a gente tentar entrar no quarto, mais estranho as coisas ficam." with dissolve
 
@@ -2126,7 +2145,7 @@ label cena_tres_portas:
 
     jogador "Tem algo estranho aqui, não? Eu me senti meio estranho com aquela primeira porta."
 
-    jogador "Tem alguma coisa acontecendo no geral, mas não consigo entender direito... Algo me diz que eu não deveria passar por ela."
+    jogador "Tem alguma coisa acontecendo, mas não consigo entender direito... Algo me diz que eu não deveria passar por ela."
 
     ed "Hm? Por que você diz isso? Não faz muito sentido."
 
@@ -2169,7 +2188,7 @@ label minigame_porta1:
 label ficar_minigame1:
     play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 2.0
     
-    jogador "Na verdade, prefiro vir por aqui"
+    jogador "Na verdade, prefiro vir por aqui."
 
     ed "Hm? Por quê? Estamos no corredor de novo, Caronte."
 
@@ -2386,13 +2405,13 @@ label parte_da_dor_fim_minigame_volta_para_quarto_escuro:
             jump ficar_quarto_4
 
 label sair_minigame:
-    ed "Você esta no corredor. Você vira e as tres portas não estão mais ali, tem apenas uma"
+    ed "Você esta no corredor. Você vira e as três portas não estão mais ali, tem apenas uma."
 
     jogador "O que? algo mudou"
 
     # play sound porta_fechada
 
-    ship "Você tenta abrir essa porta de novo e ela nao abre, a macaneta sequer gira. Não importa o quanto você tente essa porta nunca mais vai abrir"
+    ship "Você tenta abrir essa porta de novo e ela nao abre, a macaneta sequer gira. Não importa o quanto você tente essa porta nunca mais vai abrir."
 
     #trocar por jump menu tal escolhas_principais_raiva_2
     menu escolhas_principais_raiva_3:
@@ -2520,7 +2539,7 @@ label escolha_morte_ou_vida_vida:
 
     scene teto_balada with fade_in
 
-    play music "musica_feliz_violao_mais_outras_coisas.mp3" volume 0.7
+    play music "musica_feliz_violao_mais_outras_coisas.mp3" volume 0.1
 
 
     voice "<from 0.8>maria_oi.mp3"
@@ -3210,3 +3229,13 @@ label continuar_escolha:
 #  musica da balada, musica morte da maria
 # FIM ROTA RAIVA #
 #---------------------------------------------------------------------------------------------------------------------------------
+
+label credits:
+    hide screen titulo_jogo
+    scene black
+    window hide
+
+    show text "Créditos\n\n Vozes:\nHarold Shipman: Ariel Sadetsky\nMaria: Beatriz Rogers" at Move((0.35, 1.5), (0.35, -0.5), 10.0)
+
+    $ renpy.pause(10.0)  # Tempo para a rolagem terminar
+    jump start
