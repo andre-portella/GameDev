@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2463: expected simple expression (string)
-    voice
-         ^
+File "game/script.rpy", line 2678: expected statement.
+    stio music
+              ^
 
 Ren'Py Version: Ren'Py 8.3.3.24111502
-Mon Feb 24 12:45:51 2025
+Wed Feb 26 14:55:26 2025

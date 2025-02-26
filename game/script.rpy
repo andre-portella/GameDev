@@ -341,8 +341,6 @@ label start:
 
     scene conves_distortion with fade_in
 
-    jump escolha_morte_ou_vida_vida
-
     ed "Você se encontra deitado em um pequeno barco, balançando suavemente nas águas escuras em um mar desconhecido.\
         Você pisca, tentando orientar seus olhos na claridade repentina. As suas mãos se contorcem de dor, os músculos \
         contraídos e as articulações inchadas, você não pode continuar dormindo nesse estado, pode?" with dissolve
@@ -2072,7 +2070,7 @@ label minigame_porta1:
 label ficar_minigame1:
     play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 2.0
     
-    jogador "Na verdade, prefiro vir por aqui"
+    jogador "Na verdade, prefiro vir por aqui."
 
     ed "Hm? Por quê? Estamos no corredor de novo, Caronte."
 
@@ -2095,7 +2093,7 @@ label ficar_minigame1:
 label ficar_minigame2:
     play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 2.0
     
-    ship "Você passa pela porta e volta para o corredor, de novo"
+    ship "Você passa pela porta e volta para o corredor, de novo."
 
     ed "Caronte? Você está tendo algum problema com a gente?"
 
@@ -2219,7 +2217,7 @@ label ficar_minigame5:
 label parte_da_dor_fim_minigame_volta_para_quarto_escuro:
     play audio "<from 0.4 to 1.9>door_handle.mpeg" volume 3.0
 
-    ship "Feliz, agora, garoto? Estamos todos irritados e de volta nesse quarto"
+    ship "Feliz, agora, garoto? Estamos todos irritados e de volta nesse quarto."
 
     ed "Já chega, Harold... Estamos aqui, querendo ou não." with dissolve
 
@@ -2289,13 +2287,13 @@ label parte_da_dor_fim_minigame_volta_para_quarto_escuro:
             jump ficar_quarto_4
 
 label sair_minigame:
-    ed "Você esta no corredor. Você vira e as tres portas não estão mais ali, tem apenas uma"
+    ed "Você esta no corredor. Você vira e as três portas não estão mais ali, tem apenas uma."
 
-    jogador "O que? algo mudou"
+    jogador "O que? Algo mudou."
 
     # play sound porta_fechada
 
-    ship "Você tenta abrir essa porta de novo e ela nao abre, a macaneta sequer gira. Não importa o quanto você tente essa porta nunca mais vai abrir"
+    ship "Você tenta abrir essa porta de novo e ela nao abre, a macaneta sequer gira. Não importa o quanto você tente essa porta nunca mais vai abrir."
 
     #trocar por jump menu tal escolhas_principais_raiva_2
     menu escolhas_principais_raiva_3:
@@ -2677,7 +2675,7 @@ label entrar_quarto_dnv:
     # pausar musica ou colocar musica de vazio?
     # play music "vazio.mp3"
 
-    pause music
+    stop music
 
 #Resultado após o jogador passar da última porta
     #tem que terminar

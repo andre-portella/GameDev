@@ -1,20 +1,36 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 333, in script
-    play music "<from 10.0>rough-sea-mar-bravo-23670.mp3"
-Exception: Possible infinite loop.
+  File "game/script.rpy", line 2678, in script
+    pause music
+  File "renpy/common/000statements.rpy", line 456, in execute_pause
+    delay = eval(p["delay"])
+  File "game/script.rpy", line 2678, in <module>
+    pause music
+NameError: name 'music' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 333, in script
-    play music "<from 10.0>rough-sea-mar-bravo-23670.mp3"
-  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\execution.py", line 61, in check_infinite_loop
-    raise Exception("Possible infinite loop.")
-Exception: Possible infinite loop.
+  File "game/script.rpy", line 2678, in script
+    pause music
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\ast.py", line 1974, in execute
+    self.call("execute")
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\ast.py", line 1953, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\statements.py", line 374, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 456, in execute_pause
+    delay = eval(p["delay"])
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\python.py", line 1209, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\Users\andre\Downloads\renpy-8.3.3-sdk\renpy\python.py", line 1202, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 2678, in <module>
+    pause music
+NameError: name 'music' is not defined
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.3.24111502
 projetoX 1.0
-Sun Feb 23 19:43:38 2025
+Wed Feb 26 14:52:28 2025
