@@ -330,11 +330,11 @@ label start:
     $ renpy.pause()
 
 
+
 label inicio:
 
     hide screen titulo_jogo
     scene conves_distortion with fade_in
-
     # jump rota_esperanca
 
     # jump rota_raiva
@@ -3235,7 +3235,7 @@ label credits:
     scene black
     window hide
 
-    show text "Créditos\n\n Vozes:\nHarold Shipman: Ariel Sadetsky\nMaria: Beatriz Rogers" at Move((0.35, 1.5), (0.35, -0.5), 10.0)
+    show text "Créditos\n\n Vozes:\nHarold Shipman: Ariel Sadetsky\nMaria: Beatriz Rogers\n\nRoteiro:\n André Portella\nFelipe Bastos\nWilker Ribeiro\n\nArtes:\nLeonardo Prado\n\nMenções honrosas:\n João Brants\n Vanderlei Assis\n Gabriel Evangelista\n Fidel Pereira\n" at Move((0.35, 1.5), (0.35, -0.5), 10.0)
 
     $ renpy.pause(10.0)  # Tempo para a rolagem terminar
     jump start
